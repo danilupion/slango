@@ -1,0 +1,21 @@
+{
+  "name": "@slango.configs/typescript",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Slango typescript configs",
+  "type": "module",
+  "exports": {
+    "./*": "./src/presets/*"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix --max-warnings 0"
+  },
+  "dependencies": {
+    "typescript": "5.8.2"
+  },
+  "peerDependencies": {
+    "eslint": "9.22.0"
+  },
+  "devDependencies": {}
+}
