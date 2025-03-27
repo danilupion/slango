@@ -1,0 +1,49 @@
+{
+  "name": "@slango/rest-client",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Slango Rest Client",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./abortable": {
+      "import": "./dist/abortable/index.js",
+      "types": "./dist/abortable/index.d.ts"
+    },
+    "./middleware": {
+      "import": "./dist/middleware/index.js",
+      "types": "./dist/middleware/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "build:force": "tsc -p tsconfig.build.json --incremental false",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "build:check": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix --max-warnings 0",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --run --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "dependencies": {
+    "@slango/ts-utils": "workspace:*"
+  },
+  "peerDependencies": {
+    "@vitest/coverage-v8": "3.0.9",
+    "@vitest/ui": "3.0.9",
+    "eslint": "9.23.0",
+    "typescript": "5.8.2",
+    "vitest": "3.0.9"
+  },
+  "devDependencies": {
+    "@slango.configs/eslint": "workspace:*",
+    "@slango.configs/lint-staged": "workspace:*",
+    "@slango.configs/typescript": "workspace:*",
+    "@slango.configs/vitest": "workspace:*",
+    "@types/node": "22.13.14",
+    "type-fest": "4.38.0"
+  }
+}
