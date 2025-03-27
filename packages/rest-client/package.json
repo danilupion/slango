@@ -1,6 +1,6 @@
 {
   "name": "@slango/rest-client",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "description": "Slango Rest Client",
   "type": "module",
