@@ -6,9 +6,13 @@
   "type": "module",
   "exports": {
     "./*": "./src/presets/*.js",
-    "./helpers/*": "./src/helpers/*.ts"
+    "./helpers/*": {
+      "import": "./dist/helpers/*.js",
+      "types": "./dist/helpers/*.d.ts"
+    }
   },
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
     "build:check": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix --max-warnings 0"
