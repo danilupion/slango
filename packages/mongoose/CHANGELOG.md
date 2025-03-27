@@ -1,5 +1,11 @@
 # @slango/mongoose
 
+## 1.0.1
+
+### Patch Changes
+
+- Mongoose dependency bump
+
 ## 1.0.0
 
 ### Major Changes
