@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/lint-staged",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "description": "Slango lint-staged configs",
   "type": "module",
