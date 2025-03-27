@@ -1,0 +1,24 @@
+{
+  "name": "@slango.configs/lint-staged",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Slango lint-staged configs",
+  "type": "module",
+  "exports": {
+    "./*": "./src/presets/*"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix --max-warnings 0"
+  },
+  "dependencies": {
+    "deepmerge": "4.3.1",
+    "lint-staged": "15.5.0"
+  },
+  "peerDependencies": {
+    "eslint": "9.23.0"
+  },
+  "devDependencies": {
+    "@slango.configs/eslint": "workspace:*"
+  }
+}
