@@ -1,0 +1,8 @@
+packages:
+  - configs/*
+  - packages/*
+onlyBuiltDependencies:
+  - '@swc/core'
+  - bcrypt
+  - esbuild
+  - mongodb-memory-server

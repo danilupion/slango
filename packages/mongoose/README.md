@@ -1,0 +1,1 @@
+# Slango Mongoose (@slango/mongoose)
