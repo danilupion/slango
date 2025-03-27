@@ -1,0 +1,37 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['config:best-practices'],
+  rangeStrategy: 'bump',
+  dependencyDashboard: true,
+  timezone: 'Europe/Madrid',
+  packageRules: [
+    {
+      groupName: 'Patch and pin updates',
+      matchUpdateTypes: ['patch', 'pin'],
+      automerge: true,
+      extends: ['schedule:weekends', 'schedule:automergeWeekends'],
+      groupSlug: 'patch-n-pin-updates',
+      labels: ['dependencies', 'patch+pin', 'automerge'],
+    },
+    {
+      groupName: 'Minor updates',
+      matchUpdateTypes: ['minor'],
+      automerge: false,
+      extends: ['schedule:weekends', 'schedule:automergeWeekends'],
+      groupSlug: 'minor-updates',
+      labels: ['dependencies', 'minor'],
+    },
+    {
+      matchUpdateTypes: ['major'],
+      automerge: false,
+      extends: ['schedule:weekends', 'schedule:automergeWeekends'],
+      labels: ['dependencies', 'major'],
+    },
+    {
+      matchManagers: ['github-actions'],
+      pinDigests: false,
+      extends: ['schedule:weekends', 'schedule:automergeWeekends'],
+      labels: ['github-actions'],
+    },
+  ],
+}
