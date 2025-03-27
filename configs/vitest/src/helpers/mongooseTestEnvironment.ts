@@ -1,6 +1,8 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import mongoose, { ConnectionStates } from 'mongoose';
+import mongoose from 'mongoose';
 import { afterAll, afterEach, beforeAll } from 'vitest';
+
+const ConnectionStates = mongoose.ConnectionStates;
 
 type SetupMongoTestEnvironmentOptions = {
   preserveCollections?: string[];
