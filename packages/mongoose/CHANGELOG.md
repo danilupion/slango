@@ -1,5 +1,11 @@
 # @slango/mongoose
 
+## 1.0.2
+
+### Patch Changes
+
+- Dependencies bump
+
 ## 1.0.1
 
 ### Patch Changes
