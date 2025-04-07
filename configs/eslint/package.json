@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/eslint",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "Slango eslint configs",
   "type": "module",
@@ -15,18 +15,18 @@
     "@eslint-community/eslint-plugin-eslint-comments": "4.4.1",
     "@eslint/compat": "1.2.8",
     "@eslint/eslintrc": "3.3.1",
-    "@eslint/js": "9.23.0",
+    "@eslint/js": "9.24.0",
     "@next/eslint-plugin-next": "15.2.4",
-    "eslint": "9.23.0",
+    "eslint": "9.24.0",
     "eslint-config-next": "15.2.4",
     "eslint-config-prettier": "10.1.1",
-    "eslint-import-resolver-typescript": "4.3.1",
-    "eslint-plugin-import-x": "4.10.0",
+    "eslint-import-resolver-typescript": "4.3.2",
+    "eslint-plugin-import-x": "4.10.2",
     "eslint-plugin-perfectionist": "4.11.0",
     "eslint-plugin-prettier": "5.2.6",
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-regexp": "2.7.0",
     "globals": "16.0.0",
-    "typescript-eslint": "8.29.0"
+    "typescript-eslint": "8.29.1"
   }
 }
