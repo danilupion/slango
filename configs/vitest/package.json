@@ -31,9 +31,9 @@
     "vitest": "^3"
   },
   "peerDependencies": {
-    "eslint": "^9",
-    "mongoose": "^8",
-    "typescript": "^5"
+    "eslint": "^9.24.0",
+    "mongoose": "^8.13.2",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
