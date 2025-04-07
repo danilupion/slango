@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/prettier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "Slango prettier configs",
   "type": "module",
@@ -15,7 +15,7 @@
     "prettier": "3.5.3"
   },
   "peerDependencies": {
-    "eslint": "9.23.0"
+    "eslint": "^9"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*"
