@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       lint-staged:
         specifier: 15.5.0
@@ -97,7 +97,7 @@ importers:
         specifier: 4.3.1
         version: 4.3.1
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       lint-staged:
         specifier: 15.5.0
@@ -110,7 +110,7 @@ importers:
   configs/prettier:
     dependencies:
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       prettier:
         specifier: 3.5.3
@@ -125,7 +125,7 @@ importers:
   configs/typescript:
     dependencies:
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       typescript:
         specifier: 5.8.3
@@ -155,7 +155,7 @@ importers:
         specifier: ^3
         version: 3.1.1(vitest@3.1.1)
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       jsdom:
         specifier: 26.0.0
@@ -164,10 +164,10 @@ importers:
         specifier: 10.1.4
         version: 10.1.4
       mongoose:
-        specifier: ^8
+        specifier: ^8.13.2
         version: 8.13.2
       typescript:
-        specifier: ^5
+        specifier: ^5.8.3
         version: 5.8.3
       unplugin-swc:
         specifier: 1.5.1
@@ -186,16 +186,16 @@ importers:
   packages/mongoose:
     dependencies:
       '@vitest/coverage-v8':
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(vitest@3.1.1)
       '@vitest/ui':
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(vitest@3.1.1)
       bcrypt:
         specifier: 5.1.1
         version: 5.1.1
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       mongoose:
         specifier: 8.13.2
@@ -204,10 +204,10 @@ importers:
         specifier: 5.1.5
         version: 5.1.5
       typescript:
-        specifier: ^5
+        specifier: ^5.8.3
         version: 5.8.3
       vitest:
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(@types/node@22.14.0)(@vitest/ui@3.1.1)(jsdom@26.0.0)(yaml@2.7.0)
     devDependencies:
       '@slango.configs/eslint':
@@ -229,19 +229,19 @@ importers:
         specifier: workspace:*
         version: link:../ts-utils
       '@vitest/coverage-v8':
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(vitest@3.1.1)
       '@vitest/ui':
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(vitest@3.1.1)
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       typescript:
-        specifier: ^5
+        specifier: ^5.8.3
         version: 5.8.3
       vitest:
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(@types/node@22.14.0)(@vitest/ui@3.1.1)(jsdom@26.0.0)(yaml@2.7.0)
     devDependencies:
       '@slango.configs/eslint':
@@ -266,19 +266,19 @@ importers:
   packages/ts-utils:
     dependencies:
       '@vitest/coverage-v8':
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(vitest@3.1.1)
       '@vitest/ui':
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(vitest@3.1.1)
       eslint:
-        specifier: ^9
+        specifier: ^9.24.0
         version: 9.24.0
       typescript:
-        specifier: ^5
+        specifier: ^5.8.3
         version: 5.8.3
       vitest:
-        specifier: ^3
+        specifier: ^3.1.1
         version: 3.1.1(@types/node@22.14.0)(@vitest/ui@3.1.1)(jsdom@26.0.0)(yaml@2.7.0)
     devDependencies:
       '@slango.configs/eslint':

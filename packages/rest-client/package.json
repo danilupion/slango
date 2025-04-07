@@ -32,11 +32,11 @@
     "@slango/ts-utils": "workspace:*"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "^3",
-    "@vitest/ui": "^3",
-    "eslint": "^9",
-    "typescript": "^5",
-    "vitest": "^3"
+    "@vitest/coverage-v8": "^3.1.1",
+    "@vitest/ui": "^3.1.1",
+    "eslint": "^9.24.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
