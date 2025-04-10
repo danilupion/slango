@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
-    "@slango.configs/lint-staged": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*"
   }

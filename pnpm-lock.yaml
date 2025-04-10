@@ -250,9 +250,6 @@ importers:
       '@slango.configs/eslint':
         specifier: workspace:*
         version: link:../../configs/eslint
-      '@slango.configs/lint-staged':
-        specifier: workspace:*
-        version: link:../../configs/lint-staged
       '@slango.configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
@@ -287,9 +284,6 @@ importers:
       '@slango.configs/eslint':
         specifier: workspace:*
         version: link:../../configs/eslint
-      '@slango.configs/lint-staged':
-        specifier: workspace:*
-        version: link:../../configs/lint-staged
       '@slango.configs/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
