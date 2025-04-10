@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.0.4
+
+### Patch Changes
+
+- React config package
+
 ## 1.0.3
 
 ### Patch Changes
