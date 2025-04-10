@@ -1,5 +1,11 @@
 # @slango.configs/typescript
 
+## 1.0.2
+
+### Patch Changes
+
+- React config package
+
 ## 1.0.1
 
 ### Patch Changes

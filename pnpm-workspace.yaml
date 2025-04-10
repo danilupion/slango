@@ -1,6 +1,7 @@
 packages:
   - configs/*
   - packages/*
+
 onlyBuiltDependencies:
   - '@swc/core'
   - bcrypt
