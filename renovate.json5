@@ -11,7 +11,7 @@
       automerge: false,
       extends: ['schedule:weekends', 'schedule:automergeWeekends'],
       groupSlug: 'patch-n-pin-updates',
-      labels: ['dependencies', 'patch+pin', 'automerge'],
+      labels: ['dependencies', 'patch+pin'],
     },
     {
       groupName: 'Minor updates',
