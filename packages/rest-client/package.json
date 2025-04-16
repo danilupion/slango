@@ -43,6 +43,6 @@
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
     "@types/node": "22.14.1",
-    "type-fest": "4.39.1"
+    "type-fest": "4.40.0"
   }
 }
