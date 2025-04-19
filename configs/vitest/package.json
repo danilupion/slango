@@ -22,7 +22,7 @@
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
-    "@vitejs/plugin-react": "4.4.0",
+    "@vitejs/plugin-react": "4.4.1",
     "@vitest/coverage-v8": "3.1.1",
     "@vitest/ui": "3.1.1",
     "jsdom": "26.1.0",
@@ -31,7 +31,7 @@
     "vitest": "3.1.1"
   },
   "peerDependencies": {
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.0",
     "mongoose": "^8.13.2",
     "typescript": "^5.8.3"
   },
