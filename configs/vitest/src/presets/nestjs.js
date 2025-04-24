@@ -2,7 +2,7 @@ import cv8 from '@vitest/coverage-v8';
 import swc from 'unplugin-swc';
 import { configDefaults, defineConfig } from 'vitest/config';
 
-const vitestConfig = defineConfig({
+const vitestNestJsConfig = defineConfig({
   plugins: [cv8.getProvider(), swc.vite()],
   test: {
     coverage: {
@@ -13,4 +13,4 @@ const vitestConfig = defineConfig({
   },
 });
 
-export default vitestConfig;
+export default vitestNestJsConfig;

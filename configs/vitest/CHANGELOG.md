@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 1.0.10
+
+### Patch Changes
+
+- Rework on vitest presets
+
 ## 1.0.9
 
 ### Patch Changes
