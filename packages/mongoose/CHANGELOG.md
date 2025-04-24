@@ -1,5 +1,11 @@
 # @slango/mongoose
 
+## 1.0.5
+
+### Patch Changes
+
+- CompactId middleware is unique capable (and unique by default)
+
 ## 1.0.4
 
 ### Patch Changes

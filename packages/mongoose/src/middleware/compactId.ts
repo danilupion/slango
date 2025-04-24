@@ -7,6 +7,7 @@ export interface CompactIdMiddlewareOptions<Field extends string = 'shortId'> {
   field?: Field;
   index?: boolean;
   length?: number;
+  unique?: boolean;
 }
 
 export type WithCompactId<Field extends string = 'shortId'> = {
@@ -18,13 +19,19 @@ const compactIdMiddleware: PluginFunction<CompactIdMiddlewareOptions> = <
   DocType extends Document & WithCompactId<Field> = Document & WithCompactId<Field>,
 >(
   schema: Schema<DocType, Model<DocType>>,
-  { field = 'shortId' as Field, index = true, length = 9 }: CompactIdMiddlewareOptions<Field> = {},
+  {
+    field = 'shortId' as Field,
+    index = true,
+    length = 9,
+    unique = true,
+  }: CompactIdMiddlewareOptions<Field> = {},
 ): void => {
   const fieldDescription = new Schema<WithCompactId<Field>>({
     [field]: {
       default: () => nanoid(length),
       index,
       required: true,
+      unique: index && unique,
       type: String,
     },
   });

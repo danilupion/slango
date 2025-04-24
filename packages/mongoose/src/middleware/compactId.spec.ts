@@ -62,8 +62,18 @@ describe('compactIdMiddleware', () => {
     expect(savedDoc?.customId).toBeDefined();
   });
 
-  it('should apply "index" option to the field', () => {
-    const TestModel = createTestModel({ index: true });
+  it('should not generate "index" if not requested', () => {
+    const TestModel = createTestModel({ index: false });
+    const indexes = TestModel.schema.indexes();
+    const customIdIndex = indexes.find(([fields]) =>
+      Object.prototype.hasOwnProperty.call(fields, 'shortId'),
+    );
+
+    expect(customIdIndex).toBeUndefined();
+  });
+
+  it('should apply "index" and not "unique" options to the field', () => {
+    const TestModel = createTestModel({ index: true, unique: false });
     const indexes = TestModel.schema.indexes();
     const customIdIndex = indexes.find(([fields]) =>
       Object.prototype.hasOwnProperty.call(fields, 'shortId'),
@@ -71,5 +81,18 @@ describe('compactIdMiddleware', () => {
 
     expect(customIdIndex).toBeDefined();
     expect(customIdIndex![0].shortId).toBe(1);
+    expect(customIdIndex![1].unique).toBe(false);
+  });
+
+  it('should apply "unique" and "unique" options to the field', () => {
+    const TestModel = createTestModel({ index: true, unique: true });
+    const indexes = TestModel.schema.indexes();
+    const customIdIndex = indexes.find(([fields]) =>
+      Object.prototype.hasOwnProperty.call(fields, 'shortId'),
+    );
+
+    expect(customIdIndex).toBeDefined();
+    expect(customIdIndex![0].shortId).toBe(1);
+    expect(customIdIndex![1].unique).toBe(true);
   });
 });
