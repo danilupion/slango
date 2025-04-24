@@ -26,12 +26,12 @@
     "prepare": "[ \"$PACKAGED\" = true ] && echo 'Skipping prepare for packaged production dependencies install' || husky"
   },
   "engines": {
-    "node": "^22.14.0",
+    "node": "^22.15.0",
     "pnpm": "^10.9.0"
   },
   "packageManager": "pnpm@10.9.0",
   "peerDependencies": {
-    "eslint": "^9.25.0",
+    "eslint": "^9.25.1",
     "lint-staged": "^15.5.1",
     "prettier": "^3.5.3"
   },
@@ -42,6 +42,6 @@
     "@slango.configs/prettier": "workspace:*",
     "@slango.configs/scripts": "workspace:*",
     "husky": "9.1.7",
-    "turbo": "2.5.0"
+    "turbo": "2.5.1"
   }
 }
