@@ -8,6 +8,7 @@ const vitestConfig = defineConfig({
       ...configDefaults.coverage,
       exclude: [...configDefaults.coverage.exclude, '**/lint-staged.config.js'],
     },
+    isolate: true,
   },
 });
 
