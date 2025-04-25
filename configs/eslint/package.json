@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/eslint",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": false,
   "description": "Slango eslint configs",
   "type": "module",
@@ -21,7 +21,7 @@
     "eslint-config-next": "15.3.1",
     "eslint-config-prettier": "10.1.2",
     "eslint-import-resolver-typescript": "4.3.4",
-    "eslint-plugin-import-x": "4.10.6",
+    "eslint-plugin-import-x": "4.11.0",
     "eslint-plugin-perfectionist": "4.12.3",
     "eslint-plugin-prettier": "5.2.6",
     "eslint-plugin-react-hooks": "5.2.0",
