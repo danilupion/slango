@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/vitest",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": false,
   "description": "Slango vitest configs",
   "type": "module",
@@ -32,7 +32,7 @@
   },
   "peerDependencies": {
     "eslint": "^9.25.1",
-    "mongoose": "^8.14.0",
+    "mongoose": "^8.14.1",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
