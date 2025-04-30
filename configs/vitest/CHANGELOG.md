@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 1.0.11
+
+### Patch Changes
+
+- Mongoose dependencies bump
+
 ## 1.0.10
 
 ### Patch Changes
