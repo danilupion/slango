@@ -16,7 +16,7 @@
     "lint-staged": "15.5.1"
   },
   "peerDependencies": {
-    "eslint": "^9.25.1"
+    "eslint": "^9.26.0"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*"
