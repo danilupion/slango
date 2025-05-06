@@ -86,7 +86,7 @@ jobs:
         run: pnpm build
 
       - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@v1.4.10
+        uses: changesets/action@v1.5.0
         with:
           publish: pnpm publish -r --access public
         env:
