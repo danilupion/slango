@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/lint-staged",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "Slango lint-staged configs",
   "type": "module",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "deepmerge": "4.3.1",
-    "lint-staged": "15.5.1"
+    "lint-staged": "15.5.2"
   },
   "peerDependencies": {
     "eslint": "^9.26.0"
