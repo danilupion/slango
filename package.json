@@ -42,6 +42,6 @@
     "@slango.configs/prettier": "workspace:*",
     "@slango.configs/scripts": "workspace:*",
     "husky": "9.1.7",
-    "turbo": "2.5.2"
+    "turbo": "2.5.3"
   }
 }
