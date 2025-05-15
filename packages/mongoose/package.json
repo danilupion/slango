@@ -1,6 +1,6 @@
 {
   "name": "@slango/mongoose",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "description": "slango mongoose middlewares and utilities",
   "type": "module",
@@ -23,8 +23,8 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "bcrypt": "5.1.1",
-    "mongoose": "8.14.2",
+    "bcrypt": "6.0.0",
+    "mongoose": "8.14.3",
     "nanoid": "5.1.5"
   },
   "peerDependencies": {
