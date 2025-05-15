@@ -42,7 +42,7 @@
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
-    "@types/node": "22.15.17",
+    "@types/node": "22.15.18",
     "type-fest": "4.41.0"
   }
 }
