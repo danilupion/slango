@@ -18,7 +18,7 @@
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
   "dependencies": {
-    "@swc/core": "1.11.24",
+    "@swc/core": "1.11.29",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
@@ -32,7 +32,7 @@
   },
   "peerDependencies": {
     "eslint": "^9.27.0",
-    "mongoose": "^8.15.0",
+    "mongoose": "^8.15.1",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
