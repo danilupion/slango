@@ -15,7 +15,7 @@
     "prettier": "3.5.3"
   },
   "peerDependencies": {
-    "eslint": "^9.28.0"
+    "eslint": "^9.29.0"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*"
