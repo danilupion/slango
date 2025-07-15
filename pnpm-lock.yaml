@@ -206,13 +206,13 @@ importers:
         specifier: 5.0.2
         version: 5.0.2
       '@vitest/coverage-v8':
-        specifier: ^3.2.4
+        specifier: 3.2.4
         version: 3.2.4(vitest@3.2.4)
       '@vitest/ui':
-        specifier: ^3.2.4
+        specifier: 3.2.4
         version: 3.2.4(vitest@3.2.4)
       eslint:
-        specifier: ^9.31.0
+        specifier: 9.31.0
         version: 9.31.0
       mongoose:
         specifier: 8.16.3
