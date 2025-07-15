@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/prettier",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "Slango prettier configs",
   "type": "module",
@@ -11,13 +11,11 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
-  "dependencies": {
-    "prettier": "3.6.2"
-  },
   "peerDependencies": {
-    "eslint": "^9.30.1"
+    "prettier": "^3.6.2"
   },
   "devDependencies": {
-    "@slango.configs/eslint": "workspace:*"
+    "@slango.configs/eslint": "workspace:*",
+    "eslint": "9.31.0"
   }
 }

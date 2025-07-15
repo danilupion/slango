@@ -1,5 +1,11 @@
 # @slango/ts-utils
 
+## 1.0.2
+
+### Patch Changes
+
+- Dependencies bumps and devDependencies rework
+
 ## 1.0.1
 
 ### Patch Changes
