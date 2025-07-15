@@ -1,5 +1,13 @@
 # @slango/rest-client
 
+## 1.0.2
+
+### Patch Changes
+
+- Dependencies bumps and devDependencies rework
+- Updated dependencies
+  - @slango/ts-utils@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes

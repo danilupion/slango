@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/typescript",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "Slango typescript configs",
   "type": "module",
@@ -11,10 +11,10 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
-  "dependencies": {
-    "typescript": "5.8.3"
-  },
   "peerDependencies": {
-    "eslint": "^9.30.1"
+    "typescript": "^5.8.3"
+  },
+  "dvDependencies": {
+    "eslint": "9.31.0"
   }
 }
