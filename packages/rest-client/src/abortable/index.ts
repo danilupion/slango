@@ -7,7 +7,7 @@ export { withBearerToken } from '../utils/auth.js';
 export { withFormDataBody, withJsonBody } from '../utils/body.js';
 export { HttpError } from '../utils/HttpError.js';
 export { withQueryParams } from '../utils/queryParams.js';
-export type { RequestOptionsWithoutUrl } from '../utils/request.js';
+export type { RequestOptionsWithoutUrl, RequestURL } from '../utils/request.js';
 export { withNotFoundAsNull } from '../utils/status.js';
 
 export type Request<Response> = BaseRequest<Response, AbortablePromise<Response>>;

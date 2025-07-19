@@ -1,5 +1,11 @@
 # @slango/rest-client
 
+## 1.1.1
+
+### Patch Changes
+
+- RequestURL type exported
+
 ## 1.1.0
 
 ### Minor Changes
