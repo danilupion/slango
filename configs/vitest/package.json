@@ -18,11 +18,11 @@
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
   "dependencies": {
-    "@swc/core": "1.12.14",
+    "@swc/core": "1.13.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
-    "@vitejs/plugin-react": "4.6.0",
+    "@vitejs/plugin-react": "4.7.0",
     "jsdom": "26.1.0",
     "mongodb-memory-server": "10.1.4",
     "unplugin-swc": "1.5.5"
