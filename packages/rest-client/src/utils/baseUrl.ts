@@ -1,4 +1,8 @@
-export const getBaseUrl = (): string => {
+type AbsoluteURLString = `${Lowercase<'http' | 'https'>}://${string}`;
+
+export type BaseURL = AbsoluteURLString | URL;
+
+export const getDefaultBaseUrl = (): string => {
   const baseUrl =
     typeof window === 'undefined' ? process.env.BASE_URL || '' : window.location.origin;
 
