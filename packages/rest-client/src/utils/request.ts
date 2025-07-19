@@ -1,8 +1,12 @@
 import { runPostResponse, runPreRequest } from '../middleware/runner.js';
 import { AbortablePromise } from './abortableRequest.js';
-import { getBaseUrl } from './baseUrl.js';
+import { BaseURL, getDefaultBaseUrl } from './baseUrl.js';
 import { HttpError } from './HttpError.js';
 import { HttpMethod } from './httpMethod.js';
+
+type PathOnly = `../${string}` | `./${string}` | `/${string}`;
+
+export type RequestURL = BaseURL | PathOnly;
 
 export type Request<
   Response,
@@ -11,7 +15,8 @@ export type Request<
 
 export type RequestOptions = RequestInit & {
   searchParams?: URLSearchParams;
-  url: string;
+  url: RequestURL;
+  baseUrl?: BaseURL;
 };
 
 export type RequestOptionsWithoutUrl = Omit<RequestOptions, 'url'>;
@@ -27,9 +32,9 @@ export const request = async <Response>(
   const middlewareContext = { request: fetchOptions };
   await runPreRequest(middlewareContext);
 
-  const { searchParams, url, ...requestOptions } = fetchOptions;
+  const { searchParams, url, baseUrl, ...requestOptions } = fetchOptions;
 
-  const fullUrl = new URL(url, getBaseUrl());
+  const fullUrl = new URL(url, baseUrl || getDefaultBaseUrl());
   if (searchParams) {
     searchParams.forEach((value, key) => {
       fullUrl.searchParams.append(key, value);

@@ -1,5 +1,10 @@
 import { HttpMethod } from './utils/httpMethod.js';
-import { Request as BaseRequest, request, RequestOptionsWithoutUrl } from './utils/request.js';
+import {
+  Request as BaseRequest,
+  request,
+  RequestOptionsWithoutUrl,
+  RequestURL,
+} from './utils/request.js';
 
 export { withBearerToken } from './utils/auth.js';
 export { withFormDataBody, withJsonBody } from './utils/body.js';
@@ -12,7 +17,7 @@ export type Request<Response> = BaseRequest<Response, Promise<Response>>;
 
 const requestFactory =
   (method: HttpMethod) =>
-  <Response>(url: string): Request<Response> =>
+  <Response>(url: RequestURL): Request<Response> =>
   (options?: RequestOptionsWithoutUrl): Promise<Response> =>
     request<Response>(method, { ...options, url });
 

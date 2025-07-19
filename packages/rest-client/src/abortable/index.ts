@@ -1,6 +1,6 @@
 import { AbortablePromise, abortableRequest } from '../utils/abortableRequest.js';
 import { HttpMethod } from '../utils/httpMethod.js';
-import { Request as BaseRequest, RequestOptionsWithoutUrl } from '../utils/request.js';
+import { Request as BaseRequest, RequestOptionsWithoutUrl, RequestURL } from '../utils/request.js';
 
 export type { AbortablePromise } from '../utils/abortableRequest.js';
 export { withBearerToken } from '../utils/auth.js';
@@ -14,7 +14,7 @@ export type Request<Response> = BaseRequest<Response, AbortablePromise<Response>
 
 const abortableRequestFactory =
   (method: HttpMethod) =>
-  <Response>(url: string) =>
+  <Response>(url: RequestURL) =>
   (options?: RequestOptionsWithoutUrl): AbortablePromise<Response> =>
     abortableRequest<Response>(method, { ...options, url });
 
