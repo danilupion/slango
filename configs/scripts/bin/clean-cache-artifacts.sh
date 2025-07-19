@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
 
 # This script removes all cache artifacts in the monorepo.
 echo "Removing all cache artifacts..."

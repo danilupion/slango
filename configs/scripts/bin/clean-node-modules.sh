@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # This script removes all node_modules directories in the monorepo.
 echo "Removing all node_modules directories..."

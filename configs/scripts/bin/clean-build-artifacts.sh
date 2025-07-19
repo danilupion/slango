@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # This script removes all dist directories in the monorepo.
 echo "Removing all dist directories..."
