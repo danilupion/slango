@@ -1,6 +1,6 @@
 {
   "name": "@slango/rest-client",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": false,
   "description": "Slango Rest Client",
   "type": "module",
@@ -35,10 +35,10 @@
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
-    "@types/node": "24.0.15",
+    "@types/node": "24.1.0",
     "@vitest/coverage-v8": "3.2.4",
     "@vitest/ui": "3.2.4",
-    "eslint": "9.31.0",
+    "eslint": "9.32.0",
     "type-fest": "4.41.0",
     "typescript": "5.8.3",
     "vitest": "3.2.4"
