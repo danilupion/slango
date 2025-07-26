@@ -1,5 +1,12 @@
 # @slango/rest-client
 
+## 1.1.2
+
+### Patch Changes
+
+- Exportation of BaseURL
+  - @slango/ts-utils@1.0.2
+
 ## 1.1.1
 
 ### Patch Changes

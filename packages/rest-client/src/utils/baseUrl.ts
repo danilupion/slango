@@ -12,3 +12,5 @@ export const getDefaultBaseUrl = (): string => {
 
   return baseUrl;
 };
+
+// TODO: We neeed a withBaseUrl helper
