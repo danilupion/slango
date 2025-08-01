@@ -30,15 +30,15 @@
   "peerDependencies": {
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
-    "mongoose": "^8.16.5",
+    "mongoose": "^8.17.0",
     "vitest": "^3.2.4"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "eslint": "9.32.0",
-    "mongoose": "8.16.5",
-    "typescript": "5.8.3",
+    "mongoose": "8.17.0",
+    "typescript": "5.9.2",
     "vitest": "3.2.4"
   }
 }

@@ -26,10 +26,10 @@
     "prepare": "[ \"$PACKAGED\" = true ] && echo 'Skipping prepare for packaged production dependencies install' || husky"
   },
   "engines": {
-    "node": "^24.4.1",
-    "pnpm": "^10.13.1"
+    "node": "^24.5.0",
+    "pnpm": "^10.14.0"
   },
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.14.0",
   "peerDependencies": {
     "eslint": "^9.32.0",
     "lint-staged": "^16.1.2",
