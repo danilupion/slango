@@ -1,0 +1,4 @@
+if ! pnpm release:check; then
+  echo "⚠️  No changeset detected, but they are expected — please run 'pnpm release:note'"
+  exit 1  # or exit 0 if you only want a warning
+fi
