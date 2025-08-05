@@ -1,4 +1,4 @@
-name: CI
+name: 🧪 CI + 🚀 CD
 
 on:
   pull_request:
@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4.1.0
@@ -33,7 +35,12 @@ jobs:
         uses: actions/setup-node@v4.4.0
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Validate changesets
+        run: pnpm release:check
 
       - name: Cache Turborepo
         uses: actions/cache@v4
@@ -42,9 +49,6 @@ jobs:
           key: ${{ runner.os }}-turborepo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turborepo-
-
-      - name: Install Dependencies
-        run: pnpm install
 
       - name: Build
         run: pnpm build
