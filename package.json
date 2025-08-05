@@ -23,6 +23,9 @@
     "test": "turbo test",
     "test:serial": "turbo test --concurrency=1",
     "format": "prettier --ignore-unknown --write .",
+    "release:note": "changeset add",
+    "release:bump": "changeset version",
+    "release:check": "changeset status --since=origin/main",
     "prepare": "[ \"$PACKAGED\" = true ] && echo 'Skipping prepare for packaged production dependencies install' || husky"
   },
   "engines": {
