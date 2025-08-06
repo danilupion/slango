@@ -1,5 +1,11 @@
 # @slango.configs/lint-staged
 
+## 1.1.0
+
+### Minor Changes
+
+- 5bed772: Fixed issue with vitest and paths with spaces
+
 ## 1.0.8
 
 ### Patch Changes
