@@ -1,5 +1,11 @@
 # @slango.configs/lint-staged
 
+## 1.1.1
+
+### Patch Changes
+
+- 0393a4b: Fixed issue with vitest
+
 ## 1.1.0
 
 ### Minor Changes
