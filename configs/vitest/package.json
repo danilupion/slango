@@ -36,7 +36,7 @@
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
-    "eslint": "9.32.0",
+    "eslint": "9.33.0",
     "mongoose": "8.17.1",
     "typescript": "5.9.2",
     "vitest": "3.2.4"
