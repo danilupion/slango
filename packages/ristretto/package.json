@@ -29,7 +29,7 @@
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@slango/ts-utils": "workspace:*"
+    "@slango/tessera": "workspace:*"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",

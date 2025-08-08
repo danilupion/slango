@@ -13,7 +13,7 @@
 
 - [`@slango/mangusta`](packages/mangusta/README.md)
 - [`@slango/ristretto`](packages/ristretto/README.md)
-- [`@slango/ts-utils`](packages/ts-utils/README.md)
+- [`@slango/tessera`](packages/tessera/README.md)
 
 ## Dev recommendations
 
