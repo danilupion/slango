@@ -12,7 +12,7 @@
 ## Utility Packages
 
 - [`@slango/mangusta`](packages/mangusta/README.md)
-- [`@slango/rest-client`](packages/rest-client/README.md)
+- [`@slango/ristretto`](packages/ristretto/README.md)
 - [`@slango/ts-utils`](packages/ts-utils/README.md)
 
 ## Dev recommendations

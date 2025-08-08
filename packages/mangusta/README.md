@@ -1,1 +1,1 @@
-# Slango Mongoose (@slango/mongoose)
+# Mangusta (@slango/mangusta)
