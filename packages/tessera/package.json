@@ -1,8 +1,8 @@
 {
-  "name": "@slango/ts-utils",
-  "version": "1.0.2",
+  "name": "@slango/tessera",
+  "version": "0.0.1",
   "private": false,
-  "description": "Slango TS utilities",
+  "description": "Collection of typescript utilities",
   "type": "module",
   "exports": {
     "./*": "./src/*.ts"
