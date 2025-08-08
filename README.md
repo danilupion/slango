@@ -11,7 +11,7 @@
 
 ## Utility Packages
 
-- [`@slango/mongoose`](packages/mongoose/README.md)
+- [`@slango/mangusta`](packages/mangusta/README.md)
 - [`@slango/rest-client`](packages/rest-client/README.md)
 - [`@slango/ts-utils`](packages/ts-utils/README.md)
 
