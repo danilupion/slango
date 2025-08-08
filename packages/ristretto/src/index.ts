@@ -8,6 +8,7 @@ import {
 
 export { withBearerToken } from './utils/auth.js';
 export type { BaseURL } from './utils/baseUrl.js';
+export { withBaseUrl } from './utils/baseUrl.js';
 export { withFormDataBody, withJsonBody } from './utils/body.js';
 export { HttpError } from './utils/HttpError.js';
 export { withQueryParams } from './utils/queryParams.js';

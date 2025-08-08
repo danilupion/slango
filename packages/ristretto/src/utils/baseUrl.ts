@@ -13,4 +13,5 @@ export const getDefaultBaseUrl = (): string => {
   return baseUrl;
 };
 
-// TODO: We neeed a withBaseUrl helper
+// Helper to preset a base URL on requests.
+export { withBaseUrl } from './withBaseUrl.js';
