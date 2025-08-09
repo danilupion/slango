@@ -1,5 +1,11 @@
 # @slango/ristretto
 
+## 1.0.2
+
+### Patch Changes
+
+- 4016ce6: withBaseUrl helper
+
 ## 1.0.1
 
 ### Patch Changes
