@@ -14,7 +14,7 @@ export type WithPassword<
 
 export const passwordRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*)(\][+=.,_-]).{8,}$/;
 
-interface PasswordMiddlewareOptions<
+export interface PasswordMiddlewareOptions<
   Field extends string = 'password',
   ComparisonFunction extends string = 'comparePassword',
 > {

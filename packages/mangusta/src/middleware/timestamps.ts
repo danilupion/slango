@@ -49,7 +49,7 @@ const timestampsMiddleware: PluginFunction<TimestampsMiddlewareOptions> = <
   if (update) {
     schema.add(
       new Schema<WithUpdated<Updated>>({
-        [creationField]: Date,
+        [updateField]: Date,
       }),
     );
   }
