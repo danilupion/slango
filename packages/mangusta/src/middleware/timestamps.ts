@@ -57,17 +57,23 @@ const timestampsMiddleware: PluginFunction<TimestampsMiddlewareOptions> = <
   schema.pre('save', function schemaWithTimestampsPreSave(next) {
     try {
       const now = new Date();
+
       if (creation && this.isNew && !this.get(creationField)) {
         this.set(creationField, now);
       }
+
       if (update) {
         if (this.isNew) {
-          this.set(updateField, updateTimestampOnCreation ? now : null);
+          if (updateTimestampOnCreation) {
+            this.set(updateField, now);
+          }
+          // else: do nothing so it's undefined
         } else {
           this.set(updateField, now);
         }
       }
-      next(null);
+
+      next();
     } catch (err) {
       if (err instanceof Error) {
         next(err);
@@ -77,7 +83,8 @@ const timestampsMiddleware: PluginFunction<TimestampsMiddlewareOptions> = <
 
   if (update) {
     schema.pre(['updateOne', 'findOneAndUpdate'], function schemaWithTimestampsPreUpdate() {
-      this.set(updateField, new Date());
+      // ensure $set exists and we don't stomp on other operators
+      this.set({ $set: { [updateField]: new Date() } });
     });
   }
 

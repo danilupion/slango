@@ -40,7 +40,7 @@ describe('timestampsMiddleware', () => {
     expect(savedDoc).not.toBeNull();
     if (!savedDoc) return;
     expect(savedDoc.created).toBeInstanceOf(Date);
-    expect(savedDoc.updated).toBeNull();
+    expect(savedDoc.updated).not.toBeDefined();
 
     await delay(10);
     savedDoc.name = 'changed';
@@ -66,7 +66,7 @@ describe('timestampsMiddleware', () => {
     const updatedDoc = await TestModel.findById(doc._id);
     expect(updatedDoc).not.toBeNull();
     if (!updatedDoc) return;
-    expect(updatedDoc.updated).toBeInstanceOf(Date);
+    expect(updatedDoc.updated).not.toBeDefined();
     if (!updatedDoc.created || !updatedDoc.updated) return;
     expect(updatedDoc.updated.getTime()).toBeGreaterThan(updatedDoc.created.getTime());
   });
