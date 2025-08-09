@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 1.0.2
+
+### Patch Changes
+
+- ca0d852: Timestamp middleware fix
+
 ## 1.0.1
 
 ### Patch Changes
