@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 1.0.3
+
+### Patch Changes
+
+- 076c4fd: Test coverage for password middleware
+
 ## 1.0.2
 
 ### Patch Changes
