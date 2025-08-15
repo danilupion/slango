@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/eslint",
-  "version": "1.0.29",
+  "version": "1.0.30",
   "private": false,
   "description": "Slango eslint configs",
   "type": "module",
