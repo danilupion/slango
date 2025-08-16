@@ -29,7 +29,7 @@
     "prepare": "[ \"$PACKAGED\" = true ] && echo 'Skipping prepare for packaged production dependencies install' || husky"
   },
   "devDependencies": {
-    "@changesets/cli": "2.29.5",
+    "@changesets/cli": "2.29.6",
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/lint-staged": "workspace:*",
     "@slango.configs/prettier": "workspace:*",
