@@ -23,12 +23,31 @@ export const commonConfigs = (files) =>
     regexPluginConfigs['flat/recommended'],
   ].map((config) => ({ ...config, files }));
 
-export const commonRules = {
-  'perfectionist/sort-enums': 'off',
-  'perfectionist/sort-modules': ['error', { partitionByNewLine: true }],
-  'perfectionist/sort-object-types': 'off',
-  'perfectionist/sort-objects': 'off',
+const sortModulesRule = ['error', { partitionByNewLine: true }];
+
+export const perfectionistLevels = {
+  off: {
+    'perfectionist/sort-enums': 'off',
+    'perfectionist/sort-modules': 'off',
+    'perfectionist/sort-object-types': 'off',
+    'perfectionist/sort-objects': 'off',
+  },
+  relaxed: {
+    'perfectionist/sort-enums': 'off',
+    'perfectionist/sort-modules': sortModulesRule,
+    'perfectionist/sort-object-types': 'off',
+    'perfectionist/sort-objects': 'off',
+  },
+  strict: {
+    'perfectionist/sort-enums': 'error',
+    'perfectionist/sort-modules': sortModulesRule,
+    'perfectionist/sort-object-types': 'error',
+    'perfectionist/sort-objects': 'error',
+  },
 };
+
+export const commonRules = (perfectionist = 'relaxed') =>
+  perfectionistLevels[perfectionist] ?? perfectionistLevels.relaxed;
 
 export const typescriptConfigs = (files) => [
   ...commonConfigs(files),

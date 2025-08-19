@@ -7,7 +7,7 @@ import tsEslint from 'typescript-eslint';
 
 import { globs, typescriptConfigs } from '../common.js';
 import { getTsConfigFile } from '../utils.js';
-import javascriptNode from './javascript-node.js';
+import { createJavascriptNodeConfig } from './javascript-node.js';
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
 
 const project = getTsConfigFile();
@@ -31,26 +31,32 @@ const patchedConfig = fixupConfigRules([...compat.extends('next/core-web-vitals'
   }),
 );
 
-const typescriptNextConfig = [
-  ...javascriptNode,
-  ...tsEslint.config(
-    ...typescriptConfigs(globs.typescript),
-    {
-      ...browserTypescriptBrowserConfig,
-      languageOptions: {
-        ...browserTypescriptBrowserConfig.languageOptions,
-        globals: {
-          ...browserTypescriptBrowserConfig.languageOptions.globals,
-          process: true,
-          NodeJS: 'readonly',
+export const createTypescriptNextConfig = (perfectionist = 'relaxed') => {
+  const browserConfig = browserTypescriptBrowserConfig(perfectionist);
+
+  return [
+    ...createJavascriptNodeConfig(perfectionist),
+    ...tsEslint.config(
+      ...typescriptConfigs(globs.typescript),
+      {
+        ...browserConfig,
+        languageOptions: {
+          ...browserConfig.languageOptions,
+          globals: {
+            ...browserConfig.languageOptions.globals,
+            process: true,
+            NodeJS: 'readonly',
+          },
         },
       },
-    },
-    ...patchedConfig,
-    {
-      ignores: ['.next/*'],
-    },
-  ),
-];
+      ...patchedConfig,
+      {
+        ignores: ['.next/*'],
+      },
+    ),
+  ];
+};
+
+const typescriptNextConfig = createTypescriptNextConfig();
 
 export default typescriptNextConfig;

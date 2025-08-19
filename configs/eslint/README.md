@@ -34,6 +34,23 @@ Unless you want to override the default configuration, you can simply extend the
 export { default } from '@slango.configs/eslint/{preset-you-wish-to-use}.js';
 ```
 
+### Perfectionist rule strictness
+
+Perfectionist sorting rules can be configured with three levels of strictness:
+
+- `off` – disables all perfectionist sorting rules
+- `relaxed` – only enforces module sorting (default)
+- `strict` – enforces sorting for modules, enums, object types and objects
+
+To use a custom level, import the corresponding creator and pass the desired level:
+
+```js
+// eslint.config.js
+import { createTypescriptConfig } from '@slango.configs/eslint/typescript.js';
+
+export default createTypescriptConfig('strict');
+```
+
 ## Things to take into account (and possibly review)
 
 - At the time of writing eslint-config-next is not compatible with eslint 9, thus @eslint/compat and @eslint/eslintrc are used
