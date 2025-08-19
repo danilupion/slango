@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.1.0
+
+### Minor Changes
+
+- ce8f03a: feat: allow configurable perfectionist rule strictness levels via options object with validation.
+
 ## 1.0.31
 
 ### Patch Changes
