@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import tsEslint from 'typescript-eslint';
 
-import { globs, typescriptConfigs } from '../common.js';
+import { globs, normalizeOptions, typescriptConfigs } from '../common.js';
 import { getTsConfigFile } from '../utils.js';
 import { createJavascriptNodeConfig } from './javascript-node.js';
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
@@ -31,11 +31,12 @@ const patchedConfig = fixupConfigRules([...compat.extends('next/core-web-vitals'
   }),
 );
 
-export const createTypescriptNextConfig = (perfectionist = 'relaxed') => {
-  const browserConfig = browserTypescriptBrowserConfig(perfectionist);
+export const createTypescriptNextConfig = (options = {}) => {
+  const opts = normalizeOptions(options);
+  const browserConfig = browserTypescriptBrowserConfig(opts);
 
   return [
-    ...createJavascriptNodeConfig(perfectionist),
+    ...createJavascriptNodeConfig(opts),
     ...tsEslint.config(
       ...typescriptConfigs(globs.typescript),
       {
