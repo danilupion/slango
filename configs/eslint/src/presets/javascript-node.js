@@ -2,7 +2,7 @@ import globals from 'globals';
 
 import { commonConfigs, commonRules, globs, ignorePatterns } from '../common.js';
 
-export const baseJavascriptConfig = {
+export const baseJavascriptConfig = (perfectionist = 'relaxed') => ({
   files: [globs.javascript],
   languageOptions: {
     globals: {
@@ -16,7 +16,7 @@ export const baseJavascriptConfig = {
   rules: {
     'import-x/first': 'error',
     'import-x/no-anonymous-default-export': 'error',
-    ...commonRules,
+    ...commonRules(perfectionist),
   },
   settings: {
     //  eslint-import-resolver-node does not seem to play well with monorepo/pattern exports
@@ -24,12 +24,14 @@ export const baseJavascriptConfig = {
       typescript: true,
     },
   },
-};
+});
 
-const javascriptNode = [
+export const createJavascriptNodeConfig = (perfectionist = 'relaxed') => [
   ...commonConfigs(globs.javascript),
-  baseJavascriptConfig,
+  baseJavascriptConfig(perfectionist),
   { ignores: ignorePatterns },
 ];
+
+const javascriptNode = createJavascriptNodeConfig();
 
 export default javascriptNode;
