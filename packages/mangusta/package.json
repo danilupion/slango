@@ -27,7 +27,7 @@
     "nanoid": "5.1.5"
   },
   "peerDependencies": {
-    "mongoose": "^8.17.1"
+    "mongoose": "^8.17.2"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
@@ -37,7 +37,7 @@
     "@vitest/coverage-v8": "3.2.4",
     "@vitest/ui": "3.2.4",
     "eslint": "9.33.0",
-    "mongoose": "8.17.1",
+    "mongoose": "8.17.2",
     "typescript": "5.9.2",
     "vitest": "3.2.4"
   }
