@@ -42,13 +42,13 @@ Perfectionist sorting rules can be configured with three levels of strictness:
 - `relaxed` – only enforces module sorting (default)
 - `strict` – enforces sorting for modules, enums, object types and objects
 
-To use a custom level, import the corresponding creator and pass the desired level:
+To use a custom level, import the corresponding creator and pass an options object. Passing an unknown option or an invalid level throws an error:
 
 ```js
 // eslint.config.js
 import { createTypescriptConfig } from '@slango.configs/eslint/typescript.js';
 
-export default createTypescriptConfig('strict');
+export default createTypescriptConfig({ perfectionist: 'strict' });
 ```
 
 ## Things to take into account (and possibly review)

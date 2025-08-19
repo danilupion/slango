@@ -46,8 +46,33 @@ export const perfectionistLevels = {
   },
 };
 
-export const commonRules = (perfectionist = 'relaxed') =>
-  perfectionistLevels[perfectionist] ?? perfectionistLevels.relaxed;
+const defaultOptions = { perfectionist: 'relaxed' };
+
+export const normalizeOptions = (options = {}) => {
+  if (options === null || typeof options !== 'object' || Array.isArray(options)) {
+    throw new Error('options must be an object');
+  }
+
+  const { perfectionist = defaultOptions.perfectionist, ...rest } = options;
+
+  if (!Object.hasOwn(perfectionistLevels, perfectionist)) {
+    throw new Error(
+      `Invalid perfectionist level "${perfectionist}". Expected one of: ${Object.keys(perfectionistLevels).join(', ')}`,
+    );
+  }
+
+  const unknown = Object.keys(rest);
+  if (unknown.length > 0) {
+    throw new Error(`Unknown option(s): ${unknown.join(', ')}`);
+  }
+
+  return { perfectionist };
+};
+
+export const commonRules = (options) => {
+  const { perfectionist } = normalizeOptions(options);
+  return perfectionistLevels[perfectionist];
+};
 
 export const typescriptConfigs = (files) => [
   ...commonConfigs(files),

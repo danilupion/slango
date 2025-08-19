@@ -3,13 +3,14 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 
-import { globs, typescriptConfigs } from '../common.js';
+import { globs, normalizeOptions, typescriptConfigs } from '../common.js';
 import { createJavascriptNodeConfig } from './javascript-node.js';
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
 import { baseTypescriptConfig } from './typescript.js';
 
-export const reactTypescriptBrowserConfig = (perfectionist = 'relaxed') => {
-  const base = baseTypescriptConfig(perfectionist);
+export const reactTypescriptBrowserConfig = (options = {}) => {
+  const opts = normalizeOptions(options);
+  const base = baseTypescriptConfig(opts);
   return {
     ...base,
     languageOptions: {
@@ -23,15 +24,18 @@ export const reactTypescriptBrowserConfig = (perfectionist = 'relaxed') => {
   };
 };
 
-export const createTypescriptReactConfig = (perfectionist = 'relaxed') => [
-  ...createJavascriptNodeConfig(perfectionist),
-  reactHooks.configs['recommended-latest'],
-  reactRefresh.configs.recommended,
-  ...tsEslint.config(
-    ...typescriptConfigs(globs.typescript),
-    browserTypescriptBrowserConfig(perfectionist),
-  ),
-];
+export const createTypescriptReactConfig = (options = {}) => {
+  const opts = normalizeOptions(options);
+  return [
+    ...createJavascriptNodeConfig(opts),
+    reactHooks.configs['recommended-latest'],
+    reactRefresh.configs.recommended,
+    ...tsEslint.config(
+      ...typescriptConfigs(globs.typescript),
+      browserTypescriptBrowserConfig(opts),
+    ),
+  ];
+};
 
 const typescriptReactConfig = createTypescriptReactConfig();
 

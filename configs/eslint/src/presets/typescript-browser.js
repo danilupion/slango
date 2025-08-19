@@ -1,12 +1,13 @@
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 
-import { globs, typescriptConfigs } from '../common.js';
+import { globs, normalizeOptions, typescriptConfigs } from '../common.js';
 import { createJavascriptNodeConfig } from './javascript-node.js';
 import { baseTypescriptConfig } from './typescript.js';
 
-export const browserTypescriptBrowserConfig = (perfectionist = 'relaxed') => {
-  const base = baseTypescriptConfig(perfectionist);
+export const browserTypescriptBrowserConfig = (options = {}) => {
+  const opts = normalizeOptions(options);
+  const base = baseTypescriptConfig(opts);
   return {
     ...base,
     languageOptions: {
@@ -22,13 +23,16 @@ export const browserTypescriptBrowserConfig = (perfectionist = 'relaxed') => {
   };
 };
 
-export const createTypescriptBrowserConfig = (perfectionist = 'relaxed') => [
-  ...createJavascriptNodeConfig(perfectionist),
-  ...tsEslint.config(
-    ...typescriptConfigs(globs.typescript),
-    browserTypescriptBrowserConfig(perfectionist),
-  ),
-];
+export const createTypescriptBrowserConfig = (options = {}) => {
+  const opts = normalizeOptions(options);
+  return [
+    ...createJavascriptNodeConfig(opts),
+    ...tsEslint.config(
+      ...typescriptConfigs(globs.typescript),
+      browserTypescriptBrowserConfig(opts),
+    ),
+  ];
+};
 
 const typescriptBrowserConfig = createTypescriptBrowserConfig();
 
