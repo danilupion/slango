@@ -5,6 +5,8 @@ echo "Removing all dist directories..."
 
 # Find and remove all dist folders
 find . -name 'dist' -type d -prune -exec rm -rf '{}' +
+# Find and remove all .next folders
+find . -name '.next' -type d -prune -exec rm -rf '{}' +
 # Find and remove all tsbuildinfo files
 find . -name '*.tsbuildinfo' -type f -prune -exec rm -rf '{}' +
 
