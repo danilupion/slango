@@ -29,7 +29,6 @@
     },
     {
       matchManagers: ['github-actions'],
-      pinDigests: false,
       extends: ['schedule:daily'],
       labels: ['github-actions'],
     },
