@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/prettier",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "Slango prettier configs",
   "type": "module",
