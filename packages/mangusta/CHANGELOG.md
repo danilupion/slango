@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 1.1.0
+
+### Minor Changes
+
+- 9ef53b9: Reactions middleware
+
 ## 1.0.8
 
 ### Patch Changes
