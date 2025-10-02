@@ -27,7 +27,7 @@
     "nanoid": "5.1.6"
   },
   "peerDependencies": {
-    "mongoose": "^8.18.3"
+    "mongoose": "^8.19.0"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
