@@ -6,6 +6,7 @@ import {
   commonRules,
   globs,
   ignorePatterns,
+  normalizeConfig,
   normalizeOptions,
   typescriptConfigs,
 } from '../common.js';
@@ -41,7 +42,9 @@ export const createTypescriptConfig = (options = {}) => {
   const opts = normalizeOptions(options);
   return [
     ...createJavascriptNodeConfig(opts),
-    ...tsEslint.config(...typescriptConfigs(globs.typescript), baseTypescriptConfig(opts)),
+    ...normalizeConfig(
+      tsEslint.config(...typescriptConfigs(globs.typescript), baseTypescriptConfig(opts)),
+    ),
     { ignores: ignorePatterns },
   ];
 };

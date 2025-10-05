@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import tsEslint from 'typescript-eslint';
 
-import { globs, normalizeOptions, typescriptConfigs } from '../common.js';
+import { globs, normalizeConfig, normalizeOptions, typescriptConfigs } from '../common.js';
 import { getTsConfigFile } from '../utils.js';
 import { createJavascriptNodeConfig } from './javascript-node.js';
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
@@ -20,16 +20,16 @@ const compat = new FlatCompat({
   recommendedConfig: eslintJs.configs.recommended,
 });
 
-const patchedConfig = fixupConfigRules([...compat.extends('next/core-web-vitals')]).map(
-  (config) => ({
-    ...config,
-    languageOptions: {
-      parserOptions: {
-        project,
-      },
+const patchedConfig = normalizeConfig(
+  fixupConfigRules(normalizeConfig(compat.extends('next/core-web-vitals'))),
+).map((config) => ({
+  ...config,
+  languageOptions: {
+    parserOptions: {
+      project,
     },
-  }),
-);
+  },
+}));
 
 export const createTypescriptNextConfig = (options = {}) => {
   const opts = normalizeOptions(options);
@@ -37,23 +37,25 @@ export const createTypescriptNextConfig = (options = {}) => {
 
   return [
     ...createJavascriptNodeConfig(opts),
-    ...tsEslint.config(
-      ...typescriptConfigs(globs.typescript),
-      {
-        ...browserConfig,
-        languageOptions: {
-          ...browserConfig.languageOptions,
-          globals: {
-            ...browserConfig.languageOptions.globals,
-            process: true,
-            NodeJS: 'readonly',
+    ...normalizeConfig(
+      tsEslint.config(
+        ...typescriptConfigs(globs.typescript),
+        {
+          ...browserConfig,
+          languageOptions: {
+            ...browserConfig.languageOptions,
+            globals: {
+              ...browserConfig.languageOptions.globals,
+              process: true,
+              NodeJS: 'readonly',
+            },
           },
         },
-      },
-      ...patchedConfig,
-      {
-        ignores: ['.next/*'],
-      },
+        ...patchedConfig,
+        {
+          ignores: ['.next/*'],
+        },
+      ),
     ),
   ];
 };

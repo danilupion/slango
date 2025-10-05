@@ -13,15 +13,22 @@ export const globs = {
 
 export const ignorePatterns = ['dist/**', 'coverage/**'];
 
-export const commonConfigs = (files) =>
-  [
+export const normalizeConfig = (config) => (Array.isArray(config) ? config : [config]);
+
+export const applyFilesGlob = (configs, files) => configs.map((config) => ({ ...config, files }));
+
+export const commonConfigs = (files) => {
+  const configs = [
     eslintJs.configs.recommended,
     eslintPluginImportX.flatConfigs.recommended,
     comments.recommended,
     perfectionistPlugin.configs['recommended-natural'],
     prettierPluginRecommendedConfig,
     regexPluginConfigs['flat/recommended'],
-  ].map((config) => ({ ...config, files }));
+  ];
+
+  return configs.flatMap((config) => applyFilesGlob(normalizeConfig(config), files));
+};
 
 const sortModulesRule = ['error', { partitionByNewLine: true }];
 
@@ -76,8 +83,5 @@ export const commonRules = (options) => {
 
 export const typescriptConfigs = (files) => [
   ...commonConfigs(files),
-  ...tsEslint.configs.recommendedTypeChecked.map((config) => ({
-    ...config,
-    files,
-  })),
+  ...applyFilesGlob(normalizeConfig(tsEslint.configs.recommendedTypeChecked), files),
 ];

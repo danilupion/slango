@@ -1,7 +1,7 @@
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 
-import { globs, normalizeOptions, typescriptConfigs } from '../common.js';
+import { globs, normalizeConfig, normalizeOptions, typescriptConfigs } from '../common.js';
 import { createJavascriptNodeConfig } from './javascript-node.js';
 import { baseTypescriptConfig } from './typescript.js';
 
@@ -22,7 +22,9 @@ export const createTypescriptNodeConfig = (options = {}) => {
 
   return [
     ...createJavascriptNodeConfig(opts),
-    ...tsEslint.config(...typescriptConfigs(globs.typescript), nodeTypescriptConfig),
+    ...normalizeConfig(
+      tsEslint.config(...typescriptConfigs(globs.typescript), nodeTypescriptConfig),
+    ),
   ];
 };
 

@@ -1,7 +1,7 @@
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 
-import { globs, normalizeOptions, typescriptConfigs } from '../common.js';
+import { globs, normalizeConfig, normalizeOptions, typescriptConfigs } from '../common.js';
 import { createJavascriptNodeConfig } from './javascript-node.js';
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
 
@@ -25,9 +25,11 @@ export const createTypescriptIsomorphicConfig = (options = {}) => {
   const opts = normalizeOptions(options);
   return [
     ...createJavascriptNodeConfig(opts),
-    ...tsEslint.config(
-      ...typescriptConfigs(globs.typescript),
-      isomorphicTypescriptBrowserConfig(opts),
+    ...normalizeConfig(
+      tsEslint.config(
+        ...typescriptConfigs(globs.typescript),
+        isomorphicTypescriptBrowserConfig(opts),
+      ),
     ),
   ];
 };
