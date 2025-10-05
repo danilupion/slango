@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.1.16
+
+### Patch Changes
+
+- 5ba1c5a: Presets normalization
+
 ## 1.1.15
 
 ### Patch Changes
