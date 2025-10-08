@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.1.17
+
+### Patch Changes
+
+- 72ffa91: Dependnecies bump and eslint presets normalization
+
 ## 1.1.16
 
 ### Patch Changes

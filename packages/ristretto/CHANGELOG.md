@@ -1,5 +1,12 @@
 # @slango/ristretto
 
+## 1.0.10
+
+### Patch Changes
+
+- 72ffa91: Dependnecies bump and eslint presets normalization
+  - @slango/tessera@1.0.3
+
 ## 1.0.9
 
 ### Patch Changes
