@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 1.1.4
+
+### Patch Changes
+
+- 72ffa91: Dependnecies bump and eslint presets normalization
+
 ## 1.1.3
 
 ### Patch Changes
