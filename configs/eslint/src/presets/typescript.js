@@ -2,7 +2,6 @@ import { dirname } from 'node:path';
 import tsEslint from 'typescript-eslint';
 
 import {
-  commonConfigs,
   commonRules,
   globs,
   ignorePatterns,
@@ -17,12 +16,14 @@ const project = getTsConfigFile();
 
 export const baseTypescriptConfig = (options = {}) => {
   const opts = normalizeOptions(options);
+  const baseConfig = baseJavascriptConfig(opts);
   return {
-    ...baseJavascriptConfig(opts),
-    extends: [...commonConfigs(globs.typescript)],
-    files: [globs.typescript],
+    ...baseConfig,
+    files: globs.typescript,
     languageOptions: {
+      ...baseConfig.languageOptions,
       parserOptions: {
+        ...baseConfig.languageOptions?.parserOptions,
         project,
         tsconfigRootDir: dirname(project),
       },
