@@ -36,13 +36,13 @@
     "@slango.configs/scripts": "workspace:*",
     "eslint": "9.37.0",
     "husky": "9.1.7",
-    "lint-staged": "16.2.3",
+    "lint-staged": "16.2.4",
     "prettier": "3.6.2",
     "turbo": "2.5.8"
   },
   "engines": {
-    "node": "^24.9.0",
-    "pnpm": "^10.18.1"
+    "node": "^24.10.0",
+    "pnpm": "^10.18.2"
   },
-  "packageManager": "pnpm@10.18.1"
+  "packageManager": "pnpm@10.18.2"
 }
