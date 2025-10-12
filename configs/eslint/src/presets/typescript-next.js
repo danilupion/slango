@@ -1,20 +1,18 @@
-import { flatConfig as nextFlatConfig } from '@next/eslint-plugin-next';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
+import nextPlugin from '@next/eslint-plugin-next';
 import tsEslint from 'typescript-eslint';
 
 import { globs, normalizeConfig, normalizeOptions, typescriptConfigs } from '../common.js';
-import { createJavascriptNodeConfig } from './javascript-node.js';
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
+import { createTypescriptReactConfig } from './typescript-react.js';
+
+const { flatConfig: nextFlatConfig } = nextPlugin;
 
 export const createTypescriptNextConfig = (options = {}) => {
   const opts = normalizeOptions(options);
   const browserConfig = browserTypescriptBrowserConfig(opts);
 
   return [
-    ...createJavascriptNodeConfig(opts),
-    ...normalizeConfig(reactHooks.configs['recommended-latest']),
-    ...normalizeConfig(reactRefresh.configs.recommended),
+    ...createTypescriptReactConfig(opts),
     ...normalizeConfig(
       tsEslint.config(
         ...typescriptConfigs(globs.typescript),

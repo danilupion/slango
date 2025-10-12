@@ -1,3 +1,4 @@
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tsEslint from 'typescript-eslint';
@@ -6,22 +7,21 @@ import { globs, normalizeConfig, normalizeOptions, typescriptConfigs } from '../
 import { createJavascriptNodeConfig } from './javascript-node.js';
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
 
-export const reactTypescriptBrowserConfig = (options = {}) => {
-  const opts = normalizeOptions(options);
-  const browserConfig = browserTypescriptBrowserConfig(opts);
-  return {
-    ...browserConfig,
-    name: '@slango.configs/eslint/typescript-react',
-  };
-};
-
 export const createTypescriptReactConfig = (options = {}) => {
   const opts = normalizeOptions(options);
+  const browserConfig = browserTypescriptBrowserConfig(opts);
 
   return [
     ...createJavascriptNodeConfig(opts),
-    ...normalizeConfig(reactHooks.configs['recommended-latest']),
-    ...normalizeConfig(reactRefresh.configs.recommended),
+    jsxA11y.flatConfigs.recommended,
+    {
+      ...browserConfig,
+      plugins: {
+        'react-hooks': reactHooks,
+        'react-refresh': reactRefresh,
+      },
+      name: '@slango.configs/eslint/typescript-react',
+    },
     ...normalizeConfig(
       tsEslint.config(...typescriptConfigs(globs.typescript), browserTypescriptBrowserConfig(opts)),
     ),
