@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.1.19
+
+### Patch Changes
+
+- 8b2f608: Fixed issues with eslint presets with me main man Ruslan
+
 ## 1.1.18
 
 ### Patch Changes
