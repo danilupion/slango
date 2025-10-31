@@ -35,12 +35,12 @@
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
-    "@types/node": "24.9.1",
-    "@vitest/coverage-v8": "4.0.2",
-    "@vitest/ui": "4.0.2",
+    "@types/node": "24.9.2",
+    "@vitest/coverage-v8": "4.0.5",
+    "@vitest/ui": "4.0.5",
     "eslint": "9.38.0",
     "type-fest": "5.1.0",
     "typescript": "5.9.3",
-    "vitest": "4.0.2"
+    "vitest": "4.0.5"
   }
 }
