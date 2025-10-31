@@ -5,8 +5,6 @@ import { globs, normalizeConfig, normalizeOptions, typescriptConfigs } from '../
 import { browserTypescriptBrowserConfig } from './typescript-browser.js';
 import { createTypescriptReactConfig } from './typescript-react.js';
 
-const { flatConfig: nextFlatConfig } = nextPlugin;
-
 export const createTypescriptNextConfig = (options = {}) => {
   const opts = normalizeOptions(options);
   const browserConfig = browserTypescriptBrowserConfig(opts);
@@ -27,7 +25,7 @@ export const createTypescriptNextConfig = (options = {}) => {
             },
           },
         },
-        nextFlatConfig.coreWebVitals,
+        nextPlugin.configs['core-web-vitals'],
         {
           ignores: ['.next/*'],
         },
