@@ -28,17 +28,17 @@
     "unplugin-swc": "1.5.8"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "^4.0.5",
-    "@vitest/ui": "^4.0.5",
+    "@vitest/coverage-v8": "^4.0.6",
+    "@vitest/ui": "^4.0.6",
     "mongoose": "^8.19.2",
-    "vitest": "^4.0.5"
+    "vitest": "^4.0.6"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
-    "eslint": "9.38.0",
+    "eslint": "9.39.0",
     "mongoose": "8.19.2",
     "typescript": "5.9.3",
-    "vitest": "4.0.5"
+    "vitest": "4.0.6"
   }
 }
