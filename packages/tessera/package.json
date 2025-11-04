@@ -20,10 +20,10 @@
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
-    "@vitest/coverage-v8": "4.0.6",
-    "@vitest/ui": "4.0.6",
-    "eslint": "9.39.0",
+    "@vitest/coverage-v8": "4.0.7",
+    "@vitest/ui": "4.0.7",
+    "eslint": "9.39.1",
     "typescript": "5.9.3",
-    "vitest": "4.0.6"
+    "vitest": "4.0.7"
   }
 }
