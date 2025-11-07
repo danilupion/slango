@@ -34,11 +34,11 @@
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
     "@types/bcrypt": "6.0.0",
-    "@vitest/coverage-v8": "4.0.7",
-    "@vitest/ui": "4.0.7",
+    "@vitest/coverage-v8": "4.0.8",
+    "@vitest/ui": "4.0.8",
     "eslint": "9.39.1",
     "mongoose": "8.19.3",
     "typescript": "5.9.3",
-    "vitest": "4.0.7"
+    "vitest": "4.0.8"
   }
 }
