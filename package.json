@@ -36,7 +36,7 @@
     "@slango.configs/scripts": "workspace:*",
     "eslint": "9.39.1",
     "husky": "9.1.7",
-    "lint-staged": "16.2.6",
+    "lint-staged": "16.2.7",
     "prettier": "3.6.2",
     "turbo": "2.6.1"
   },
