@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.0.0
+
+### Major Changes
+
+- 8519268: Mongoose bump (verison 9.0.0)
+
 ## 1.1.8
 
 ### Patch Changes
