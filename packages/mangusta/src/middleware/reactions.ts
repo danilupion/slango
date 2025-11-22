@@ -185,55 +185,43 @@ const reactionsMiddleware: PluginFunction<ReactionsMiddlewareOptions> = <
     return normalized;
   };
 
-  schema.pre<DocType>('save', function reactionsPreSave(next) {
-    try {
-      const existing =
-        (this.get(field) as ReactionEntry<UserField, TypeField, TimestampField>[] | undefined) ??
-        [];
+  schema.pre<DocType>('save', function reactionsPreSave(this: DocType) {
+    const existing =
+      (this.get(field) as ReactionEntry<UserField, TypeField, TimestampField>[] | undefined) ?? [];
 
-      if (!existing.length) {
-        return next();
+    if (!existing.length) {
+      return;
+    }
+
+    const normalizedEntries: ReactionEntry<UserField, TypeField, TimestampField>[] = [];
+    const seenUsers = new Map<string, number>();
+    let modified = false;
+
+    for (const entry of existing) {
+      const normalized = normalizeEntry(entry);
+      if (!normalized) {
+        modified = true;
+        continue;
       }
 
-      const normalizedEntries: ReactionEntry<UserField, TypeField, TimestampField>[] = [];
-      const seenUsers = new Map<string, number>();
-      let modified = false;
+      if (!allowMultiplePerUser) {
+        const userKey = normalized[userField].toString();
+        const idx = seenUsers.get(userKey);
 
-      for (const entry of existing) {
-        const normalized = normalizeEntry(entry);
-        if (!normalized) {
+        if (idx !== undefined) {
+          normalizedEntries[idx] = normalized;
           modified = true;
-          continue;
-        }
-
-        if (!allowMultiplePerUser) {
-          const userKey = normalized[userField].toString();
-          const idx = seenUsers.get(userKey);
-
-          if (idx !== undefined) {
-            normalizedEntries[idx] = normalized;
-            modified = true;
-          } else {
-            seenUsers.set(userKey, normalizedEntries.length);
-            normalizedEntries.push(normalized);
-          }
         } else {
+          seenUsers.set(userKey, normalizedEntries.length);
           normalizedEntries.push(normalized);
         }
+      } else {
+        normalizedEntries.push(normalized);
       }
+    }
 
-      if (normalizedEntries.length !== existing.length || modified) {
-        this.set(field, normalizedEntries);
-      }
-
-      next();
-    } catch (err) {
-      if (err instanceof Error) {
-        next(err);
-        return;
-      }
-
-      next(new Error('Unknown error while normalizing reactions.'));
+    if (normalizedEntries.length !== existing.length || modified) {
+      this.set(field, normalizedEntries);
     }
   });
 

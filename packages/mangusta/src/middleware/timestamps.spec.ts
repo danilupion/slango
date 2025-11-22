@@ -1,37 +1,25 @@
 import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
-import mongoose, { Document, model, Schema } from 'mongoose';
+import { Document } from 'mongoose';
 import { setTimeout as delay } from 'node:timers/promises';
 import { describe, expect, it } from 'vitest';
 
+import { createModelWithPlugin } from '../test-utils/model.js';
 import timestampsMiddleware, { TimestampsMiddlewareOptions, WithTimestamps } from './timestamps.js';
 
 setupMongoTestEnvironment();
 
 type TestDoc = Document & WithTimestamps & { name: string };
 
-const createTestModel = (options?: TimestampsMiddlewareOptions) => {
-  const modelName = 'TestDoc';
-
-  if (mongoose.models[modelName]) {
-    delete mongoose.models[modelName];
-  }
-
-  const TestSchema = new Schema<TestDoc>({
-    name: String,
+const createTestModel = (options?: TimestampsMiddlewareOptions) =>
+  createModelWithPlugin<TestDoc, TimestampsMiddlewareOptions>({
+    modelName: 'TestDoc',
+    plugin: timestampsMiddleware,
+    pluginOptions: options,
   });
-
-  if (options) {
-    TestSchema.plugin(timestampsMiddleware, options);
-  } else {
-    TestSchema.plugin(timestampsMiddleware);
-  }
-
-  return model<TestDoc>(modelName, TestSchema);
-};
 
 describe('timestampsMiddleware', () => {
   it('should store creation and update timestamps correctly on save', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const doc = new TestModel({ name: 'initial' });
 
     await expect(doc.save()).resolves.not.toThrow();
@@ -56,7 +44,7 @@ describe('timestampsMiddleware', () => {
   });
 
   it('should update timestamp when using updateOne operations', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const doc = new TestModel({ name: 'initial' });
     await doc.save();
 
@@ -72,8 +60,8 @@ describe('timestampsMiddleware', () => {
   });
 
   it('should add an index on the update field when indexUpdate is true', () => {
-    const TestModel = createTestModel({ indexUpdate: true });
-    const indexes = TestModel.schema.indexes();
+    const { schema } = createTestModel({ indexUpdate: true });
+    const indexes = schema.indexes();
 
     const index = indexes.find(([fields]) => fields.updated === 1);
     expect(index).toBeDefined();

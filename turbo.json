@@ -20,6 +20,10 @@
     "build:check": {
       "dependsOn": ["^build"]
     },
+    "check": {
+      "dependsOn": ["lint", "test", "build:check"],
+      "outputs": []
+    },
     "lint": {
       "dependsOn": ["^build"],
       "env": ["NODE_ENV"]
@@ -29,6 +33,10 @@
       "env": ["NODE_ENV"]
     },
     "test": {
+      "dependsOn": ["^build"],
+      "env": ["NODE_ENV", "CI"]
+    },
+    "test:watch": {
       "dependsOn": ["^build"],
       "env": ["NODE_ENV", "CI"]
     }

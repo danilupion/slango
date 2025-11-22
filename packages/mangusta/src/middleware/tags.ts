@@ -43,13 +43,11 @@ const tagsMiddleware: PluginFunction<TagsMiddlewareOptions> = <
     schema.index({ [field]: index });
   }
 
-  schema.pre<DocType>('save', function schemaWithTagsPreSave(next) {
+  schema.pre<DocType>('save', function schemaWithTagsPreSave(this: DocType) {
     const tags = this.get(field) as DocType[Field];
     if (unique && tags) {
       this.set(field, Array.from(new Set(tags)));
     }
-
-    next();
   });
 };
 

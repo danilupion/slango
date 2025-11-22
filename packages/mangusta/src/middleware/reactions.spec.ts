@@ -1,9 +1,10 @@
 import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
-import mongoose, { Document, model, Schema, Types } from 'mongoose';
+import { Document, Schema, Types } from 'mongoose';
 import { describe, expect, it } from 'vitest';
 
 import type { PluginFunction } from '../types.js';
 
+import { createModelWithPlugin } from '../test-utils/model.js';
 import reactionsMiddleware, {
   defaultReactionTypes,
   ReactionCountSummary,
@@ -32,32 +33,22 @@ const createTestModel = <
   TimestampField extends string = 'createdAt',
 >(
   options?: ReactionsMiddlewareOptions<Field, UserField, TypeField, TimestampField>,
-) => {
-  const modelName = 'ReactionsTestDoc';
-
-  if (mongoose.models[modelName]) {
-    delete mongoose.models[modelName];
-  }
-
-  const TestSchema = new Schema<TestDoc<Field, UserField, TypeField, TimestampField>>({});
-
-  if (options) {
-    TestSchema.plugin(
-      reactionsMiddleware as PluginFunction<
-        ReactionsMiddlewareOptions<Field, UserField, TypeField, TimestampField>
-      >,
-      options,
-    );
-  } else {
-    TestSchema.plugin(reactionsMiddleware);
-  }
-
-  return model<TestDoc<Field, UserField, TypeField, TimestampField>>(modelName, TestSchema);
-};
+) =>
+  createModelWithPlugin<
+    TestDoc<Field, UserField, TypeField, TimestampField>,
+    ReactionsMiddlewareOptions<Field, UserField, TypeField, TimestampField>
+  >({
+    modelName: 'ReactionsTestDoc',
+    plugin: reactionsMiddleware as PluginFunction<
+      ReactionsMiddlewareOptions<Field, UserField, TypeField, TimestampField>
+    >,
+    pluginOptions: options,
+    buildSchema: () => new Schema<TestDoc<Field, UserField, TypeField, TimestampField>>({}),
+  });
 
 describe('reactionsMiddleware', () => {
   it('should add reactions field and persist entries with defaults', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const userId = new Types.ObjectId();
 
     const doc = new TestModel();
@@ -74,7 +65,7 @@ describe('reactionsMiddleware', () => {
   });
 
   it('should deduplicate reactions for the same user when multiple reactions are disabled', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const userId = new Types.ObjectId();
 
     const doc = new TestModel({
@@ -93,7 +84,7 @@ describe('reactionsMiddleware', () => {
   });
 
   it('should allow multiple reactions for the same user when enabled', async () => {
-    const TestModel = createTestModel({ allowMultiplePerUser: true });
+    const { model: TestModel } = createTestModel({ allowMultiplePerUser: true });
     const userId = new Types.ObjectId();
 
     const doc = new TestModel();
@@ -109,7 +100,7 @@ describe('reactionsMiddleware', () => {
   });
 
   it('should expose helper methods for managing reactions', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const userId = new Types.ObjectId();
 
     const doc = new TestModel();
@@ -135,7 +126,7 @@ describe('reactionsMiddleware', () => {
   });
 
   it('should reject unsupported reaction types', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const userId = new Types.ObjectId();
     const doc = new TestModel();
 
@@ -150,7 +141,7 @@ describe('reactionsMiddleware', () => {
   });
 
   it('should allow custom configuration for field and helper schema options', async () => {
-    const TestModel = createTestModel<'feedback', 'member', 'category', 'time'>({
+    const { model: TestModel, schema } = createTestModel<'feedback', 'member', 'category', 'time'>({
       field: 'feedback',
       userField: 'member',
       typeField: 'category',
@@ -176,7 +167,7 @@ describe('reactionsMiddleware', () => {
 
     await expect(doc.save()).resolves.not.toThrow();
 
-    const indexes = TestModel.schema.indexes();
+    const indexes = schema.indexes();
     const categoryIndex = indexes.find(([fields]) =>
       Object.prototype.hasOwnProperty.call(fields, 'feedback.category'),
     );
@@ -194,7 +185,7 @@ describe('reactionsMiddleware', () => {
   });
 
   it('should support disabling timestamps', async () => {
-    const TestModel = createTestModel({ timestamp: false });
+    const { model: TestModel } = createTestModel({ timestamp: false });
     const userId = new Types.ObjectId();
 
     const doc = new TestModel();

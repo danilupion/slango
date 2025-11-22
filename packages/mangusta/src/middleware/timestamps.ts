@@ -54,29 +54,21 @@ const timestampsMiddleware: PluginFunction<TimestampsMiddlewareOptions> = <
     );
   }
 
-  schema.pre('save', function schemaWithTimestampsPreSave(next) {
-    try {
-      const now = new Date();
+  schema.pre<DocType>('save', function schemaWithTimestampsPreSave(this: DocType) {
+    const now = new Date();
 
-      if (creation && this.isNew && !this.get(creationField)) {
-        this.set(creationField, now);
-      }
+    if (creation && this.isNew && !this.get(creationField)) {
+      this.set(creationField, now);
+    }
 
-      if (update) {
-        if (this.isNew) {
-          if (updateTimestampOnCreation) {
-            this.set(updateField, now);
-          }
-          // else: do nothing so it's undefined
-        } else {
+    if (update) {
+      if (this.isNew) {
+        if (updateTimestampOnCreation) {
           this.set(updateField, now);
         }
-      }
-
-      next();
-    } catch (err) {
-      if (err instanceof Error) {
-        next(err);
+        // else: do nothing so it's undefined
+      } else {
+        this.set(updateField, now);
       }
     }
   });

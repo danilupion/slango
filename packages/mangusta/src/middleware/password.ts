@@ -52,21 +52,14 @@ const passwordMiddleware: PluginFunction<PasswordMiddlewareOptions> = <
 
   schema.add(fieldDescription);
 
-  schema.pre<DocType>('save', async function schemaWithPasswordPreSave(next) {
+  schema.pre<DocType>('save', async function schemaWithPasswordPreSave(this: DocType) {
     // only hash the password if it has been modified (or is new)
     if (!this.isModified(field)) {
-      return next();
+      return;
     }
 
-    try {
-      // generate a hash and override the clear text password with the hashed one
-      this.set(field, await hash(this.get(field) as DocType[Field], saltingRounds));
-      next();
-    } catch (err) {
-      if (err instanceof Error) {
-        next(err);
-      }
-    }
+    // generate a hash and override the clear text password with the hashed one
+    this.set(field, await hash(this.get(field) as DocType[Field], saltingRounds));
   });
 
   schema.methods[comparisonFunction] = async function comparePassword(

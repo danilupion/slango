@@ -1,7 +1,8 @@
 import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
-import mongoose, { Document, model, Schema, Types } from 'mongoose';
+import mongoose, { Document, Types } from 'mongoose';
 import { describe, expect, it } from 'vitest';
 
+import { createModelWithPlugin } from '../test-utils/model.js';
 import { PluginFunction } from '../types.js';
 import ownerMiddleware, { OwnerMiddlewareOptions, WithOwner } from './owner.js';
 
@@ -10,28 +11,16 @@ setupMongoTestEnvironment();
 type TestDoc<Field extends string = 'user'> = Document<Types.ObjectId> &
   WithOwner<Types.ObjectId, Field>;
 
-const createTestModel = <Field extends string = 'user'>(
-  options?: OwnerMiddlewareOptions<Field>,
-) => {
-  const modelName = 'TestDoc';
-
-  if (mongoose.models[modelName]) {
-    delete mongoose.models[modelName];
-  }
-
-  const TestSchema = new Schema<TestDoc<Field>>({});
-  if (options) {
-    TestSchema.plugin(ownerMiddleware as PluginFunction<OwnerMiddlewareOptions<Field>>, options);
-  } else {
-    TestSchema.plugin(ownerMiddleware);
-  }
-
-  return model<TestDoc<Field>>(modelName, TestSchema);
-};
+const createTestModel = <Field extends string = 'user'>(options?: OwnerMiddlewareOptions<Field>) =>
+  createModelWithPlugin<TestDoc<Field>, OwnerMiddlewareOptions<Field>>({
+    modelName: 'TestDoc',
+    plugin: ownerMiddleware as PluginFunction<OwnerMiddlewareOptions<Field>>,
+    pluginOptions: options,
+  });
 
 describe('ownerMiddleware', () => {
   it('should add a "user" field by default with correct options', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const doc = new TestModel({ user: new Types.ObjectId() });
 
     await expect(doc.save()).resolves.not.toThrow();
@@ -41,14 +30,14 @@ describe('ownerMiddleware', () => {
   });
 
   it('should not allow saving without user field if required', async () => {
-    const TestModel = createTestModel();
+    const { model: TestModel } = createTestModel();
     const doc = new TestModel({});
 
     await expect(doc.save()).rejects.toThrowError(mongoose.Error.ValidationError);
   });
 
   it('should allow configuring the field name', async () => {
-    const TestModel = createTestModel<'owner'>({ field: 'owner' });
+    const { model: TestModel } = createTestModel<'owner'>({ field: 'owner' });
     const doc = new TestModel({ owner: new Types.ObjectId() });
 
     await expect(doc.save()).resolves.not.toThrow();
@@ -59,7 +48,7 @@ describe('ownerMiddleware', () => {
   });
 
   it('should allow optional "user" field if "required" is set to false', async () => {
-    const TestModel = createTestModel({ required: false });
+    const { model: TestModel } = createTestModel({ required: false });
     const doc = new TestModel({});
 
     await expect(doc.save()).resolves.not.toThrow();
@@ -69,8 +58,8 @@ describe('ownerMiddleware', () => {
   });
 
   it('should apply "index" option to the field', () => {
-    const TestModel = createTestModel({ index: true });
-    const indexes = TestModel.schema.indexes();
+    const { schema } = createTestModel({ index: true });
+    const indexes = schema.indexes();
     const userIndex = indexes.find(([fields]) =>
       Object.prototype.hasOwnProperty.call(fields, 'user'),
     );
@@ -80,8 +69,8 @@ describe('ownerMiddleware', () => {
   });
 
   it('should reference the specified model in "ref"', () => {
-    const TestModel = createTestModel({ ref: 'CustomUser' });
-    const refField = TestModel.schema.path('user');
+    const { schema } = createTestModel({ ref: 'CustomUser' });
+    const refField = schema.path('user');
 
     expect(refField.options.ref).toBe('CustomUser');
   });
