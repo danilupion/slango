@@ -25,13 +25,13 @@
     "@vitejs/plugin-react": "5.1.1",
     "jsdom": "27.2.0",
     "mongodb-memory-server": "10.3.0",
-    "unplugin-swc": "1.5.8"
+    "unplugin-swc": "1.5.9"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "^4.0.13",
-    "@vitest/ui": "^4.0.13",
+    "@vitest/coverage-v8": "^4.0.14",
+    "@vitest/ui": "^4.0.14",
     "mongoose": "^9.0.0",
-    "vitest": "^4.0.13"
+    "vitest": "^4.0.14"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
@@ -39,6 +39,6 @@
     "eslint": "9.39.1",
     "mongoose": "9.0.0",
     "typescript": "5.9.3",
-    "vitest": "4.0.13"
+    "vitest": "4.0.14"
   }
 }
