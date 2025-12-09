@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
   "peerDependencies": {
-    "prettier": "^3.6.2"
+    "prettier": "^3.7.4"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
