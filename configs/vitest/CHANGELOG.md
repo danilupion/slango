@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 2.0.0
+
+### Major Changes
+
+- 3b574f4: @slango.configs/vitest no longer exporting mongoose test environment
+
 ## 1.0.49
 
 ### Patch Changes
