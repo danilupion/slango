@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.1
+
+### Patch Changes
+
+- 1a8ba94: Fixed issue with test-utils build
+
 ## 2.1.0
 
 ### Minor Changes
