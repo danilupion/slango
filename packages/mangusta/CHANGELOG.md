@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.0
+
+### Minor Changes
+
+- 3b574f4: mangusta now export mongoose test environment
+
 ## 2.0.2
 
 ### Patch Changes
