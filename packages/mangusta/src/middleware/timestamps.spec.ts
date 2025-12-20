@@ -1,9 +1,9 @@
-import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
 import { Document } from 'mongoose';
 import { setTimeout as delay } from 'node:timers/promises';
 import { describe, expect, it } from 'vitest';
 
 import { createModelWithPlugin } from '../test-utils/model.js';
+import { setupMongoTestEnvironment } from '../test-utils/mongooseTestEnvironment.js';
 import timestampsMiddleware, { TimestampsMiddlewareOptions, WithTimestamps } from './timestamps.js';
 
 setupMongoTestEnvironment();

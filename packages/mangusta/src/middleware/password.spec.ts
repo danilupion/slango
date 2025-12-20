@@ -1,9 +1,9 @@
-import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
 import mongoose, { Document, model, Schema } from 'mongoose';
 import { describe, expect, it } from 'vitest';
 
 import type { PluginFunction } from '../types.js';
 
+import { setupMongoTestEnvironment } from '../test-utils/mongooseTestEnvironment.js';
 import passwordMiddleware, { PasswordMiddlewareOptions, WithPassword } from './password.js';
 
 setupMongoTestEnvironment();

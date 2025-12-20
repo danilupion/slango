@@ -8,6 +8,10 @@
     "./*": {
       "import": "./dist/*.js",
       "types": "./dist/*.d.ts"
+    },
+    "./test-utils/*": {
+      "import": "./dist/test-utils/*.js",
+      "types": "./dist/test-utils/*.d.ts"
     }
   },
   "scripts": {
@@ -24,10 +28,17 @@
   },
   "dependencies": {
     "bcrypt": "6.0.0",
+    "mongodb-memory-server": "11.0.0",
     "nanoid": "5.1.6"
   },
   "peerDependencies": {
-    "mongoose": "^9.0.2"
+    "mongoose": "^9.0.2",
+    "vitest": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vitest": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",

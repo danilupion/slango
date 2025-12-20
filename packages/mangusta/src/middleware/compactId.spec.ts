@@ -1,8 +1,8 @@
-import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
 import { Document } from 'mongoose';
 import { describe, expect, it } from 'vitest';
 
 import { createModelWithPlugin } from '../test-utils/model.js';
+import { setupMongoTestEnvironment } from '../test-utils/mongooseTestEnvironment.js';
 import { PluginFunction } from '../types.js';
 import compactIdMiddleware, { CompactIdMiddlewareOptions, WithCompactId } from './compactId.js';
 

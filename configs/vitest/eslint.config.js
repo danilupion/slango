@@ -1,1 +1,1 @@
-export { default } from '@slango.configs/eslint/typescript-node.js';
+export { default } from '@slango.configs/eslint/javascript-node.js';

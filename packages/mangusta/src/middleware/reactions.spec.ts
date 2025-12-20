@@ -1,10 +1,10 @@
-import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
 import { Document, Schema, Types } from 'mongoose';
 import { describe, expect, it } from 'vitest';
 
 import type { PluginFunction } from '../types.js';
 
 import { createModelWithPlugin } from '../test-utils/model.js';
+import { setupMongoTestEnvironment } from '../test-utils/mongooseTestEnvironment.js';
 import reactionsMiddleware, {
   defaultReactionTypes,
   ReactionCountSummary,

@@ -1,7 +1,7 @@
-import { setupMongoTestEnvironment } from '@slango.configs/vitest/helpers/mongooseTestEnvironment';
 import mongoose, { Document, model, Schema } from 'mongoose';
 import { describe, expect, it } from 'vitest';
 
+import { setupMongoTestEnvironment } from '../test-utils/mongooseTestEnvironment.js';
 import emailMiddleware from './email.js';
 
 setupMongoTestEnvironment();
