@@ -8,7 +8,8 @@
   "bin": {
     "clean-node-modules": "bin/clean-node-modules.sh",
     "clean-build-artifacts": "bin/clean-build-artifacts.sh",
-    "clean-cache-artifacts": "bin/clean-cache-artifacts.sh"
+    "clean-cache-artifacts": "bin/clean-cache-artifacts.sh",
+    "clean-docker-images": "bin/clean-docker-images.sh"
   },
   "devDependencies": {
     "@slango.configs/lint-staged": "workspace:*"
