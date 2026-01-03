@@ -13,6 +13,7 @@
     "clean:node-modules": "clean-node-modules",
     "clean:cache": "clean-cache-artifacts",
     "clean:build": "clean-build-artifacts",
+    "clean:docker-images": "clean-docker-images",
     "clean": "clean-build-artifacts && clean-cache-artifacts && clean-node-modules",
     "clean+install": "pnpm clean && pnpm install",
     "dev": "turbo dev build:watch",

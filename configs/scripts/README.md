@@ -13,3 +13,28 @@ Removes all cache artifacts from the current directory and its subdirectories.
 ## clean-build-artifacts
 
 Removes all build artifacts from the current directory and its subdirectories.
+
+## clean-docker-images
+
+Removes Docker images from the local machine.
+
+Usage:
+
+```sh
+clean-docker-images [options]
+```
+
+Options:
+
+```sh
+-a, --all                 Remove unused Docker images
+-i, --image <image:tag>   Remove a specific image by name and tag
+-h, --help                Show help
+```
+
+Examples:
+
+```sh
+clean-docker-images --all
+clean-docker-images --image myimage:1.0.11
+```
