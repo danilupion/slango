@@ -119,7 +119,7 @@ Husky hooks will run lint-staged on commit. If hooks fail, run `npx lint-staged 
 ## Important Notes
 
 - **Node version**: Requires Node.js ^24.12.0 (enforced in package.json engines)
-- **pnpm version**: Requires pnpm ^10.27.0
+- **pnpm version**: Requires pnpm ^10.28.0
 - **Module system**: All packages use ESM (`"type": "module"`)
 - **Peer dependencies**: `mangusta` requires mongoose ^8.19.0; ensure it's installed in consuming projects
 - **Workspace dependencies**: Config packages use `workspace:*` protocol for internal dependencies
