@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.1.43
+
+### Patch Changes
+
+- f5a8154: Less strict defaults
+
 ## 1.1.42
 
 ### Patch Changes
