@@ -12,16 +12,16 @@ This package exposes eslint configurations for easy setup, the following presets
 
 ## Included plugins/configs
 
-| Name                                                                                                             | Available in Preset      | Description                                                         |
-| ---------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------- |
-| [`@eslint/js` recommended](https://github.com/eslint/eslint)                                                     | `all`                    | @eslint/js official recommended configuration                       |
-| [`eslint-plugin-eslint-comments` recommended](https://github.com/eslint-community/eslint-plugin-eslint-comments) | `all`                    | Comments from @eslint-community for comments                        |
-| [`eslint-plugin-perfectionist` recommended natural](https://github.com/azat-io/eslint-plugin-perfectionist)      | `all`                    | Natural Recommended config from perfectionist-plugin-perfectionnist |
-| [`eslint-plugin-regex` recommended](https://github.com/ota-meshi/eslint-plugin-regexp)                           | `all`                    | Recommended config from regexp-eslint-plugin                        |
-| [`eslint-plugin-prettier` recommended](https://github.com/prettier/eslint-plugin-prettier)                       | `all`                    | Prettier official eslint plugin's recommended config                |
-| [`eslint-plugin-import` recommended](https://github.com/import-js/eslint-plugin-import)                          | `all`                    | Prettier official eslint plugin's recommended config                |
-| [`typescript-eslint` recommendedTypeChecked](https://github.com/typescript-eslint/typescript-eslint)             | `all typescript configs` | Typescript Eslint type checked recommended config                   |
-| [`next/core-web-vitals`](https://nextjs.org/docs/app/building-your-application/configuring/eslint)               | `typescript-next`        | Next.js official eslint config                                      |
+| Name                                                                                                             | Available in Preset      | Description                                              |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------- |
+| [`@eslint/js` recommended](https://github.com/eslint/eslint)                                                     | `all`                    | @eslint/js official recommended configuration            |
+| [`eslint-plugin-eslint-comments` recommended](https://github.com/eslint-community/eslint-plugin-eslint-comments) | `all`                    | Comments from @eslint-community for comments             |
+| [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)                          | `all`                    | Configurable sorting rules with tiered strictness levels |
+| [`eslint-plugin-regex` recommended](https://github.com/ota-meshi/eslint-plugin-regexp)                           | `all`                    | Recommended config from regexp-eslint-plugin             |
+| [`eslint-plugin-prettier` recommended](https://github.com/prettier/eslint-plugin-prettier)                       | `all`                    | Prettier official eslint plugin's recommended config     |
+| [`eslint-plugin-import` recommended](https://github.com/import-js/eslint-plugin-import)                          | `all`                    | Prettier official eslint plugin's recommended config     |
+| [`typescript-eslint` recommendedTypeChecked](https://github.com/typescript-eslint/typescript-eslint)             | `all typescript configs` | Typescript Eslint type checked recommended config        |
+| [`next/core-web-vitals`](https://nextjs.org/docs/app/building-your-application/configuring/eslint)               | `typescript-next`        | Next.js official eslint config                           |
 
 ## Usage
 
@@ -36,20 +36,45 @@ export { default } from '@slango.configs/eslint/{preset-you-wish-to-use}.js';
 
 ### Perfectionist rule strictness
 
-Perfectionist sorting rules can be configured with three levels of strictness:
+Perfectionist sorting rules are organized into **tiers** and can be configured with four levels of strictness:
 
-- `off` – disables all perfectionist sorting rules
-- `relaxed` – only enforces module sorting (default)
-- `strict` – enforces sorting for modules, enums, object types and objects
+| Level      | Description                                        | Use Case                                 |
+| ---------- | -------------------------------------------------- | ---------------------------------------- |
+| `off`      | All perfectionist rules disabled                   | When you want no automatic sorting       |
+| `relaxed`  | Import/export sorting only **(default)**           | Universally accepted, industry standard  |
+| `moderate` | Adds type sorting (interfaces, unions, enums)      | Good for type-heavy TypeScript codebases |
+| `strict`   | Full sorting including objects, classes, JSX props | Maximum consistency, use with caution    |
 
-To use a custom level, import the corresponding creator and pass an options object. Passing an unknown option or an invalid level throws an error:
+#### Rule tiers
+
+**Tier 1 - Import/Export sorting** (`relaxed`+)
+
+- `sort-imports`, `sort-named-imports`, `sort-named-exports`, `sort-exports`
+- `sort-import-attributes`, `sort-export-attributes`, `sort-modules`
+
+**Tier 2 - Type sorting** (`moderate`+)
+
+- `sort-union-types`, `sort-intersection-types`, `sort-heritage-clauses`
+- `sort-object-types`, `sort-interfaces`, `sort-enums`
+
+**Tier 3 - Full sorting** (`strict` only)
+
+- `sort-objects`, `sort-classes`, `sort-jsx-props`, `sort-decorators`
+- `sort-switch-case`, `sort-variable-declarations`, `sort-array-includes`
+- `sort-sets`, `sort-maps`
+
+> **Note**: Tier 3 rules are disabled by default because they can be controversial or break intentional ordering. For example, `sort-decorators` can break functionality when decorator order matters semantically, and `sort-switch-case` often disrupts intentional case ordering (common cases first, fallbacks last).
+
+To use a custom level, import the corresponding creator and pass an options object:
 
 ```js
 // eslint.config.js
 import { createTypescriptConfig } from '@slango.configs/eslint/typescript.js';
 
-export default createTypescriptConfig({ perfectionist: 'strict' });
+export default createTypescriptConfig({ perfectionist: 'moderate' });
 ```
+
+Passing an unknown option or an invalid level throws a descriptive error.
 
 ## Things to take into account (and possibly review)
 

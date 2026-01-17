@@ -22,7 +22,8 @@ export const commonConfigs = (files) => {
     eslintJs.configs.recommended,
     eslintPluginImportX.flatConfigs.recommended,
     comments.recommended,
-    perfectionistPlugin.configs['recommended-natural'],
+    // Perfectionist plugin only (no preset) - rules configured via perfectionistLevels
+    { plugins: { perfectionist: perfectionistPlugin } },
     prettierPluginRecommendedConfig,
     regexPluginConfigs['flat/recommended'],
   ];
@@ -30,26 +31,132 @@ export const commonConfigs = (files) => {
   return configs.flatMap((config) => applyFilesGlob(normalizeConfig(config), files));
 };
 
-const sortModulesRule = ['error', { partitionByNewLine: true }];
+// Common rule configurations
+const naturalSort = { type: 'natural', order: 'asc' };
+const sortModulesRule = ['error', { ...naturalSort, partitionByNewLine: true }];
+const sortRule = ['error', naturalSort];
 
+/**
+ * Perfectionist strictness levels:
+ *
+ * - off: All perfectionist rules disabled
+ * - relaxed (default): Core import/export sorting only - universally accepted rules
+ * - moderate: Adds type sorting (interfaces, unions, enums) - good for type-heavy codebases
+ * - strict: Full sorting including objects, classes, JSX props, switch cases, etc.
+ *
+ * Rules are organized in tiers:
+ * - Tier 1 (relaxed+): Import/export sorting - industry standard, high value
+ * - Tier 2 (moderate+): Type-related sorting - consistency for TypeScript
+ * - Tier 3 (strict only): Everything else - can be controversial or break intentional ordering
+ */
 export const perfectionistLevels = {
   off: {
-    'perfectionist/sort-enums': 'off',
+    // Tier 1: Import/export sorting - ALL OFF
+    'perfectionist/sort-imports': 'off',
+    'perfectionist/sort-named-imports': 'off',
+    'perfectionist/sort-named-exports': 'off',
+    'perfectionist/sort-exports': 'off',
+    'perfectionist/sort-import-attributes': 'off',
+    'perfectionist/sort-export-attributes': 'off',
     'perfectionist/sort-modules': 'off',
+    // Tier 2: Type sorting - ALL OFF
+    'perfectionist/sort-union-types': 'off',
+    'perfectionist/sort-intersection-types': 'off',
+    'perfectionist/sort-heritage-clauses': 'off',
     'perfectionist/sort-object-types': 'off',
+    'perfectionist/sort-interfaces': 'off',
+    'perfectionist/sort-enums': 'off',
+    // Tier 3: Controversial sorting - ALL OFF
     'perfectionist/sort-objects': 'off',
+    'perfectionist/sort-classes': 'off',
+    'perfectionist/sort-jsx-props': 'off',
+    'perfectionist/sort-decorators': 'off',
+    'perfectionist/sort-switch-case': 'off',
+    'perfectionist/sort-variable-declarations': 'off',
+    'perfectionist/sort-array-includes': 'off',
+    'perfectionist/sort-sets': 'off',
+    'perfectionist/sort-maps': 'off',
   },
   relaxed: {
-    'perfectionist/sort-enums': 'off',
+    // Tier 1: Import/export sorting - ENABLED (industry standard)
+    'perfectionist/sort-imports': sortRule,
+    'perfectionist/sort-named-imports': sortRule,
+    'perfectionist/sort-named-exports': sortRule,
+    'perfectionist/sort-exports': sortRule,
+    'perfectionist/sort-import-attributes': sortRule,
+    'perfectionist/sort-export-attributes': sortRule,
     'perfectionist/sort-modules': sortModulesRule,
+    // Tier 2: Type sorting - OFF
+    'perfectionist/sort-union-types': 'off',
+    'perfectionist/sort-intersection-types': 'off',
+    'perfectionist/sort-heritage-clauses': 'off',
     'perfectionist/sort-object-types': 'off',
+    'perfectionist/sort-interfaces': 'off',
+    'perfectionist/sort-enums': 'off',
+    // Tier 3: Controversial sorting - OFF
     'perfectionist/sort-objects': 'off',
+    'perfectionist/sort-classes': 'off',
+    'perfectionist/sort-jsx-props': 'off',
+    'perfectionist/sort-decorators': 'off',
+    'perfectionist/sort-switch-case': 'off',
+    'perfectionist/sort-variable-declarations': 'off',
+    'perfectionist/sort-array-includes': 'off',
+    'perfectionist/sort-sets': 'off',
+    'perfectionist/sort-maps': 'off',
+  },
+  moderate: {
+    // Tier 1: Import/export sorting - ENABLED
+    'perfectionist/sort-imports': sortRule,
+    'perfectionist/sort-named-imports': sortRule,
+    'perfectionist/sort-named-exports': sortRule,
+    'perfectionist/sort-exports': sortRule,
+    'perfectionist/sort-import-attributes': sortRule,
+    'perfectionist/sort-export-attributes': sortRule,
+    'perfectionist/sort-modules': sortModulesRule,
+    // Tier 2: Type sorting - ENABLED (good for TypeScript codebases)
+    'perfectionist/sort-union-types': sortRule,
+    'perfectionist/sort-intersection-types': sortRule,
+    'perfectionist/sort-heritage-clauses': sortRule,
+    'perfectionist/sort-object-types': sortRule,
+    'perfectionist/sort-interfaces': sortRule,
+    'perfectionist/sort-enums': sortRule,
+    // Tier 3: Controversial sorting - OFF
+    'perfectionist/sort-objects': 'off',
+    'perfectionist/sort-classes': 'off',
+    'perfectionist/sort-jsx-props': 'off',
+    'perfectionist/sort-decorators': 'off',
+    'perfectionist/sort-switch-case': 'off',
+    'perfectionist/sort-variable-declarations': 'off',
+    'perfectionist/sort-array-includes': 'off',
+    'perfectionist/sort-sets': 'off',
+    'perfectionist/sort-maps': 'off',
   },
   strict: {
-    'perfectionist/sort-enums': 'error',
+    // Tier 1: Import/export sorting - ENABLED
+    'perfectionist/sort-imports': sortRule,
+    'perfectionist/sort-named-imports': sortRule,
+    'perfectionist/sort-named-exports': sortRule,
+    'perfectionist/sort-exports': sortRule,
+    'perfectionist/sort-import-attributes': sortRule,
+    'perfectionist/sort-export-attributes': sortRule,
     'perfectionist/sort-modules': sortModulesRule,
-    'perfectionist/sort-object-types': 'error',
-    'perfectionist/sort-objects': 'error',
+    // Tier 2: Type sorting - ENABLED
+    'perfectionist/sort-union-types': sortRule,
+    'perfectionist/sort-intersection-types': sortRule,
+    'perfectionist/sort-heritage-clauses': sortRule,
+    'perfectionist/sort-object-types': sortRule,
+    'perfectionist/sort-interfaces': sortRule,
+    'perfectionist/sort-enums': sortRule,
+    // Tier 3: Full sorting - ENABLED (use with caution)
+    'perfectionist/sort-objects': sortRule,
+    'perfectionist/sort-classes': sortRule,
+    'perfectionist/sort-jsx-props': sortRule,
+    'perfectionist/sort-decorators': sortRule,
+    'perfectionist/sort-switch-case': sortRule,
+    'perfectionist/sort-variable-declarations': sortRule,
+    'perfectionist/sort-array-includes': sortRule,
+    'perfectionist/sort-sets': sortRule,
+    'perfectionist/sort-maps': sortRule,
   },
 };
 
