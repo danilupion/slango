@@ -27,6 +27,7 @@
     "format": "prettier --ignore-unknown --write .",
     "check": "turbo check",
     "release:note": "changeset add",
+    "release:empty": "changeset add --empty",
     "release:bump": "changeset version",
     "release:check": "changeset status --since=origin/main",
     "prepare": "[ \"$PACKAGED\" = true ] && echo 'Skipping prepare for packaged production dependencies install' || husky"
