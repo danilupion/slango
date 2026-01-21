@@ -10,7 +10,7 @@ on:
     types: [completed]
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: ci-${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref }}
@@ -50,6 +50,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -74,3 +75,35 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      # Release steps (only on push to main)
+      - name: Bump versions and update changelogs
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: pnpm dlx @changesets/cli version
+
+      - name: Check for version changes
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        id: changes
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit version changes
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "Version Packages [skip ci]"
+          git push
+        env:
+          HUSKY: 0
+
+      - name: Publish to npm
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && steps.changes.outputs.has_changes == 'true'
+        run: pnpm publish -r --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
