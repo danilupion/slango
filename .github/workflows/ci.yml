@@ -5,14 +5,26 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows: ['🔄 Sync Renovate Changesets']
+    types: [completed]
 
 permissions:
   contents: read
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: ci-${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ci-cd:
+    # Run for: push to main, non-Renovate PRs, or after successful sync for Renovate PRs
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && github.actor != 'renovate[bot]') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.actor.login == 'renovate[bot]')
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,6 +35,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
+          # For workflow_run (Renovate PRs after sync), check out the PR branch
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || '' }}
           fetch-depth: 0
 
       - name: Install pnpm
@@ -41,7 +55,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Validate changesets
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || github.event_name == 'workflow_run'
         run: pnpm release:check
 
       - name: Cache Turborepo
