@@ -1,30 +1,32 @@
 name: 🧪 CI + 🚀 CD
 
 on:
+  workflow_dispatch:
   pull_request:
+  pull_request_target:
+    types: [opened, synchronize]
   push:
     branches:
       - main
-  workflow_run:
-    workflows: ['🔄 Sync Renovate Changesets']
-    types: [completed]
 
 permissions:
   contents: write
 
 concurrency:
-  group: ci-${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref }}
+  group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   ci-cd:
-    # Run for: push to main, non-Renovate PRs, or after successful sync for Renovate PRs
+    # Route events correctly:
+    # - pull_request: only for non-Renovate PRs
+    # - pull_request_target: only for Renovate PRs (needs write access to push changesets)
+    # - push/workflow_dispatch: always run
     if: |
-      github.event_name == 'push' ||
       (github.event_name == 'pull_request' && github.actor != 'renovate[bot]') ||
-      (github.event_name == 'workflow_run' &&
-       github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.actor.login == 'renovate[bot]')
+      (github.event_name == 'pull_request_target' && github.actor == 'renovate[bot]') ||
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,8 +37,8 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          # For workflow_run (Renovate PRs after sync), check out the PR branch
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || '' }}
+          # For pull_request_target (Renovate), checkout the PR branch, not base
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.ref || '' }}
           fetch-depth: 0
 
       - name: Install pnpm
@@ -55,8 +57,82 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
+      # ─────────────────────────────────────────────────────────────────────────
+      # Changeset handling: Renovate PRs get auto-generated changesets,
+      # other PRs must have changesets or they fail
+      # ─────────────────────────────────────────────────────────────────────────
+
+      - name: Check if changeset exists
+        id: changeset-check
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+        run: |
+          if pnpm release:check 2>/dev/null; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create changeset for Renovate PR
+        id: create-changeset
+        if: |
+          github.event_name == 'pull_request_target' &&
+          github.actor == 'renovate[bot]' &&
+          steps.changeset-check.outputs.exists == 'false'
+        run: |
+          echo "🔄 Creating changeset for Renovate PR..."
+
+          # Find which packages have changes compared to main
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+
+          # Extract unique package paths (configs/* and packages/*)
+          PACKAGE_PATHS=$(echo "$CHANGED_FILES" | grep -E '^(configs|packages)/' | cut -d'/' -f1-2 | sort -u || true)
+
+          if [ -z "$PACKAGE_PATHS" ]; then
+            echo "No package changes detected, creating empty changeset"
+            pnpm changeset add --empty
+          else
+            # Generate unique changeset filename
+            CHANGESET_FILE=".changeset/renovate-$(date +%s).md"
+
+            # Start building the changeset content
+            echo "---" > "$CHANGESET_FILE"
+
+            for pkg_path in $PACKAGE_PATHS; do
+              # Get package name from package.json if it exists
+              if [ -f "$pkg_path/package.json" ]; then
+                PKG_NAME=$(node -p "require('./$pkg_path/package.json').name")
+                echo "\"$PKG_NAME\": patch" >> "$CHANGESET_FILE"
+                echo "  Adding package: $PKG_NAME"
+              fi
+            done
+
+            echo "---" >> "$CHANGESET_FILE"
+            echo "" >> "$CHANGESET_FILE"
+            echo "Dependencies bump" >> "$CHANGESET_FILE"
+
+            echo "✅ Created changeset:"
+            cat "$CHANGESET_FILE"
+          fi
+
+          echo "created=true" >> $GITHUB_OUTPUT
+
+      - name: Fail if changeset missing (non-Renovate PR)
+        if: |
+          github.event_name == 'pull_request' &&
+          steps.changeset-check.outputs.exists == 'false'
+        run: |
+          echo "❌ Changeset is missing!"
+          echo ""
+          echo "Run 'pnpm release:note' to create a changeset for your changes."
+          echo "If this change doesn't need a release, run 'pnpm changeset add --empty'."
+          exit 1
+
+      # ─────────────────────────────────────────────────────────────────────────
+      # Main CI checks
+      # ─────────────────────────────────────────────────────────────────────────
+
       - name: Validate changesets
-        if: github.event_name == 'pull_request' || github.event_name == 'workflow_run'
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
         run: pnpm release:check
 
       - name: Cache Turborepo
@@ -76,7 +152,25 @@ jobs:
       - name: Test
         run: pnpm test
 
-      # Release steps (only on push to main)
+      # ─────────────────────────────────────────────────────────────────────────
+      # Commit changeset for Renovate PRs (only after all checks pass)
+      # ─────────────────────────────────────────────────────────────────────────
+
+      - name: Commit and push changeset for Renovate PR
+        if: steps.create-changeset.outputs.created == 'true'
+        run: |
+          echo "📤 Committing changeset for Renovate PR..."
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .changeset/
+          git commit --amend --no-edit
+          git push --force-with-lease
+          echo "✅ Changeset committed and pushed"
+
+      # ─────────────────────────────────────────────────────────────────────────
+      # CD: Release steps (only on push to main)
+      # ─────────────────────────────────────────────────────────────────────────
+
       - name: Bump versions and update changelogs
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: pnpm dlx @changesets/cli version
