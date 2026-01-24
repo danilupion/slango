@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 2.0.4
+
+### Patch Changes
+
+- 3ceebbb: Dependencies bump
+
 ## 2.0.3
 
 ### Patch Changes
