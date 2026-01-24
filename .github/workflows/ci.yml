@@ -55,50 +55,45 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       # ─────────────────────────────────────────────────────────────────────────
       # Changeset handling: Renovate PRs get auto-generated changesets,
       # other PRs must have changesets or they fail
       # ─────────────────────────────────────────────────────────────────────────
 
-      - name: Check if changeset exists
+      - name: Validate changesets (create for Renovate if missing)
         id: changeset-check
         if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
         run: |
           if pnpm release:check 2>/dev/null; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "✅ Changeset exists"
+            exit 0
           fi
 
-      - name: Create changeset for Renovate PR
-        id: create-changeset
-        if: |
-          github.event_name == 'pull_request_target' &&
-          github.event.pull_request.user.login == 'renovate[bot]' &&
-          steps.changeset-check.outputs.exists == 'false'
-        run: |
+          # Changeset missing - only Renovate PRs get auto-generated changesets
+          if [[ "${{ github.event.pull_request.user.login }}" != "renovate[bot]" ]]; then
+            echo "❌ Changeset is missing!"
+            echo ""
+            echo "Run 'pnpm release:note' to create a changeset for your changes."
+            echo "If this change doesn't need a release, run 'pnpm changeset add --empty'."
+            exit 1
+          fi
+
+          # Create changeset for Renovate PR
           echo "🔄 Creating changeset for Renovate PR..."
 
-          # Find which packages have changes compared to main
           CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
-
-          # Extract unique package paths (configs/* and packages/*)
           PACKAGE_PATHS=$(echo "$CHANGED_FILES" | grep -E '^(configs|packages)/' | cut -d'/' -f1-2 | sort -u || true)
 
           if [ -z "$PACKAGE_PATHS" ]; then
             echo "No package changes detected, creating empty changeset"
             pnpm changeset add --empty
           else
-            # Generate unique changeset filename
             CHANGESET_FILE=".changeset/renovate-$(date +%s).md"
-
-            # Start building the changeset content
             echo "---" > "$CHANGESET_FILE"
 
             for pkg_path in $PACKAGE_PATHS; do
-              # Get package name from package.json if it exists
               if [ -f "$pkg_path/package.json" ]; then
                 PKG_NAME=$(node -p "require('./$pkg_path/package.json').name")
                 echo "\"$PKG_NAME\": patch" >> "$CHANGESET_FILE"
@@ -115,25 +110,6 @@ jobs:
           fi
 
           echo "created=true" >> $GITHUB_OUTPUT
-
-      - name: Fail if changeset missing (non-Renovate PR)
-        if: |
-          github.event_name == 'pull_request' &&
-          steps.changeset-check.outputs.exists == 'false'
-        run: |
-          echo "❌ Changeset is missing!"
-          echo ""
-          echo "Run 'pnpm release:note' to create a changeset for your changes."
-          echo "If this change doesn't need a release, run 'pnpm changeset add --empty'."
-          exit 1
-
-      # ─────────────────────────────────────────────────────────────────────────
-      # Main CI checks
-      # ─────────────────────────────────────────────────────────────────────────
-
-      - name: Validate changesets
-        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
-        run: pnpm release:check
 
       - name: Cache Turborepo
         uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5
@@ -157,7 +133,7 @@ jobs:
       # ─────────────────────────────────────────────────────────────────────────
 
       - name: Commit and push changeset for Renovate PR
-        if: steps.create-changeset.outputs.created == 'true'
+        if: steps.changeset-check.outputs.created == 'true'
         run: |
           echo "📤 Committing changeset for Renovate PR..."
           git config user.name "github-actions[bot]"
