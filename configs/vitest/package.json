@@ -21,13 +21,13 @@
     "unplugin-swc": "1.5.9"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "^4.0.17",
-    "@vitest/ui": "^4.0.17",
-    "vitest": "^4.0.17"
+    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/ui": "^4.0.18",
+    "vitest": "^4.0.18"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
     "eslint": "9.39.2",
-    "vitest": "4.0.17"
+    "vitest": "4.0.18"
   }
 }
