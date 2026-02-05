@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.1.51
+
+### Patch Changes
+
+- 4010cfc: Dependencies bump
+
 ## 1.1.50
 
 ### Patch Changes

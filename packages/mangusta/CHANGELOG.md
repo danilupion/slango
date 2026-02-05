@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.10
+
+### Patch Changes
+
+- 4010cfc: Dependencies bump
+
 ## 2.1.9
 
 ### Patch Changes
