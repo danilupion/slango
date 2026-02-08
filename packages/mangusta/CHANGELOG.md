@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.11
+
+### Patch Changes
+
+- 1895011: Minor fix in reactions plugin
+
 ## 2.1.10
 
 ### Patch Changes

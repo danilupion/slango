@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.2.0
+
+### Minor Changes
+
+- 1895011: Eslint 10 bump
+
 ## 1.1.51
 
 ### Patch Changes
