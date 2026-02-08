@@ -16,6 +16,6 @@
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
-    "eslint": "9.39.2"
+    "eslint": "10.0.0"
   }
 }

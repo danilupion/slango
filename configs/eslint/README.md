@@ -78,7 +78,6 @@ Passing an unknown option or an invalid level throws a descriptive error.
 
 ## Things to take into account (and possibly review)
 
-- At the time of writing eslint-config-next is not compatible with eslint 9, thus @eslint/compat and @eslint/eslintrc are used
 - At the time of writing eslint-config-prettier is needed as a dependency to use eslint-plugin-prettier
 - eslint-plugin-import-x supports eslint 9 but eslint-plugin-import does not [usage comparison](https://npm-compare.com/eslint-plugin-import,eslint-plugin-import-x)
 - eslint-import-resolver-node does not seem to play well with monorepo/pattern exports in package.json (thus eslint-import-resolver-typescript is used even for javascript)

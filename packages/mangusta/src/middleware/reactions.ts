@@ -243,8 +243,6 @@ const reactionsMiddleware: PluginFunction<ReactionsMiddlewareOptions> = <
         (entry): entry is ReactionEntry<UserField, TypeField, TimestampField> => entry !== null,
       );
 
-    let updated = false;
-
     if (!allowMultiplePerUser) {
       const existingIndex = reactions.findIndex(
         (entry) => entry[userField]?.toString() === userKey,
@@ -268,8 +266,6 @@ const reactionsMiddleware: PluginFunction<ReactionsMiddlewareOptions> = <
       } else {
         reactions.push(newEntry);
       }
-
-      updated = true;
     } else {
       const newEntry: ReactionEntry<UserField, TypeField, TimestampField> = {
         [userField]: userId,
@@ -285,12 +281,9 @@ const reactionsMiddleware: PluginFunction<ReactionsMiddlewareOptions> = <
       }
 
       reactions.push(newEntry);
-      updated = true;
     }
 
-    if (updated) {
-      this.set(field, reactions);
-    }
+    this.set(field, reactions);
 
     return this;
   };
