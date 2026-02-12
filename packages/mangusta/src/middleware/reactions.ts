@@ -105,13 +105,18 @@ const reactionsMiddleware: PluginFunction<ReactionsMiddlewareOptions> = <
       type: String,
       ...(shouldEnforceAllowedTypes && { enum: Array.from(allowedTypesSet) }),
     },
+    ...(timestamp && {
+      [timestampField]: {
+        default: Date.now,
+        type: Date,
+      },
+    }),
   };
 
   const reactionsSubSchema = new Schema<ReactionEntry<UserField, TypeField, TimestampField>>(
     reactionSchemaDefinition,
     {
       _id: false,
-      timestamps: timestamp ? { createdAt: timestampField, updatedAt: false } : false,
     },
   );
 

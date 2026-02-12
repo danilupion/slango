@@ -33,6 +33,8 @@ describe('emailMiddleware', () => {
   });
 
   it('should enforce uniqueness for email', async () => {
+    await TestUserModel.init();
+
     const user1 = new TestUserModel({ email: validEmail });
     const user2 = new TestUserModel({ email: validEmail });
 
