@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 2.0.7
+
+### Patch Changes
+
+- ec2131e: Dependencies bump
+
 ## 2.0.6
 
 ### Patch Changes

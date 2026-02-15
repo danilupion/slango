@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.12
+
+### Patch Changes
+
+- ec2131e: Dependencies bump
+
 ## 2.1.11
 
 ### Patch Changes

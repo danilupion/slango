@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/vitest",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "private": false,
   "description": "Slango vitest configs",
   "type": "module",
