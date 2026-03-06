@@ -33,16 +33,16 @@
     "prepare": "[ \"$PACKAGED\" = true ] && echo 'Skipping prepare for packaged production dependencies install' || husky"
   },
   "devDependencies": {
-    "@changesets/cli": "2.29.8",
+    "@changesets/cli": "2.30.0",
     "@slango.configs/eslint": "workspace:*",
     "@slango.configs/lint-staged": "workspace:*",
     "@slango.configs/prettier": "workspace:*",
     "@slango.configs/scripts": "workspace:*",
     "eslint": "10.0.2",
     "husky": "9.1.7",
-    "lint-staged": "16.2.7",
+    "lint-staged": "16.3.2",
     "prettier": "3.8.1",
-    "turbo": "2.8.11"
+    "turbo": "2.8.13"
   },
   "engines": {
     "node": "^24.14.0",
