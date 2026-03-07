@@ -29,9 +29,9 @@
     "typescript-eslint": "8.56.1"
   },
   "peerDependencies": {
-    "eslint": "^10.0.2"
+    "eslint": "^10.0.3"
   },
   "devDependencies": {
-    "eslint": "10.0.2"
+    "eslint": "10.0.3"
   }
 }

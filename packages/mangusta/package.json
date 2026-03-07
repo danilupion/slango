@@ -47,7 +47,7 @@
     "@types/bcrypt": "6.0.0",
     "@vitest/coverage-v8": "4.0.18",
     "@vitest/ui": "4.0.18",
-    "eslint": "10.0.2",
+    "eslint": "10.0.3",
     "mongoose": "9.2.4",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
