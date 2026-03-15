@@ -1,6 +1,6 @@
 {
   "name": "@slango.configs/vitest",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "private": false,
   "description": "Slango vitest configs",
   "type": "module",
@@ -23,6 +23,7 @@
   "peerDependencies": {
     "@vitest/coverage-v8": "^4.1.0",
     "@vitest/ui": "^4.1.0",
+    "vite": "^8.0.0",
     "vitest": "^4.1.0"
   },
   "devDependencies": {

@@ -165,6 +165,9 @@ importers:
       unplugin-swc:
         specifier: 1.5.9
         version: 1.5.9(@swc/core@1.15.18)(rollup@4.59.0)
+      vite:
+        specifier: ^8.0.0
+        version: 8.0.0(@types/node@25.5.0)(esbuild@0.27.4)(yaml@2.8.2)
     devDependencies:
       '@slango.configs/eslint':
         specifier: workspace:*
