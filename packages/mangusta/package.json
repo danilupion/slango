@@ -32,8 +32,8 @@
     "nanoid": "5.1.6"
   },
   "peerDependencies": {
-    "mongoose": "^9.2.4",
-    "vitest": "^4.0.18"
+    "mongoose": "^9.3.0",
+    "vitest": "^4.1.0"
   },
   "peerDependenciesMeta": {
     "vitest": {
@@ -45,11 +45,11 @@
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
     "@types/bcrypt": "6.0.0",
-    "@vitest/coverage-v8": "4.0.18",
-    "@vitest/ui": "4.0.18",
+    "@vitest/coverage-v8": "4.1.0",
+    "@vitest/ui": "4.1.0",
     "eslint": "10.0.3",
-    "mongoose": "9.2.4",
+    "mongoose": "9.3.0",
     "typescript": "5.9.3",
-    "vitest": "4.0.18"
+    "vitest": "4.1.0"
   }
 }

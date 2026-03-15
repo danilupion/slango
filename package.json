@@ -40,13 +40,13 @@
     "@slango.configs/scripts": "workspace:*",
     "eslint": "10.0.3",
     "husky": "9.1.7",
-    "lint-staged": "16.3.2",
+    "lint-staged": "16.4.0",
     "prettier": "3.8.1",
-    "turbo": "2.8.14"
+    "turbo": "2.8.17"
   },
   "engines": {
     "node": "^24.14.0",
-    "pnpm": "^10.31.0"
+    "pnpm": "^10.32.1"
   },
-  "packageManager": "pnpm@10.31.0"
+  "packageManager": "pnpm@10.32.1"
 }
