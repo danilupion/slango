@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 2.0.13
+
+### Patch Changes
+
+- 084b973: Vite as peer dependency
+
 ## 2.0.11
 
 ### Patch Changes
