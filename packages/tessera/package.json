@@ -22,7 +22,7 @@
     "@slango.configs/vitest": "workspace:*",
     "@vitest/coverage-v8": "4.1.0",
     "@vitest/ui": "4.1.0",
-    "eslint": "10.0.3",
+    "eslint": "10.1.0",
     "typescript": "5.9.3",
     "vitest": "4.1.0"
   }
