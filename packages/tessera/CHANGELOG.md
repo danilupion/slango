@@ -1,5 +1,11 @@
 # @slango/tessera
 
+## 1.0.15
+
+### Patch Changes
+
+- 07ec4aa: Dependencies bump
+
 ## 1.0.14
 
 ### Patch Changes
