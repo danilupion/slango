@@ -1,6 +1,6 @@
 {
   "name": "@slango/tessera",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "private": false,
   "description": "Collection of typescript utilities",
   "type": "module",
