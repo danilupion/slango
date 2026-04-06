@@ -32,7 +32,7 @@
     "nanoid": "5.1.7"
   },
   "peerDependencies": {
-    "mongoose": "^9.3.3",
+    "mongoose": "^9.4.1",
     "vitest": "^4.1.2"
   },
   "peerDependenciesMeta": {
@@ -47,8 +47,8 @@
     "@types/bcrypt": "6.0.0",
     "@vitest/coverage-v8": "4.1.2",
     "@vitest/ui": "4.1.2",
-    "eslint": "10.1.0",
-    "mongoose": "9.3.3",
+    "eslint": "10.2.0",
+    "mongoose": "9.4.1",
     "typescript": "6.0.2",
     "vitest": "4.1.2"
   }
