@@ -17,18 +17,18 @@
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@vitejs/plugin-react": "6.0.1",
-    "jsdom": "29.0.1",
+    "jsdom": "29.0.2",
     "unplugin-swc": "1.5.9"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "^4.1.2",
-    "@vitest/ui": "^4.1.2",
+    "@vitest/coverage-v8": "^4.1.3",
+    "@vitest/ui": "^4.1.3",
     "vite": "^8.0.3",
-    "vitest": "^4.1.2"
+    "vitest": "^4.1.3"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
     "eslint": "10.2.0",
-    "vitest": "4.1.2"
+    "vitest": "4.1.3"
   }
 }
