@@ -1,5 +1,13 @@
 # @slango/ristretto
 
+## 1.0.35
+
+### Patch Changes
+
+- df2e3c2: Dependencies bump
+- Updated dependencies [df2e3c2]
+  - @slango/tessera@1.0.17
+
 ## 1.0.34
 
 ### Patch Changes
