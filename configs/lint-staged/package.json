@@ -3,6 +3,11 @@
   "version": "1.1.19",
   "private": false,
   "description": "Slango lint-staged configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danilupion/slango",
+    "directory": "configs/lint-staged"
+  },
   "type": "module",
   "exports": {
     "./*": "./src/presets/*"

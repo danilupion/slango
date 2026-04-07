@@ -3,6 +3,11 @@
   "version": "1.0.13",
   "private": false,
   "description": "Slango prettier configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danilupion/slango",
+    "directory": "configs/prettier"
+  },
   "type": "module",
   "exports": {
     "./*": "./src/presets/*"
