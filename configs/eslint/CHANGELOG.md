@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.2.13
+
+### Patch Changes
+
+- dca0a26: Dependencies bump
+
 ## 1.2.12
 
 ### Patch Changes
