@@ -30,11 +30,11 @@ const timestampsMiddleware: PluginFunction<TimestampsMiddlewareOptions> = <
   schema: Schema<DocType, Model<DocType>>,
   {
     creation = true,
-    creationField = 'created' as Created,
+    creationField = 'created',
     indexCreation = false,
     indexUpdate = false,
     update = true,
-    updateField = 'updated' as Updated,
+    updateField = 'updated',
     updateTimestampOnCreation = false,
   }: TimestampsMiddlewareOptions = {},
 ): void => {

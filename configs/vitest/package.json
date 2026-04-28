@@ -17,12 +17,12 @@
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
   "dependencies": {
-    "@swc/core": "1.15.24",
+    "@swc/core": "1.15.32",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.2",
     "@vitejs/plugin-react": "6.0.1",
-    "jsdom": "29.0.2",
+    "jsdom": "29.1.0",
     "unplugin-swc": "1.5.9"
   },
   "peerDependencies": {
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
-    "eslint": "10.2.0",
-    "vitest": "4.1.4"
+    "eslint": "10.2.1",
+    "vitest": "4.1.5"
   }
 }

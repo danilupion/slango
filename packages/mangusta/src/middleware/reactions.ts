@@ -159,7 +159,7 @@ const reactionsMiddleware: PluginFunction<ReactionsMiddlewareOptions> = <
       ...entry,
       [userField]: toObjectId(userValue),
       [typeField]: typeValue,
-    } as ReactionEntry<UserField, TypeField, TimestampField>;
+    };
 
     const rawTimestamp = entry[timestampField] as unknown;
 
