@@ -38,14 +38,14 @@
     "@slango.configs/lint-staged": "workspace:*",
     "@slango.configs/prettier": "workspace:*",
     "@slango.configs/scripts": "workspace:*",
-    "eslint": "10.2.1",
+    "eslint": "10.3.0",
     "husky": "9.1.7",
     "lint-staged": "16.4.0",
     "prettier": "3.8.3",
     "turbo": "2.9.6"
   },
   "engines": {
-    "node": "^24.14.1",
+    "node": "^24.15.0",
     "pnpm": "^10.33.2"
   },
   "packageManager": "pnpm@10.33.2"
