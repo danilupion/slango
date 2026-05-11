@@ -20,10 +20,10 @@
     "deepmerge": "4.3.1"
   },
   "peerDependencies": {
-    "lint-staged": "^16.4.0"
+    "lint-staged": "^17.0.4"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
-    "eslint": "10.2.1"
+    "eslint": "10.3.0"
   }
 }
