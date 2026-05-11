@@ -309,7 +309,7 @@ importers:
   configs/prettier:
     dependencies:
       prettier:
-        specifier: ^3.8.2
+        specifier: ^3.8.3
         version: 3.8.3
     devDependencies:
       '@slango.configs/eslint':
@@ -328,7 +328,7 @@ importers:
   configs/typescript:
     dependencies:
       typescript:
-        specifier: ^6.0.2
+        specifier: ^6.0.3
         version: 6.0.3
     devDependencies:
       eslint:
@@ -365,7 +365,7 @@ importers:
         specifier: 1.5.9
         version: 1.5.9(@swc/core@1.15.33)
       vite:
-        specifier: ^8.0.8
+        specifier: ^8.0.11
         version: 8.0.11(@types/node@25.7.0)(yaml@2.8.4)
     devDependencies:
       '@slango.configs/eslint':
