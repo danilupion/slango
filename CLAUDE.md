@@ -9,8 +9,8 @@ Slango is a TypeScript monorepo containing reusable configuration packages and u
 ## Setup
 
 ```bash
-nvm use              # Use Node.js version from .nvmrc (24.13.1)
-corepack enable      # Enable pnpm
+nvm use              # Use Node.js version from .nvmrc (26.1.0)
+npm install -g pnpm@11  # Install pnpm (corepack is no longer bundled with Node 25+)
 pnpm install         # Install dependencies
 ```
 
@@ -118,7 +118,7 @@ Husky hooks will run lint-staged on commit. If hooks fail, run `npx lint-staged 
 
 ## Important Notes
 
-- **Node version**: Requires Node.js ^24.13.1 (enforced in package.json engines)
+- **Node version**: Requires Node.js ^26.1.0 (enforced in package.json engines)
 - **pnpm version**: Requires pnpm ^11.1.2
 - **Module system**: All packages use ESM (`"type": "module"`)
 - **Peer dependencies**: `mangusta` requires mongoose ^8.19.0; ensure it's installed in consuming projects

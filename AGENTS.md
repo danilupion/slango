@@ -4,8 +4,8 @@ Guidelines for AI assistants and human contributors working in the `gifcept` mon
 
 ## Repository Overview
 
-- **Package manager:** pnpm (v10.18.2)
-- **Node version:** ≥24.13.1 (`nvm use` recommended)
+- **Package manager:** pnpm (v11.1.2)
+- **Node version:** ≥26.1.0 (`nvm use` recommended)
 - **Structure**
   - `/packages/*` – distributable packages (`expresso` opinionated express wrapper, `mangusta` mongoose middlewares, `ristretto` opinionated rest client, `tessera` typescript utilities)
   - `/configs/*` – distributable config packages(`eslint`, `prettier`, `typescript`, `lint-staged`, `vytest`)
