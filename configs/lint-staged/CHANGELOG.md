@@ -1,5 +1,11 @@
 # @slango.configs/lint-staged
 
+## 1.1.23
+
+### Patch Changes
+
+- d5cbf2f: Dependencies bump
+
 ## 1.1.22
 
 ### Patch Changes
