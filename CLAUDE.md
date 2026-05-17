@@ -10,7 +10,7 @@ Slango is a TypeScript monorepo containing reusable configuration packages and u
 
 ```bash
 nvm use              # Use Node.js version from .nvmrc (26.1.0)
-npm install -g pnpm@11  # Install pnpm (corepack is no longer bundled with Node 25+)
+npm install -g pnpm@11  # Install pnpm
 pnpm install         # Install dependencies
 ```
 

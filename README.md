@@ -16,7 +16,7 @@ Slango is a collection of reusable TypeScript configuration and utility packages
    nvm install
    ```
 
-2. Install `pnpm` (corepack is no longer bundled with Node 25+):
+2. Install `pnpm`:
 
    ```bash
    npm install -g pnpm@11
