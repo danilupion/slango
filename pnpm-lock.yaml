@@ -365,7 +365,7 @@ importers:
         specifier: 1.5.9
         version: 1.5.9(@swc/core@1.15.40)
       vite:
-        specifier: ^8.0.13
+        specifier: ^8.0.14
         version: 8.0.14(@types/node@25.9.1)(yaml@2.9.0)
     devDependencies:
       '@slango.configs/eslint':
