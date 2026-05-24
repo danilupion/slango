@@ -1,5 +1,13 @@
 # @slango/ristretto
 
+## 1.0.40
+
+### Patch Changes
+
+- 70230d2: Dependencies bump
+- Updated dependencies [70230d2]
+  - @slango/tessera@1.0.22
+
 ## 1.0.39
 
 ### Patch Changes
