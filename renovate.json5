@@ -4,6 +4,12 @@
   rangeStrategy: 'bump',
   dependencyDashboard: true,
   timezone: 'Europe/Madrid',
+  // Supply-chain delay: keep in sync with minimumReleaseAge in pnpm-workspace.yaml
+  minimumReleaseAge: '3 days',
+  internalChecksFilter: 'strict',
+  // Security fixes bypass minimumReleaseAge and are raised immediately; OSV
+  // scanning broadens vulnerability detection beyond the platform's native alerts.
+  osvVulnerabilityAlerts: true,
   packageRules: [
     {
       groupName: 'Patch and pin updates',

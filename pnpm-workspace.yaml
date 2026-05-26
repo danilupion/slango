@@ -2,6 +2,16 @@ packages:
   - configs/*
   - packages/*
 
+# Wait 3 days (4320 min) after a version is published before installing it
+# (supply-chain hardening); keep in sync with minimumReleaseAge in renovate.json5.
+# pnpm 11 defaults to 1440 (1 day) — this overrides to match Renovate's window.
+minimumReleaseAge: 4320
+# Strict mode auto-enables once minimumReleaseAge is set, so pnpm will REFUSE to
+# install any version younger than the window — even an explicitly pinned CVE fix.
+# To ship an urgent fix immediately, exempt the exact version, e.g.:
+# minimumReleaseAgeExclude:
+#   - 'some-package@1.2.3'
+
 allowBuilds:
   '@swc/core': true
   bcrypt: true
