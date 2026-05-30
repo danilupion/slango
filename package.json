@@ -42,18 +42,18 @@
     "husky": "9.1.7",
     "lint-staged": "17.0.5",
     "prettier": "3.8.3",
-    "turbo": "2.9.14"
+    "turbo": "2.9.15"
   },
   "engines": {
     "node": "^26.2.0",
-    "pnpm": "^11.3.0"
+    "pnpm": "^11.5.0"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.3.0",
+      "version": "11.5.0",
       "onFail": "error"
     }
   },
-  "packageManager": "pnpm@11.3.0"
+  "packageManager": "pnpm@11.5.0"
 }
