@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.2.20
+
+### Patch Changes
+
+- cbb580d: Dependencies bump
+
 ## 1.2.19
 
 ### Patch Changes

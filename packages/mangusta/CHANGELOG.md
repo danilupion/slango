@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.29
+
+### Patch Changes
+
+- cbb580d: Dependencies bump
+
 ## 2.1.28
 
 ### Patch Changes
