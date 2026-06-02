@@ -38,22 +38,22 @@
     "@slango.configs/lint-staged": "workspace:*",
     "@slango.configs/prettier": "workspace:*",
     "@slango.configs/scripts": "workspace:*",
-    "eslint": "10.4.0",
+    "eslint": "10.4.1",
     "husky": "9.1.7",
-    "lint-staged": "17.0.5",
+    "lint-staged": "17.0.6",
     "prettier": "3.8.3",
     "turbo": "2.9.16"
   },
   "engines": {
     "node": "^26.2.0",
-    "pnpm": "^11.5.0"
+    "pnpm": "^11.5.1"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.5.0",
+      "version": "11.5.1",
       "onFail": "error"
     }
   },
-  "packageManager": "pnpm@11.5.0"
+  "packageManager": "pnpm@11.5.1"
 }
