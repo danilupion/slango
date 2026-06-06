@@ -1,0 +1,48 @@
+{
+  "name": "@slango/reazione",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Collection of generic react utilities",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danilupion/slango",
+    "directory": "packages/reazione"
+  },
+  "type": "module",
+  "exports": {
+    "./*": {
+      "import": "./dist/*.js",
+      "types": "./dist/*.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "build:force": "tsc -p tsconfig.build.json --incremental false",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "build:check": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix --max-warnings 0",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --run --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "peerDependencies": {
+    "react": "^19.2.7"
+  },
+  "devDependencies": {
+    "@slango.configs/eslint": "workspace:*",
+    "@slango.configs/typescript": "workspace:*",
+    "@slango.configs/vitest": "workspace:*",
+    "@testing-library/react": "16.3.2",
+    "@types/react": "19.2.16",
+    "@types/react-dom": "19.2.3",
+    "@vitest/coverage-v8": "4.1.8",
+    "@vitest/ui": "4.1.8",
+    "eslint": "10.4.1",
+    "react": "^19.2.7",
+    "react-dom": "19.2.7",
+    "typescript": "6.0.3",
+    "vitest": "4.1.8"
+  }
+}

@@ -50,6 +50,7 @@ Slango is a collection of reusable TypeScript configuration and utility packages
 ### Utility Packages
 
 - [`@slango/mangusta`](packages/mangusta/README.md) – Mongoose middlewares and utilities
+- [`@slango/reazione`](packages/reazione/README.md) – Collection of generic react utilities
 - [`@slango/ristretto`](packages/ristretto/README.md) – Opinionated REST client
 - [`@slango/tessera`](packages/tessera/README.md) – Collection of TypeScript utilities
 

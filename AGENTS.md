@@ -1,14 +1,14 @@
 # Agent Guidelines
 
-Guidelines for AI assistants and human contributors working in the `gifcept` monorepo.
+Guidelines for AI assistants and human contributors working in the `slango` monorepo.
 
 ## Repository Overview
 
 - **Package manager:** pnpm (v11.5.2)
 - **Node version:** ≥26.2.0 (`nvm use` recommended)
 - **Structure**
-  - `/packages/*` – distributable packages (`expresso` opinionated express wrapper, `mangusta` mongoose middlewares, `ristretto` opinionated rest client, `tessera` typescript utilities)
-  - `/configs/*` – distributable config packages(`eslint`, `prettier`, `typescript`, `lint-staged`, `vytest`)
+  - `/packages/*` – distributable packages (`mangusta` mongoose middlewares, `reazione` generic react utilities, `ristretto` opinionated rest client, `tessera` typescript utilities)
+  - `/configs/*` – distributable config packages (`eslint`, `prettier`, `typescript`, `lint-staged`, `vitest`, `scripts`)
 
 ## Workflow
 
@@ -46,6 +46,7 @@ See the [root README](README.md) for project overview and tooling.
 Package-specific documentation can be found in:
 
 - [packages/mangusta/README.md](packages/mangusta/README.md)
+- [packages/reazione/README.md](packages/reazione/README.md)
 - [packages/ristretto/README.md](packages/ristretto/README.md)
 - [packages/tessera/README.md](packages/tessera/README.md)
 
