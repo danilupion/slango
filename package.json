@@ -46,14 +46,14 @@
   },
   "engines": {
     "node": "^26.2.0",
-    "pnpm": "^11.5.1"
+    "pnpm": "^11.5.2"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.5.1",
-      "onFail": "error"
+      "version": "11.5.2",
+      "onFail": "download"
     }
   },
-  "packageManager": "pnpm@11.5.1"
+  "packageManager": "pnpm@11.5.2"
 }
