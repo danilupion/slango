@@ -1,5 +1,11 @@
 # @slango/reazione
 
+## 1.0.1
+
+### Patch Changes
+
+- 52a706b: Dependencies bump
+
 ## 1.0.0
 
 ### Major Changes
