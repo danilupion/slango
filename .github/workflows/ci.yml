@@ -32,7 +32,7 @@ jobs:
     strategy:
       matrix:
         node-version: [26.3.0]
-        pnpm-version: [11.5.2]
+        pnpm-version: [11.5.3]
 
     steps:
       - name: Checkout Repo
