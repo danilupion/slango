@@ -1,5 +1,12 @@
 # @slango/ristretto
 
+## 1.0.44
+
+### Patch Changes
+
+- dfd3015: Dependencies bump
+  - @slango/tessera@1.0.24
+
 ## 1.0.43
 
 ### Patch Changes

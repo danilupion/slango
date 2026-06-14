@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.32
+
+### Patch Changes
+
+- dfd3015: Dependencies bump
+
 ## 2.1.31
 
 ### Patch Changes

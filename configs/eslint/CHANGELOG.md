@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.2.24
+
+### Patch Changes
+
+- dfd3015: Dependencies bump
+
 ## 1.2.23
 
 ### Patch Changes

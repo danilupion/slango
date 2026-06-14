@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 2.0.34
+
+### Patch Changes
+
+- dfd3015: Dependencies bump
+
 ## 2.0.33
 
 ### Patch Changes
