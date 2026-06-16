@@ -1,5 +1,11 @@
 # @slango/mangusta
 
+## 2.1.33
+
+### Patch Changes
+
+- 7b9def8: Dependencies bump
+
 ## 2.1.32
 
 ### Patch Changes
