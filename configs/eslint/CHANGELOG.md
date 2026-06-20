@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.2.27
+
+### Patch Changes
+
+- c543a10: Fixed issue with eslint
+
 ## 1.2.26
 
 ### Patch Changes
