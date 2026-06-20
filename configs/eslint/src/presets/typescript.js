@@ -24,8 +24,15 @@ export const baseTypescriptConfig = (options = {}) => {
       ...baseConfig.languageOptions,
       parserOptions: {
         ...baseConfig.languageOptions?.parserOptions,
-        project,
-        tsconfigRootDir: dirname(project),
+        // `project` is resolved from the current working directory. When ESLint
+        // resolves this config for a file but cwd has no tsconfig — e.g.
+        // lint-staged invoking eslint from a monorepo root, where ESLint 10
+        // looks up each file's nearest config and loads this preset — `project`
+        // is undefined. Guard so loading the config never throws on
+        // `dirname(undefined)`; type-aware linting just stays off for that
+        // invocation (only relevant for .ts files, which are linted from their
+        // own package directory where a tsconfig exists).
+        ...(project ? { project, tsconfigRootDir: dirname(project) } : {}),
       },
     },
     name: '@slango.configs/eslint/typescript',
