@@ -1,5 +1,11 @@
 # @slango.configs/typescript
 
+## 2.0.8
+
+### Patch Changes
+
+- 02b8cd1: Dependencies bump
+
 ## 2.0.7
 
 ### Patch Changes
