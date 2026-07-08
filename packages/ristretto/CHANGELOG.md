@@ -1,5 +1,11 @@
 # @slango/ristretto
 
+## 1.0.49
+
+### Patch Changes
+
+- 6d64ea9: Dependencies bump
+
 ## 1.0.48
 
 ### Patch Changes
