@@ -41,11 +41,11 @@
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
     "@types/node": "26.1.0",
-    "@vitest/coverage-v8": "4.1.9",
-    "@vitest/ui": "4.1.9",
+    "@vitest/coverage-v8": "4.1.10",
+    "@vitest/ui": "4.1.10",
     "eslint": "10.6.0",
     "type-fest": "5.8.0",
     "typescript": "6.0.3",
-    "vitest": "4.1.9"
+    "vitest": "4.1.10"
   }
 }
