@@ -1,6 +1,6 @@
 {
   "name": "@slango/ristretto",
-  "version": "1.0.49",
+  "version": "1.0.50",
   "private": false,
   "description": "Opinionated rest client",
   "repository": {
