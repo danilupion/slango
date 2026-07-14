@@ -1,5 +1,11 @@
 # @slango.configs/eslint
 
+## 1.2.32
+
+### Patch Changes
+
+- 7d321c6: Dependencies bump
+
 ## 1.2.31
 
 ### Patch Changes
