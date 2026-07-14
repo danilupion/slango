@@ -9,6 +9,9 @@
     "directory": "packages/tessera"
   },
   "type": "module",
+  "files": [
+    "src"
+  ],
   "exports": {
     "./*": "./src/*.ts"
   },

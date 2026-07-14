@@ -9,6 +9,9 @@
     "directory": "packages/mangusta"
   },
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./*": {
       "import": "./dist/*.js",

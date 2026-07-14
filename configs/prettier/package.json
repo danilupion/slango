@@ -9,6 +9,9 @@
     "directory": "configs/prettier"
   },
   "type": "module",
+  "files": [
+    "src"
+  ],
   "exports": {
     "./*": "./src/presets/*"
   },

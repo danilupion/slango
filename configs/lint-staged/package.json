@@ -9,6 +9,9 @@
     "directory": "configs/lint-staged"
   },
   "type": "module",
+  "files": [
+    "src"
+  ],
   "exports": {
     "./*": "./src/presets/*"
   },

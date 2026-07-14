@@ -9,6 +9,9 @@
     "directory": "configs/typescript"
   },
   "type": "module",
+  "files": [
+    "src"
+  ],
   "exports": {
     "./*": "./src/presets/*"
   },

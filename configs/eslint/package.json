@@ -9,6 +9,9 @@
     "directory": "configs/eslint"
   },
   "type": "module",
+  "files": [
+    "src"
+  ],
   "exports": {
     "./*": "./src/presets/*"
   },

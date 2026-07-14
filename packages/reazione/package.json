@@ -9,6 +9,9 @@
     "directory": "packages/reazione"
   },
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./*": {
       "import": "./dist/*.js",

@@ -9,6 +9,9 @@
     "directory": "configs/scripts"
   },
   "type": "module",
+  "files": [
+    "bin"
+  ],
   "scripts": {},
   "bin": {
     "clean-node-modules": "bin/clean-node-modules.sh",

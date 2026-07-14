@@ -9,6 +9,9 @@
     "directory": "configs/vitest"
   },
   "type": "module",
+  "files": [
+    "src"
+  ],
   "exports": {
     "./*": "./src/presets/*.js"
   },
