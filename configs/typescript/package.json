@@ -20,7 +20,7 @@
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
   "peerDependencies": {
-    "typescript": "^7.0.2"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "eslint": "10.7.0"
