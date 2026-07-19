@@ -1,5 +1,15 @@
 # @slango/ristretto
 
+## 1.0.54
+
+### Patch Changes
+
+- 8dd6862: Rolled bacy typescript upgrade
+- de1db71: Dependencies bump
+- Updated dependencies [8dd6862]
+- Updated dependencies [de1db71]
+  - @slango/tessera@1.0.31
+
 ## 1.0.53
 
 ### Patch Changes

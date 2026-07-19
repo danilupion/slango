@@ -1,5 +1,12 @@
 # @slango/reazione
 
+## 1.0.9
+
+### Patch Changes
+
+- 8dd6862: Rolled bacy typescript upgrade
+- de1db71: Dependencies bump
+
 ## 1.0.8
 
 ### Patch Changes

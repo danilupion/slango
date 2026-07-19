@@ -1,5 +1,12 @@
 # @slango.configs/typescript
 
+## 2.0.11
+
+### Patch Changes
+
+- 8dd6862: Rolled bacy typescript upgrade
+- de1db71: Dependencies bump
+
 ## 2.0.10
 
 ### Patch Changes

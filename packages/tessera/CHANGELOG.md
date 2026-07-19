@@ -1,5 +1,12 @@
 # @slango/tessera
 
+## 1.0.31
+
+### Patch Changes
+
+- 8dd6862: Rolled bacy typescript upgrade
+- de1db71: Dependencies bump
+
 ## 1.0.30
 
 ### Patch Changes
