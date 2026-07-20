@@ -48,7 +48,7 @@
     "@vitest/ui": "4.1.10",
     "eslint": "10.7.0",
     "type-fest": "5.8.0",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vitest": "4.1.10"
   }
 }
