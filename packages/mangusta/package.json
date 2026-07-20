@@ -41,7 +41,7 @@
   },
   "peerDependencies": {
     "mongoose": "^9.7.4",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "peerDependenciesMeta": {
     "vitest": {
@@ -58,6 +58,6 @@
     "eslint": "10.7.0",
     "mongoose": "9.7.4",
     "typescript": "6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "4.1.10"
   }
 }
