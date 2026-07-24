@@ -24,3 +24,6 @@ onlyBuiltDependencies:
   - esbuild
   - mongodb-memory-server
   - unrs-resolver
+
+minimumReleaseAgeExclude:
+  - lint-staged@17.2.0

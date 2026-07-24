@@ -40,20 +40,20 @@
     "@slango.configs/scripts": "workspace:*",
     "eslint": "10.7.0",
     "husky": "9.1.7",
-    "lint-staged": "17.0.8",
-    "prettier": "3.9.5",
+    "lint-staged": "17.2.0",
+    "prettier": "3.9.6",
     "turbo": "2.10.5"
   },
   "engines": {
     "node": "^26.5.0",
-    "pnpm": "^11.15.0"
+    "pnpm": "^11.17.0"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.15.0",
+      "version": "11.17.0",
       "onFail": "download"
     }
   },
-  "packageManager": "pnpm@11.15.0"
+  "packageManager": "pnpm@11.17.0"
 }
