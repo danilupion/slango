@@ -54,7 +54,7 @@ describe('timestampsMiddleware', () => {
     const updatedDoc = await TestModel.findById(doc._id);
     expect(updatedDoc).not.toBeNull();
     if (!updatedDoc) return;
-    expect(updatedDoc.updated).not.toBeDefined();
+    expect(updatedDoc.updated).toBeInstanceOf(Date);
     if (!updatedDoc.created || !updatedDoc.updated) return;
     expect(updatedDoc.updated.getTime()).toBeGreaterThan(updatedDoc.created.getTime());
   });

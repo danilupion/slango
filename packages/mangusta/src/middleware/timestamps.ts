@@ -75,8 +75,8 @@ const timestampsMiddleware: PluginFunction<TimestampsMiddlewareOptions> = <
 
   if (update) {
     schema.pre(['updateOne', 'findOneAndUpdate'], function schemaWithTimestampsPreUpdate() {
-      // ensure $set exists and we don't stomp on other operators
-      this.set({ $set: { [updateField]: new Date() } });
+      // Query#set writes into the update's $set without stomping other operators
+      this.set(updateField, new Date());
     });
   }
 
