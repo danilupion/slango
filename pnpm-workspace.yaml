@@ -26,4 +26,4 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 minimumReleaseAgeExclude:
-  - lint-staged@17.2.0
+  - eslint-plugin-perfectionist@5.10.1

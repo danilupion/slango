@@ -38,14 +38,14 @@
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
     "@testing-library/react": "16.3.2",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "@vitest/coverage-v8": "4.1.10",
     "@vitest/ui": "4.1.10",
     "eslint": "10.8.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vitest": "4.1.10"
   }
 }

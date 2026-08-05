@@ -4,8 +4,8 @@ Guidelines for AI assistants and human contributors working in the `slango` mono
 
 ## Repository Overview
 
-- **Package manager:** pnpm (v11.18.0)
-- **Node version:** ≥26.5.1 (`nvm use` recommended)
+- **Package manager:** pnpm (v11.20.0)
+- **Node version:** ≥26.7.0 (`nvm use` recommended)
 - **Structure**
   - `/packages/*` – distributable packages (`mangusta` mongoose middlewares, `reazione` generic react utilities, `ristretto` opinionated rest client, `tessera` typescript utilities)
   - `/configs/*` – distributable config packages (`eslint`, `prettier`, `typescript`, `lint-staged`, `vitest`, `scripts`)
