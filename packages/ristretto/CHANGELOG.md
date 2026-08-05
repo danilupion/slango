@@ -1,5 +1,13 @@
 # @slango/ristretto
 
+## 1.0.55
+
+### Patch Changes
+
+- edf7da7: Dependencies bump
+- Updated dependencies [edf7da7]
+  - @slango/tessera@1.0.32
+
 ## 1.0.54
 
 ### Patch Changes
