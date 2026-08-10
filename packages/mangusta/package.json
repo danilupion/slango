@@ -37,11 +37,11 @@
   "dependencies": {
     "bcrypt": "6.0.0",
     "mongodb-memory-server": "11.2.0",
-    "nanoid": "6.0.0"
+    "nanoid": "6.0.1"
   },
   "peerDependencies": {
     "mongoose": "^9.9.1",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "peerDependenciesMeta": {
     "vitest": {
