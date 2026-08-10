@@ -58,6 +58,6 @@
     "eslint": "10.8.0",
     "mongoose": "9.9.1",
     "typescript": "7.0.2",
-    "vitest": "^4.1.10"
+    "vitest": "4.1.10"
   }
 }
