@@ -26,7 +26,7 @@
     "@testing-library/react": "16.3.2",
     "@vitejs/plugin-react": "6.0.5",
     "jsdom": "30.0.1",
-    "unplugin-swc": "1.5.10"
+    "unplugin-swc": "1.5.11"
   },
   "peerDependencies": {
     "@vitest/coverage-v8": "^4.1.10",
