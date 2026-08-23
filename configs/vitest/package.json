@@ -20,23 +20,23 @@
     "lint:fix": "eslint . --fix --max-warnings 0"
   },
   "dependencies": {
-    "@swc/core": "1.16.0",
+    "@swc/core": "1.16.1",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.2",
-    "@vitejs/plugin-react": "6.0.5",
+    "@vitejs/plugin-react": "6.1.0",
     "jsdom": "30.0.1",
     "unplugin-swc": "1.5.11"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "^4.1.10",
-    "@vitest/ui": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/ui": "^4.1.11",
     "vite": "^8.2.1",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.11"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
     "eslint": "10.8.1",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   }
 }
