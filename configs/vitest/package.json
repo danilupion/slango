@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
-    "eslint": "10.8.1",
+    "eslint": "10.9.1",
     "vitest": "4.1.11"
   }
 }
