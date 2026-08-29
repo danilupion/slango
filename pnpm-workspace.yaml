@@ -24,6 +24,3 @@ onlyBuiltDependencies:
   - esbuild
   - mongodb-memory-server
   - unrs-resolver
-
-minimumReleaseAgeExclude:
-  - eslint-plugin-perfectionist@5.10.1
