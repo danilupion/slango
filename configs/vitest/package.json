@@ -29,14 +29,14 @@
     "unplugin-swc": "1.5.11"
   },
   "peerDependencies": {
-    "@vitest/coverage-v8": "^4.1.11",
-    "@vitest/ui": "^4.1.11",
+    "@vitest/coverage-v8": "^5.0.0",
+    "@vitest/ui": "^5.0.0",
     "vite": "^8.2.2",
-    "vitest": "^4.1.11"
+    "vitest": "^5.0.0"
   },
   "devDependencies": {
     "@slango.configs/eslint": "workspace:*",
     "eslint": "10.9.1",
-    "vitest": "4.1.11"
+    "vitest": "5.0.0"
   }
 }
