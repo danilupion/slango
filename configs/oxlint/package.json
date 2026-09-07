@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "eslint-plugin-perfectionist": "5.11.0",
-    "eslint-plugin-regexp": "3.2.0"
+    "eslint-plugin-regexp": "3.3.0"
   },
   "peerDependencies": {
     "oxlint": "^1.81.0",
