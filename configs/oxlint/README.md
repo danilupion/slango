@@ -1,6 +1,6 @@
-# Slango oxlint Configs (@slango.configs/oxlint)
+# ![oxlint](https://img.shields.io/badge/oxlint-00F7F1?style=flat-square&logo=oxc) Slango oxlint Configs (@slango.configs/oxlint)
 
-oxlint presets replacing [`@slango.configs/eslint`](../eslint/README.md) for projects on
+This package exposes oxlint configurations for easy setup, replacing [`@slango.configs/eslint`](../eslint/README.md) for projects on
 TypeScript 7, where typescript-eslint can no longer run. Type-aware rules are provided by
 [tsgolint](https://github.com/oxc-project/tsgolint) (built on TypeScript 7), everything
 oxlint has no native port for (`perfectionist`, `regexp`) is loaded through oxlint's JS plugin
