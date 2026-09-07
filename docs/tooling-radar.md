@@ -1,0 +1,14 @@
+# Tooling radar
+
+Tools considered on top of the current stack (oxlint + tsgolint, TypeScript 7, Vitest, pnpm,
+Turborepo, Prettier, husky + lint-staged, Renovate, changesets). Revisit when the "adopt when"
+condition is met. Last reviewed: 2026-09-07.
+
+| Tool                                                                                    | What it replaces / adds                                                                                                                                                                    | Status (2026-09)                | Adopt when                                                                                     |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [Oxfmt](https://oxc.rs/docs/guide/usage/formatter)                                      | Prettier. Same output (100% of Prettier's JS/TS conformance tests), ~30x faster, built-in import sorting based on `eslint-plugin-perfectionist/sort-imports` (could retire that tier too). | Beta since 2026-02, no 1.0 yet. | A stable release ships. Then: `@slango.configs/prettier` -> oxfmt preset, drop `sort-imports`. |
+| [Lefthook](https://github.com/evilmartians/lefthook)                                    | husky + lint-staged. One `lefthook.yml`, parallel hooks, no per-package config files.                                                                                                      | Stable, widely adopted.         | When touching the lint-staged presets next; migration is mechanical.                           |
+| [Knip](https://knip.dev)                                                                | Adds: unused files, exports, exported types and package.json dependencies across the workspace.                                                                                            | Stable, reputable.              | Any time; run once in CI (`knip`) and fix what it finds.                                       |
+| [publint](https://publint.dev) + [arethetypeswrong](https://arethetypeswrong.github.io) | Adds: checks that published packages' `exports`/`types` are consumable from ESM/CJS/bundlers.                                                                                              | Stable.                         | Now for the published `@slango/*` and `@slango.configs/*` packages; add to `release:check`.    |
+
+Not on the radar: Biome (no ESLint plugin compatibility, weaker type awareness than tsgolint).

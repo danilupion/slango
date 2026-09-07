@@ -70,9 +70,6 @@ tmp
 # Vercel
 .vercel
 
-# Caches
-.eslintcache
-
 # Runtime data
 pids
 *.pid

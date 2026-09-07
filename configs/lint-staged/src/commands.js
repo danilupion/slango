@@ -1,8 +1,5 @@
 export const prettier = 'prettier --ignore-unknown --write';
 
-export const eslintFix =
-  'eslint --fix --max-warnings 0 --cache --cache-strategy content --no-ignore';
-
 export const oxlintFix = 'oxlint --fix --max-warnings 0';
 
 export const oxlintTypeAwareFix = 'oxlint --type-aware --fix --max-warnings 0';

@@ -62,7 +62,6 @@ pnpm release:check   # Verify changesets against main branch
 ### Monorepo Structure
 
 - **`/configs/*`** - Distributable configuration packages
-  - `eslint` - ESLint presets and configurations (TypeScript <= 6, typescript-eslint)
   - `oxlint` - oxlint presets (oxlint categories + tsgolint type-aware rules) for TypeScript 7; used by this repo. Built package: run `pnpm build` before `pnpm lint` on a fresh clone
   - `prettier` - Prettier configuration
   - `typescript` - TypeScript base configs

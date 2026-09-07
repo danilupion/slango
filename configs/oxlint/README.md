@@ -1,6 +1,6 @@
 # ![oxlint](https://img.shields.io/badge/oxlint-00F7F1?style=flat-square&logo=oxc) Slango oxlint Configs (@slango.configs/oxlint)
 
-This package exposes oxlint configurations for easy setup, replacing [`@slango.configs/eslint`](../eslint/README.md) for projects on
+This package exposes oxlint configurations for easy setup, replacing the deprecated `@slango.configs/eslint` for projects on
 TypeScript 7, where typescript-eslint can no longer run. Type-aware rules are provided by
 [tsgolint](https://github.com/oxc-project/tsgolint) (built on TypeScript 7), everything
 oxlint has no native port for (`perfectionist`, `regexp`) is loaded through oxlint's JS plugin
@@ -26,13 +26,14 @@ rules (`no-floating-promises`, `await-thenable`, `unbound-method`, ...).
 
 On top of the category:
 
-| Source                                                                                        | Available in preset                                                                               | How                                         |
-| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `eslint-plugin-regexp` recommended                                                            | `all`                                                                                             | JS plugin, rule list read from the plugin   |
-| `eslint-plugin-perfectionist` (tiered)                                                        | `all`                                                                                             | JS plugin, see options                      |
-| `no-unused-vars` (`ignoreRestSiblings`), `import/first`, `import/no-anonymous-default-export` | `all`                                                                                             | explicit                                    |
-| `react/rules-of-hooks`                                                                        | `typescript-react`, `-next`                                                                       | explicit (oxlint files it under `pedantic`) |
-| `react/only-export-components`                                                                | `typescript-react` (`eslint-plugin-react-refresh` vite options), `typescript-next` (next options) | explicit                                    |
+| Source                                                                                        | Available in preset                                                                               | How                                                                |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `eslint-plugin-regexp` recommended                                                            | `all`                                                                                             | JS plugin, rule list read from the plugin                          |
+| `eslint-plugin-perfectionist` (tiered)                                                        | `all`                                                                                             | JS plugin, see options                                             |
+| `no-unused-vars` (`ignoreRestSiblings`), `import/first`, `import/no-anonymous-default-export` | `all`                                                                                             | explicit                                                           |
+| `react/rules-of-hooks`                                                                        | `typescript-react`, `-next`                                                                       | explicit (oxlint files it under `pedantic`)                        |
+| `jsx-a11y/prefer-tag-over-role` **off**                                                       | `typescript-react`, `-next`                                                                       | not in jsx-a11y recommended/strict; rejects ARIA composite widgets |
+| `react/only-export-components`                                                                | `typescript-react` (`eslint-plugin-react-refresh` vite options), `typescript-next` (next options) | explicit                                                           |
 
 Other categories (`suspicious`, `pedantic`, `perf`, `style`, `restriction`, `nursery`) are off.
 Enable them in your own config if wanted, e.g. `categories: { suspicious: 'warn' }`. Note that
