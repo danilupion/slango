@@ -1,5 +1,13 @@
 # @slango/ristretto
 
+## 1.0.64
+
+### Patch Changes
+
+- c1dfac0: Lint with oxlint (`@slango.configs/oxlint`) instead of ESLint. No runtime changes, except in `@slango/reazione` where `useMounted`, `useDebouncedCallback` and `useClickOutside` were reworked to satisfy the React Compiler rules (`useSyncExternalStore`, ref updates in a layout effect, `useEffectEvent`) with unchanged behaviour, and in `@slango/ristretto` where `withBearerToken` / `withJsonBody` now merge `Headers` instances and header entry arrays correctly instead of spreading them as arrays.
+- Updated dependencies [c1dfac0]
+  - @slango/tessera@1.0.38
+
 ## 1.0.63
 
 ### Patch Changes
