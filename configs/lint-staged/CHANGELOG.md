@@ -1,5 +1,11 @@
 # @slango.configs/lint-staged
 
+## 2.0.0
+
+### Major Changes
+
+- 63130ba: Eslint support dropped
+
 ## 1.2.0
 
 ### Minor Changes

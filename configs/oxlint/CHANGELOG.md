@@ -1,5 +1,11 @@
 # @slango.configs/oxlint
 
+## 0.1.2
+
+### Patch Changes
+
+- 63130ba: React presets: turn off `jsx-a11y/prefer-tag-over-role` (not part of eslint-plugin-jsx-a11y recommended/strict; it rejects ARIA composite widgets such as combobox listboxes that must use `role`).
+
 ## 0.1.1
 
 ### Patch Changes
