@@ -17,20 +17,21 @@
   },
   "scripts": {
     "build:check": "tsc --noEmit",
-    "lint": "eslint . --max-warnings 0",
-    "lint:fix": "eslint . --fix --max-warnings 0",
+    "lint": "oxlint --type-aware --max-warnings 0 .",
+    "lint:fix": "oxlint --type-aware --fix --max-warnings 0 .",
     "test": "vitest --run",
     "test:watch": "vitest",
     "test:coverage": "vitest --run --coverage",
     "test:ui": "vitest --ui"
   },
   "devDependencies": {
-    "@slango.configs/eslint": "workspace:*",
+    "@slango.configs/oxlint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
     "@vitest/coverage-v8": "5.0.0",
     "@vitest/ui": "5.0.0",
-    "eslint": "10.9.1",
+    "oxlint": "1.81.0",
+    "oxlint-tsgolint": "7.0.2001",
     "typescript": "7.0.2",
     "vitest": "5.0.0"
   }

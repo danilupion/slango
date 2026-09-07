@@ -1,0 +1,9 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "lint": { "dependsOn": ["^build", "build"] },
+    "lint:fix": { "dependsOn": ["^build", "build"] },
+    "build:check": { "dependsOn": ["^build", "build"] }
+  }
+}

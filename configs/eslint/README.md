@@ -2,6 +2,9 @@
 
 This package exposes eslint configurations for easy setup, the following presets are available:
 
+> typescript-eslint cannot run on TypeScript 7 (no compiler API until 7.1). Projects on TypeScript 7
+> should use [`@slango.configs/oxlint`](../oxlint/README.md), which mirrors these presets.
+
 | Name                 | Description                                                                                         | Includes                         |
 | -------------------- | --------------------------------------------------------------------------------------------------- | -------------------------------- |
 | `javascript-node`    | Intended to be used for tooling javascript files (eg: eslint.confg.js, linte-staged.config.js, ...) | -                                |
@@ -12,16 +15,18 @@ This package exposes eslint configurations for easy setup, the following presets
 
 ## Included plugins/configs
 
-| Name                                                                                                             | Available in Preset      | Description                                              |
-| ---------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------- |
-| [`@eslint/js` recommended](https://github.com/eslint/eslint)                                                     | `all`                    | @eslint/js official recommended configuration            |
-| [`eslint-plugin-eslint-comments` recommended](https://github.com/eslint-community/eslint-plugin-eslint-comments) | `all`                    | Comments from @eslint-community for comments             |
-| [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)                          | `all`                    | Configurable sorting rules with tiered strictness levels |
-| [`eslint-plugin-regex` recommended](https://github.com/ota-meshi/eslint-plugin-regexp)                           | `all`                    | Recommended config from regexp-eslint-plugin             |
-| [`eslint-plugin-prettier` recommended](https://github.com/prettier/eslint-plugin-prettier)                       | `all`                    | Prettier official eslint plugin's recommended config     |
-| [`eslint-plugin-import` recommended](https://github.com/import-js/eslint-plugin-import)                          | `all`                    | Prettier official eslint plugin's recommended config     |
-| [`typescript-eslint` recommendedTypeChecked](https://github.com/typescript-eslint/typescript-eslint)             | `all typescript configs` | Typescript Eslint type checked recommended config        |
-| [`next/core-web-vitals`](https://nextjs.org/docs/app/building-your-application/configuring/eslint)               | `typescript-next`        | Next.js official eslint config                           |
+| Name                                                                                                             | Available in Preset                                 | Description                                              |
+| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------- |
+| [`@eslint/js` recommended](https://github.com/eslint/eslint)                                                     | `all`                                               | @eslint/js official recommended configuration            |
+| [`eslint-plugin-eslint-comments` recommended](https://github.com/eslint-community/eslint-plugin-eslint-comments) | `all`                                               | Comments from @eslint-community for comments             |
+| [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist)                          | `all`                                               | Configurable sorting rules with tiered strictness levels |
+| [`eslint-plugin-regex` recommended](https://github.com/ota-meshi/eslint-plugin-regexp)                           | `all`                                               | Recommended config from regexp-eslint-plugin             |
+| [`eslint-plugin-prettier` recommended](https://github.com/prettier/eslint-plugin-prettier)                       | `all`                                               | Prettier official eslint plugin's recommended config     |
+| [`eslint-plugin-import` recommended](https://github.com/import-js/eslint-plugin-import)                          | `all`                                               | Prettier official eslint plugin's recommended config     |
+| [`typescript-eslint` recommendedTypeChecked](https://github.com/typescript-eslint/typescript-eslint)             | `all typescript configs`                            | Typescript Eslint type checked recommended config        |
+| [`eslint-plugin-react-hooks` recommended](https://react.dev/reference/eslint-plugin-react-hooks)                 | `typescript-react`, `typescript-next`               | rules-of-hooks, exhaustive-deps and React Compiler rules |
+| [`eslint-plugin-react-refresh`](https://github.com/ArnaudBarre/eslint-plugin-react-refresh)                      | `typescript-react` (vite), `typescript-next` (next) | Fast Refresh boundary checks                             |
+| [`next/core-web-vitals`](https://nextjs.org/docs/app/building-your-application/configuring/eslint)               | `typescript-next`                                   | Next.js official eslint config                           |
 
 ## Usage
 

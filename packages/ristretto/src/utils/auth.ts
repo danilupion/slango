@@ -1,4 +1,5 @@
 import { AbortablePromise } from './abortableRequest.js';
+import { toHeaderRecord } from './headers.js';
 import { Request, RequestOptionsWithoutUrl } from './request.js';
 
 export const withBearerToken =
@@ -10,7 +11,7 @@ export const withBearerToken =
     req({
       ...options,
       headers: {
-        ...options.headers,
+        ...toHeaderRecord(options.headers),
         Authorization: `Bearer ${bearerToken}`,
       },
     });

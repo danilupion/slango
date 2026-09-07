@@ -8,7 +8,7 @@ Guidelines for AI assistants and human contributors working in the `slango` mono
 - **Node version:** ≥26.8.1 (`nvm use` recommended)
 - **Structure**
   - `/packages/*` – distributable packages (`mangusta` mongoose middlewares, `reazione` generic react utilities, `ristretto` opinionated rest client, `tessera` typescript utilities)
-  - `/configs/*` – distributable config packages (`eslint`, `prettier`, `typescript`, `lint-staged`, `vitest`, `scripts`)
+  - `/configs/*` – distributable config packages (`eslint`, `oxlint`, `prettier`, `typescript`, `lint-staged`, `vitest`, `scripts`)
 
 ## Workflow
 
@@ -33,7 +33,7 @@ Guidelines for AI assistants and human contributors working in the `slango` mono
 
 - Use TypeScript with ECMAScript modules (ESM).
 - Prefer explicit types and avoid `any` when possible.
-- Follow the repo's ESLint and Prettier configurations.
+- Follow the repo's oxlint (`@slango.configs/oxlint`) and Prettier configurations. `@slango.configs/eslint` is kept, deprecated, for consumers still on TypeScript <= 6 and will be removed once none remain.
 
 ## Security & Secrets
 

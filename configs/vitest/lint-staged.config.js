@@ -1,1 +1,1 @@
-export { default } from '@slango.configs/lint-staged/javascript.js';
+export { default } from '@slango.configs/lint-staged/javascript-oxlint.js';

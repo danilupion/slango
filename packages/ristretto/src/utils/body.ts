@@ -1,6 +1,7 @@
 import { JsonPrimitive as BaseJsonPrimitive, JsonObject, JsonValue } from 'type-fest';
 
 import { AbortablePromise } from './abortableRequest.js';
+import { toHeaderRecord } from './headers.js';
 import { Request, RequestOptionsWithoutUrl } from './request.js';
 
 // undefined is not allowed in JsonObjectWithFile (because it is not allowed in Json)
@@ -57,7 +58,7 @@ export const withJsonBody =
       ...options,
       body: JSON.stringify(fixedBody),
       headers: {
-        ...options.headers,
+        ...toHeaderRecord(options.headers),
         'content-type': 'application/json',
       },
     });

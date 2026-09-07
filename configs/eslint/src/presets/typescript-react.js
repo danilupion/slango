@@ -14,12 +14,12 @@ export const createTypescriptReactConfig = (options = {}) => {
   return [
     ...createJavascriptNodeConfig(opts),
     jsxA11y.flatConfigs.recommended,
+    // Upstream recommended sets: rules-of-hooks, exhaustive-deps and the React
+    // Compiler rules; Fast Refresh boundaries as configured for Vite.
+    reactHooks.configs.flat.recommended,
+    reactRefresh.configs.vite,
     {
       ...browserConfig,
-      plugins: {
-        'react-hooks': reactHooks,
-        'react-refresh': reactRefresh,
-      },
       name: '@slango.configs/eslint/typescript-react',
     },
     ...normalizeConfig(

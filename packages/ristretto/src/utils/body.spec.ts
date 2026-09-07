@@ -22,8 +22,9 @@ afterEach(() => {
 const formDataToObject = (formData: FormData) => {
   const obj: JsonObjectWithFile = {};
   for (const [key, value] of formData.entries()) {
-    if (obj[key]) {
-      obj[key] = Array.isArray(obj[key]) ? [...obj[key], value] : [obj[key], value];
+    const existing = obj[key];
+    if (existing) {
+      obj[key] = Array.isArray(existing) ? existing.concat(value) : [existing, value];
     } else {
       obj[key] = value;
     }

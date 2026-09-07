@@ -12,7 +12,10 @@
   "files": [
     "bin"
   ],
-  "scripts": {},
+  "scripts": {
+    "lint": "oxlint --max-warnings 0 .",
+    "lint:fix": "oxlint --fix --max-warnings 0 ."
+  },
   "bin": {
     "clean-node-modules": "bin/clean-node-modules.sh",
     "clean-build-artifacts": "bin/clean-build-artifacts.sh",
@@ -20,6 +23,8 @@
     "clean-docker-images": "bin/clean-docker-images.sh"
   },
   "devDependencies": {
-    "@slango.configs/lint-staged": "workspace:*"
+    "@slango.configs/lint-staged": "workspace:*",
+    "@slango.configs/oxlint": "workspace:*",
+    "oxlint": "1.81.0"
   }
 }

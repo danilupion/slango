@@ -18,6 +18,8 @@ export function useClientValue<T>(
 ): T {
   const [value, setValue] = useState<T>(initialValue);
 
+  // Dynamic deps by design: callers own the dependency list of `initializer`.
+  // oxlint-disable-next-line react/exhaustive-deps
   const memoizedInitializer = useMemo(() => initializer, deps);
 
   useEffect(() => {

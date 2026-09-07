@@ -1,4 +1,5 @@
 import nextPlugin from '@next/eslint-plugin-next';
+import reactRefresh from 'eslint-plugin-react-refresh';
 import tsEslint from 'typescript-eslint';
 
 import { globs, normalizeConfig, normalizeOptions, typescriptConfigs } from '../common.js';
@@ -11,6 +12,8 @@ export const createTypescriptNextConfig = (options = {}) => {
 
   return [
     ...createTypescriptReactConfig(opts),
+    // Next.js Fast Refresh allows the framework's special exports (metadata, ...).
+    reactRefresh.configs.next,
     ...normalizeConfig(
       tsEslint.config(
         ...typescriptConfigs(globs.typescript),

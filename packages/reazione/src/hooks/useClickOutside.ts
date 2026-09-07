@@ -2,7 +2,7 @@
 
 import type { RefObject } from 'react';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useEffectEvent } from 'react';
 
 /**
  * Invokes `onOutside` when a mousedown lands outside the referenced element.
@@ -13,14 +13,13 @@ export const useClickOutside = (
   onOutside: () => void,
   active = true,
 ): void => {
-  const onOutsideRef = useRef(onOutside);
-  onOutsideRef.current = onOutside;
+  const onOutsideEvent = useEffectEvent(onOutside);
 
   useEffect(() => {
     if (!active) return;
     const handleClick = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
-        onOutsideRef.current();
+        onOutsideEvent();
       }
     };
     document.addEventListener('mousedown', handleClick);

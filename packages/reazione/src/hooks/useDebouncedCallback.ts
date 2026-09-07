@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 
 export type DebouncedCallback<Args extends unknown[]> = {
   run: (...args: Args) => void;
@@ -18,7 +18,10 @@ export const useDebouncedCallback = <Args extends unknown[]>(
 ): DebouncedCallback<Args> => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const callbackRef = useRef(callback);
-  callbackRef.current = callback;
+  // Latest-callback ref, updated after commit rather than during render.
+  useLayoutEffect(() => {
+    callbackRef.current = callback;
+  });
 
   useEffect(() => () => clearTimeout(timeoutRef.current), []);
 

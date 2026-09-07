@@ -2,9 +2,12 @@
 
 This package exposes eslint configurations for easy setup, the following presets are available:
 
-| Name         | Description                              | Includes                 | Tasks                                |
-| ------------ | ---------------------------------------- | ------------------------ | ------------------------------------ |
-| `debug`      | Intended for debugging purposes          | -                        | fail                                 |
-| `default`    | Preset to be used in no-code packages    | -                        | prettier                             |
-| `javascript` | Preset to be used in javascript packages | `default`                | prettier + eslint                    |
-| `typescript` | Preset to be used in typescript packages | `default` + `javascript` | prettier + eslint + typescript check |
+| Name                         | Description                                                             | Includes                        | Tasks                                            |
+| ---------------------------- | ----------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------ |
+| `debug`                      | Intended for debugging purposes                                         | -                               | fail                                             |
+| `default`                    | Preset to be used in no-code packages                                   | -                               | prettier                                         |
+| `javascript`                 | Preset to be used in javascript packages                                | `default`                       | prettier + eslint                                |
+| `typescript`                 | Preset to be used in typescript packages                                | `default` + `javascript`        | prettier + eslint + typescript check             |
+| `javascript-oxlint`          | `javascript` for packages linted with oxlint (`@slango.configs/oxlint`) | `default`                       | prettier + oxlint                                |
+| `typescript-oxlint`          | `typescript` for packages linted with oxlint (`@slango.configs/oxlint`) | `default` + `javascript-oxlint` | prettier + oxlint + typescript check             |
+| `typescript-oxlint-no-tests` | `typescript-oxlint` for packages without tests                          | `default` + `javascript-oxlint` | prettier + oxlint + typescript check (no vitest) |

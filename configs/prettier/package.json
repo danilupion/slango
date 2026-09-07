@@ -16,14 +16,14 @@
     "./*": "./src/presets/*"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "lint:fix": "eslint . --fix --max-warnings 0"
+    "lint": "oxlint --max-warnings 0 .",
+    "lint:fix": "oxlint --fix --max-warnings 0 ."
   },
   "peerDependencies": {
     "prettier": "^3.9.6"
   },
   "devDependencies": {
-    "@slango.configs/eslint": "workspace:*",
-    "eslint": "10.9.1"
+    "@slango.configs/oxlint": "workspace:*",
+    "oxlint": "1.81.0"
   }
 }

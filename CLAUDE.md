@@ -44,7 +44,7 @@ pnpm test:ui         # Open Vitest UI
 ### Linting & Formatting
 
 ```bash
-pnpm lint            # Lint all packages (runs root ESLint + turbo lint)
+pnpm lint            # Lint all packages (runs root oxlint + turbo lint)
 pnpm lint:fix        # Auto-fix linting issues
 pnpm format          # Format with Prettier
 ```
@@ -62,7 +62,8 @@ pnpm release:check   # Verify changesets against main branch
 ### Monorepo Structure
 
 - **`/configs/*`** - Distributable configuration packages
-  - `eslint` - ESLint presets and configurations
+  - `eslint` - ESLint presets and configurations (TypeScript <= 6, typescript-eslint)
+  - `oxlint` - oxlint presets (oxlint categories + tsgolint type-aware rules) for TypeScript 7; used by this repo. Built package: run `pnpm build` before `pnpm lint` on a fresh clone
   - `prettier` - Prettier configuration
   - `typescript` - TypeScript base configs
   - `lint-staged` - Lint-staged configuration

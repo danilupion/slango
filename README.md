@@ -41,6 +41,7 @@ Slango is a collection of reusable TypeScript configuration and utility packages
 ### Configuration Packages
 
 - [![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint) `@slango.configs/eslint`](configs/eslint/README.md)
+- [![oxlint](https://img.shields.io/badge/oxlint-2E3440?style=flat-square) `@slango.configs/oxlint`](configs/oxlint/README.md)
 - [![Lint-staged](https://img.shields.io/badge/lint--staged-3AC486?style=flat-square) `@slango.configs/lint-staged`](configs/lint-staged/README.md)
 - [![Prettier](https://img.shields.io/badge/Prettier-1A2B34?style=flat-square&logo=prettier) `@slango.configs/prettier`](configs/prettier/README.md)
 - [![Scripts](https://img.shields.io/badge/scripts-AFD89C?style=flat-square&logo=gnu-bash) `@slango.configs/scripts`](configs/scripts/README.md)

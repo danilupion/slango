@@ -1,0 +1,41 @@
+{
+  "name": "@slango.configs/oxlint",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Slango oxlint configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danilupion/slango",
+    "directory": "configs/oxlint"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./*": "./dist/presets/*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "build:force": "tsc -p tsconfig.build.json --incremental false",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "build:check": "tsc --noEmit",
+    "lint": "oxlint --type-aware --max-warnings 0 .",
+    "lint:fix": "oxlint --type-aware --fix --max-warnings 0 ."
+  },
+  "dependencies": {
+    "eslint-plugin-perfectionist": "5.11.0",
+    "eslint-plugin-regexp": "3.2.0"
+  },
+  "peerDependencies": {
+    "oxlint": "^1.81.0",
+    "oxlint-tsgolint": "^7.0.2001"
+  },
+  "devDependencies": {
+    "@slango.configs/typescript": "workspace:*",
+    "@types/node": "26.4.1",
+    "oxlint": "1.81.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "typescript": "7.0.2"
+  }
+}

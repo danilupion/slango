@@ -15,14 +15,9 @@
   "exports": {
     "./*": "./src/presets/*"
   },
-  "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "lint:fix": "eslint . --fix --max-warnings 0"
-  },
+  "scripts": {},
   "peerDependencies": {
     "typescript": "^7.0.2"
   },
-  "devDependencies": {
-    "eslint": "10.9.1"
-  }
+  "devDependencies": {}
 }
