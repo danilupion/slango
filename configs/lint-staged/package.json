@@ -23,7 +23,7 @@
     "deepmerge": "4.3.1"
   },
   "peerDependencies": {
-    "lint-staged": "^17.4.1"
+    "lint-staged": "^17.5.0"
   },
   "devDependencies": {
     "@slango.configs/oxlint": "workspace:*",
