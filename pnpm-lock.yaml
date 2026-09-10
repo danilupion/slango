@@ -302,7 +302,7 @@ importers:
         version: 7.0.2
       vitest:
         specifier: 5.0.0
-        version: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1))
 
   packages/reazione:
     devDependencies:
@@ -347,7 +347,7 @@ importers:
         version: 7.0.2
       vitest:
         specifier: 5.0.0
-        version: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1))
 
   packages/ristretto:
     dependencies:
@@ -417,7 +417,7 @@ importers:
         version: 7.0.2
       vitest:
         specifier: 5.0.0
-        version: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))
+        version: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1))
 
 packages:
 
@@ -672,8 +672,8 @@ packages:
     resolution: {integrity: sha512-6QEf6yqFbETdwGITKq57aYoPfX/3K8XFNwsAlx0C1M7o8cb79sv1M3w+tWuWvIcSbNqrLF7OD7YpZMVVz335hQ==}
     engines: {node: '>=20.0.0'}
 
-  '@mongodb-js/saslprep@1.5.0':
-    resolution: {integrity: sha512-Hk1SKJCMcCos38+vqDnZzlIo4XRj9yCGzYkjB4LcqpeXRIYfia1UWTz+VrueLxoU+uSRJzgkufxoRZg8gi52YA==}
+  '@mongodb-js/saslprep@1.5.2':
+    resolution: {integrity: sha512-UBvCBdPHAmiiDNEpD2ORBGzna4qYr06fLELfGDPW3/KZ9uLK+cGT9npAc/x/6/8SLzdbILMuc3HWFQ0FvJMhCw==}
 
   '@oxc-project/types@0.148.0':
     resolution: {integrity: sha512-Nm4s/jB+4FpFsPhWGEC4h7rzksesmtnMXomo6rCMcg/b8zLQuOziRgkCS1fxDCXOlJB/6Q8oABOZ/OP6RIPj9A==}
@@ -1389,8 +1389,8 @@ packages:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
     engines: {node: '>=12'}
 
-  ast-v8-to-istanbul@1.0.5:
-    resolution: {integrity: sha512-UPAgKJFSEGMWSDr3LX4tqnAb4f7KGT8O40Tyx8wbYmmZ/yn58lNCm8h3svs3eXgiGd5AXxz8NDOvXWvicq+rJA==}
+  ast-v8-to-istanbul@1.0.6:
+    resolution: {integrity: sha512-fvpl29helSO2w/z7utIbrkNXILdrLwDwAMH2I/zPKlGf5244+gf+B4cyS1sANcrPY2h+hWCGSgC8N61s/+AF9A==}
 
   async-mutex@0.5.0:
     resolution: {integrity: sha512-1A94B18jkJ3DYq284ohPxoXbfTA5HsQ7/Mf4DEhcyLx3Bz27Rh59iScbB6EPiP+B+joue6YCxcMXSbFC1tZKwA==}
@@ -1448,8 +1448,8 @@ packages:
     resolution: {integrity: sha512-cU8v/EGSrnH+HnxV2z0J7/blxH8gq7Xh2JFT6Aroax7UohdmiJJlxApMxtKfuI7z68NvvVcmR78k2LbT6efhRg==}
     engines: {node: '>= 18'}
 
-  bidi-js@1.0.3:
-    resolution: {integrity: sha512-RKshQI1R3YQ+n9YJz2QQ147P66ELpa1FQEg20Dk8oW9t2KgLbpDLLp9aGZ7y8WHSshDknG0bknqGw5/tyCs5tw==}
+  bidi-js@1.1.0:
+    resolution: {integrity: sha512-fX1Onk0tdVPC7obPWB5EbJ1z7NVhLq4m2xZLq2YXBkxzMXIGRpNMU88n0EPgWseKl12J7zXs7qrDxPK4sRs2fg==}
 
   brace-expansion@5.0.9:
     resolution: {integrity: sha512-ScQ4IuvIEF1TMlP7Zt+vjJ//9zlPb2SDcxWxM3bk8s6t6GGdJ7KO1dCcTidOPJKePW30LE/2cT7wCyPho9/Wxg==}
@@ -2262,11 +2262,11 @@ packages:
     resolution: {integrity: sha512-yau8yJdTt989Mm0Bd/236QnzEiPf2xLLTqUZRUJOo/3CB078LSwzei343DgtJVmfJKJE3TMINY1u42SQsP6mXw==}
     engines: {node: '>=14.0.0'}
 
-  tldts-core@7.4.11:
-    resolution: {integrity: sha512-CW3WN2rIIE/Of21mulhgnGOwoDyEFNygyIBOONSdyAuSATgMMUCpLeUlB+E8sAwA5xRV9hYPl+kyZ9citHCaKg==}
+  tldts-core@7.4.12:
+    resolution: {integrity: sha512-nYNzS2WRf4QJmjzFFgAxLOBjyBxAGRbCy9PVBPaglcYyYajh40VBn+v5Ngr96ZMc7oM0+aCJdtQnNejvdBnXMQ==}
 
-  tldts@7.4.11:
-    resolution: {integrity: sha512-aBiNayCfTQxuIJBm06M+xR14cYaYlDlSXZbgsnKzKNxDKUVq7KFwTjwBSsb7m9Y5xO8WfPnBc63WaYFMTGlvqw==}
+  tldts@7.4.12:
+    resolution: {integrity: sha512-WylhSDKVeYnWXL3a+vKTaOxjnOeEGw938hImY8zoRWJjRRK/Jp1K+IihBzIONpUmW4e3WmXT6q5FW6vlESVZCA==}
     hasBin: true
 
   totalist@3.0.1:
@@ -2522,7 +2522,7 @@ snapshots:
 
   '@asamuzakjp/dom-selector@8.3.2':
     dependencies:
-      bidi-js: 1.0.3
+      bidi-js: 1.1.0
       css-tree: 3.2.1
       is-potential-custom-element-name: 1.0.1
       lru-cache: 11.5.2
@@ -2796,7 +2796,7 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.0
 
-  '@mongodb-js/saslprep@1.5.0':
+  '@mongodb-js/saslprep@1.5.2':
     dependencies:
       sparse-bitfield: 3.0.3
 
@@ -3205,12 +3205,12 @@ snapshots:
       '@bcoe/v8-coverage': 1.0.2
       '@vitest/istanbul-lib-coverage': 1.0.1
       '@vitest/istanbul-lib-report': 1.0.1
-      ast-v8-to-istanbul: 1.0.5
+      ast-v8-to-istanbul: 1.0.6
       magicast: 0.5.4
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))
+      vitest: 5.0.0(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)
 
   '@vitest/istanbul-lib-coverage@1.0.1': {}
 
@@ -3219,6 +3219,15 @@ snapshots:
       '@vitest/istanbul-lib-coverage': 1.0.1
 
   '@vitest/mocker@5.0.0(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))':
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.31
+      '@vitest/spy': 5.0.0
+      estree-walker: 3.0.3
+      magic-string: 1.2.3
+    optionalDependencies:
+      vite: 8.2.2(@types/node@26.4.1)(yaml@2.9.0)
+
+  '@vitest/mocker@5.0.0(vite@8.2.2(@types/node@26.4.1))':
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       '@vitest/spy': 5.0.0
@@ -3241,7 +3250,7 @@ snapshots:
       pathe: 2.0.3
       sirv: 3.0.2
       tinyrainbow: 3.1.1
-      vitest: 5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))
+      vitest: 5.0.0(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)
 
   '@vitest/utils@5.0.0':
     dependencies:
@@ -3276,7 +3285,7 @@ snapshots:
 
   assertion-error@2.0.1: {}
 
-  ast-v8-to-istanbul@1.0.5:
+  ast-v8-to-istanbul@1.0.6:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       estree-walker: 3.0.3
@@ -3324,7 +3333,7 @@ snapshots:
       node-addon-api: 8.9.2
       node-gyp-build: 4.8.4
 
-  bidi-js@1.0.3:
+  bidi-js@1.1.0:
     dependencies:
       require-from-string: 2.0.2
 
@@ -3809,13 +3818,13 @@ snapshots:
 
   mongodb@7.5.0:
     dependencies:
-      '@mongodb-js/saslprep': 1.5.0
+      '@mongodb-js/saslprep': 1.5.2
       bson: 7.3.2
       mongodb-connection-string-url: 7.0.2
 
   mongodb@7.6.0:
     dependencies:
-      '@mongodb-js/saslprep': 1.5.0
+      '@mongodb-js/saslprep': 1.5.2
       bson: 7.3.2
       mongodb-connection-string-url: 7.0.2
 
@@ -4116,17 +4125,17 @@ snapshots:
 
   tinyrainbow@3.1.1: {}
 
-  tldts-core@7.4.11: {}
+  tldts-core@7.4.12: {}
 
-  tldts@7.4.11:
+  tldts@7.4.12:
     dependencies:
-      tldts-core: 7.4.11
+      tldts-core: 7.4.12
 
   totalist@3.0.1: {}
 
   tough-cookie@6.0.2:
     dependencies:
-      tldts: 7.4.11
+      tldts: 7.4.12
 
   tr46@5.1.1:
     dependencies:
@@ -4249,6 +4258,51 @@ snapshots:
       '@vitest/coverage-v8': 5.0.0(vitest@5.0.0)
       '@vitest/ui': 5.0.0(vitest@5.0.0)
       jsdom: 30.0.1
+    transitivePeerDependencies:
+      - msw
+
+  vitest@5.0.0(@types/node@26.4.1)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1)):
+    dependencies:
+      '@types/chai': 5.2.3
+      '@vitest/mocker': 5.0.0(vite@8.2.2(@types/node@26.4.1))
+      chai: 6.2.2
+      es-module-lexer: 2.3.2
+      expect-type: 1.4.0
+      magic-string: 1.2.3
+      obug: 2.1.4
+      picomatch: 4.0.7
+      std-env: 4.2.0
+      tinybench: 6.1.4
+      tinyexec: 1.3.0
+      tinyglobby: 0.2.17
+      vite: 8.2.2(@types/node@26.4.1)(yaml@2.9.0)
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 26.4.1
+      '@vitest/coverage-v8': 5.0.0(vitest@5.0.0)
+      '@vitest/ui': 5.0.0(vitest@5.0.0)
+      jsdom: 30.0.1
+    transitivePeerDependencies:
+      - msw
+
+  vitest@5.0.0(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0):
+    dependencies:
+      '@types/chai': 5.2.3
+      '@vitest/mocker': 5.0.0(vite@8.2.2(@types/node@26.4.1))
+      chai: 6.2.2
+      es-module-lexer: 2.3.2
+      expect-type: 1.4.0
+      magic-string: 1.2.3
+      obug: 2.1.4
+      picomatch: 4.0.7
+      std-env: 4.2.0
+      tinybench: 6.1.4
+      tinyexec: 1.3.0
+      tinyglobby: 0.2.17
+      why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@vitest/coverage-v8': 5.0.0(vitest@5.0.0)
+      '@vitest/ui': 5.0.0(vitest@5.0.0)
     transitivePeerDependencies:
       - msw
 
