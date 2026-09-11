@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "@slango.configs/oxlint": "workspace:*",
-    "oxlint": "1.81.0"
+    "oxlint": "1.82.0"
   }
 }
