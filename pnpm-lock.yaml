@@ -242,8 +242,8 @@ importers:
         specifier: 30.0.1
         version: 30.0.1
       unplugin-swc:
-        specifier: 1.5.11
-        version: 1.5.11(@swc/core@1.16.2)(rolldown@1.2.7)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))
+        specifier: 1.6.0
+        version: 1.6.0(@swc/core@1.16.2)(rolldown@1.2.7)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0))
       vite:
         specifier: ^8.2.2
         version: 8.2.2(@types/node@26.4.1)(yaml@2.9.0)
@@ -2318,8 +2318,8 @@ packages:
     resolution: {integrity: sha512-/y4/bH9YNU5hi9NIrpOuvGXFcxrj3CMrV+/AYpowAYTpHn8gX/XPFjNy766FPoYY0miQhdW977JFWKGNhBdwyQ==}
     engines: {node: '>=22.19.0'}
 
-  unplugin-swc@1.5.11:
-    resolution: {integrity: sha512-R7U4GbfrESPnYLn3nXREZrwhKQk3BAmTBoKJ5lmo7btTc/yJpNsDzavBWo+XpQTjDSIogiZEAxC5ig/vfMWxWg==}
+  unplugin-swc@1.6.0:
+    resolution: {integrity: sha512-aOdzxAwJvz1GeQ8vwSNA2N8AreHYBrpwxqnwzxmB7LCdeZiXOBDj0rgjZod+lMxFsJGm8k6lF/1iKF/9wacLbw==}
     peerDependencies:
       '@swc/core': ^1.2.108
 
@@ -4186,7 +4186,7 @@ snapshots:
 
   undici@8.10.2: {}
 
-  unplugin-swc@1.5.11(@swc/core@1.16.2)(rolldown@1.2.7)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0)):
+  unplugin-swc@1.6.0(@swc/core@1.16.2)(rolldown@1.2.7)(vite@8.2.2(@types/node@26.4.1)(yaml@2.9.0)):
     dependencies:
       '@rollup/pluginutils': 5.4.0
       '@swc/core': 1.16.2
