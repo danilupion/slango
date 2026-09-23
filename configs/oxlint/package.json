@@ -24,8 +24,8 @@
     "lint:fix": "oxlint --type-aware --fix --max-warnings 0 ."
   },
   "dependencies": {
-    "eslint-plugin-perfectionist": "5.11.0",
-    "eslint-plugin-regexp": "3.3.0"
+    "eslint-plugin-perfectionist": "5.11.1",
+    "eslint-plugin-regexp": "3.3.1"
   },
   "peerDependencies": {
     "oxlint": "^1.81.0",
@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "@slango.configs/typescript": "workspace:*",
-    "@types/node": "26.4.1",
-    "oxlint": "1.82.0",
-    "oxlint-tsgolint": "7.0.2001",
+    "@types/node": "26.6.2",
+    "oxlint": "1.83.0",
+    "oxlint-tsgolint": "7.0.2002",
     "typescript": "7.0.2"
   }
 }

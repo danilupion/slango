@@ -43,13 +43,13 @@
     "@slango.configs/oxlint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
-    "@types/node": "26.4.1",
-    "@vitest/coverage-v8": "5.0.0",
-    "@vitest/ui": "5.0.0",
-    "oxlint": "1.82.0",
-    "oxlint-tsgolint": "7.0.2001",
-    "type-fest": "5.9.0",
+    "@types/node": "26.6.2",
+    "@vitest/coverage-v8": "5.0.1",
+    "@vitest/ui": "5.0.1",
+    "oxlint": "1.83.0",
+    "oxlint-tsgolint": "7.0.2002",
+    "type-fest": "5.10.0",
     "typescript": "7.0.2",
-    "vitest": "5.0.0"
+    "vitest": "5.0.1"
   }
 }

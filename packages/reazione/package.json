@@ -38,15 +38,15 @@
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
     "@testing-library/react": "16.3.3",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.7",
-    "@vitest/coverage-v8": "5.0.0",
-    "@vitest/ui": "5.0.0",
-    "oxlint": "1.82.0",
-    "oxlint-tsgolint": "7.0.2001",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitest/coverage-v8": "5.0.1",
+    "@vitest/ui": "5.0.1",
+    "oxlint": "1.83.0",
+    "oxlint-tsgolint": "7.0.2002",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "typescript": "7.0.2",
-    "vitest": "5.0.0"
+    "vitest": "5.0.1"
   }
 }

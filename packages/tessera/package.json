@@ -28,11 +28,11 @@
     "@slango.configs/oxlint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
-    "@vitest/coverage-v8": "5.0.0",
-    "@vitest/ui": "5.0.0",
-    "oxlint": "1.82.0",
-    "oxlint-tsgolint": "7.0.2001",
+    "@vitest/coverage-v8": "5.0.1",
+    "@vitest/ui": "5.0.1",
+    "oxlint": "1.83.0",
+    "oxlint-tsgolint": "7.0.2002",
     "typescript": "7.0.2",
-    "vitest": "5.0.0"
+    "vitest": "5.0.1"
   }
 }
