@@ -1,5 +1,11 @@
 # @slango.configs/prettier
 
+## 1.0.31
+
+### Patch Changes
+
+- bdb91be: Dependencies bump
+
 ## 1.0.30
 
 ### Patch Changes
