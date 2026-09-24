@@ -1,5 +1,11 @@
 # @slango.configs/lint-staged
 
+## 2.0.4
+
+### Patch Changes
+
+- dbf11a1: Pass `--no-error-on-unmatched-pattern` to the oxlint tasks. Since oxlint 1.83, committing only files that match a package's `ignorePatterns` (e.g. `next-env.d.ts`) made oxlint exit with "No files found to lint" and aborted the commit.
+
 ## 2.0.3
 
 ### Patch Changes
