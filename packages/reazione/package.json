@@ -42,7 +42,7 @@
     "@types/react-dom": "19.3.0",
     "@vitest/coverage-v8": "5.0.1",
     "@vitest/ui": "5.0.1",
-    "oxlint": "1.83.0",
+    "oxlint": "1.85.0",
     "oxlint-tsgolint": "7.0.2002",
     "react": "19.3.0",
     "react-dom": "19.3.0",

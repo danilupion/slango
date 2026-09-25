@@ -11,8 +11,8 @@ const vitestReactConfig = defineConfig({
       ...configDefaults.coverage,
       exclude: [...configDefaults.coverage.exclude, '**/lint-staged.config.js'],
     },
+    isolate: true,
   },
-  isolate: true,
 });
 
 export default vitestReactConfig;

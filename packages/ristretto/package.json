@@ -46,7 +46,7 @@
     "@types/node": "26.6.2",
     "@vitest/coverage-v8": "5.0.1",
     "@vitest/ui": "5.0.1",
-    "oxlint": "1.83.0",
+    "oxlint": "1.85.0",
     "oxlint-tsgolint": "7.0.2002",
     "type-fest": "5.10.0",
     "typescript": "7.0.2",

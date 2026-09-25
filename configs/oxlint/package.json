@@ -34,7 +34,7 @@
   "devDependencies": {
     "@slango.configs/typescript": "workspace:*",
     "@types/node": "26.6.2",
-    "oxlint": "1.83.0",
+    "oxlint": "1.85.0",
     "oxlint-tsgolint": "7.0.2002",
     "typescript": "7.0.2"
   }
