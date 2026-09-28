@@ -24,7 +24,7 @@
     "lint:fix": "oxlint --type-aware --fix --max-warnings 0 ."
   },
   "dependencies": {
-    "eslint-plugin-perfectionist": "5.11.1",
+    "eslint-plugin-perfectionist": "5.12.1",
     "eslint-plugin-regexp": "3.3.1"
   },
   "peerDependencies": {
@@ -35,7 +35,7 @@
     "@slango.configs/typescript": "workspace:*",
     "@types/node": "26.6.2",
     "oxlint": "1.85.0",
-    "oxlint-tsgolint": "7.0.2002",
+    "oxlint-tsgolint": "7.0.2003",
     "typescript": "7.0.2"
   }
 }
