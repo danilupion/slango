@@ -1,6 +1,6 @@
 {
   "name": "@slango/mangusta",
-  "version": "2.1.59",
+  "version": "2.1.60",
   "private": false,
   "description": "Mongoose middlewares and utilities",
   "repository": {
