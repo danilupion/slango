@@ -31,7 +31,7 @@
     "test:ui": "vitest --ui"
   },
   "peerDependencies": {
-    "react": "^19.2.8"
+    "react": "^19.3.0"
   },
   "devDependencies": {
     "@slango.configs/oxlint": "workspace:*",

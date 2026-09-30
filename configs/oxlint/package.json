@@ -28,7 +28,7 @@
     "eslint-plugin-regexp": "3.3.1"
   },
   "peerDependencies": {
-    "oxlint": "^1.81.0",
+    "oxlint": "^1.85.0",
     "oxlint-tsgolint": "^7.0.2001"
   },
   "devDependencies": {
