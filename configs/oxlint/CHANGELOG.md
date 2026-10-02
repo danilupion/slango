@@ -1,5 +1,11 @@
 # @slango.configs/oxlint
 
+## 0.1.9
+
+### Patch Changes
+
+- f259813: Dependencies bump
+
 ## 0.1.8
 
 ### Patch Changes
