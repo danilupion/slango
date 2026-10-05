@@ -43,7 +43,7 @@
     "@slango.configs/oxlint": "workspace:*",
     "@slango.configs/typescript": "workspace:*",
     "@slango.configs/vitest": "workspace:*",
-    "@types/node": "26.6.3",
+    "@types/node": "26.6.4",
     "@vitest/coverage-v8": "5.0.3",
     "@vitest/ui": "5.0.3",
     "oxlint": "1.86.0",
