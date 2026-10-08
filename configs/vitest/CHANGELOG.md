@@ -1,5 +1,11 @@
 # @slango.configs/vitest
 
+## 2.0.67
+
+### Patch Changes
+
+- 252346d: Dependencies bump
+
 ## 2.0.66
 
 ### Patch Changes
