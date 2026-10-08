@@ -9,9 +9,12 @@
     "moduleResolution": "bundler",
     "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["${configDir}/src/*"]
+    },
+    "declaration": false,
+    "declarationMap": false,
+    "composite": false
   },
-  "include": ["./**/*.ts", "./**/*.tsx"],
-  "exclude": ["./node_modules"]
+  "include": ["${configDir}/**/*.ts", "${configDir}/**/*.tsx"],
+  "exclude": ["${configDir}/node_modules"]
 }

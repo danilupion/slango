@@ -14,9 +14,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["${configDir}/src/*"]
+    },
+    "declaration": false,
+    "declarationMap": false,
+    "composite": false
   },
-  "include": ["./next-env.d.ts", "./**/*.ts", "./**/*.tsx", "./.next/types/**/*.ts"],
-  "exclude": ["./node_modules"]
+  "include": [
+    "${configDir}/next-env.d.ts",
+    "${configDir}/**/*.ts",
+    "${configDir}/**/*.tsx",
+    "${configDir}/.next/types/**/*.ts"
+  ],
+  "exclude": ["${configDir}/node_modules"]
 }

@@ -22,7 +22,7 @@
     "sourceMap": true,
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["${configDir}/src/*"]
     }
   }
 }
