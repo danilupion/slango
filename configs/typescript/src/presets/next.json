@@ -13,12 +13,8 @@
         "name": "next"
       }
     ],
-    "paths": {
-      "@/*": ["${configDir}/src/*"]
-    },
     "declaration": false,
-    "declarationMap": false,
-    "composite": false
+    "declarationMap": false
   },
   "include": [
     "${configDir}/next-env.d.ts",

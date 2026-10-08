@@ -15,14 +15,9 @@
     "esModuleInterop": true,
     "module": "nodenext",
     "moduleResolution": "nodenext",
-    "composite": true,
     "removeComments": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "sourceMap": true,
-    "incremental": true,
-    "paths": {
-      "@/*": ["${configDir}/src/*"]
-    }
+    "sourceMap": true
   }
 }

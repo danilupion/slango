@@ -8,12 +8,8 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "jsx": "preserve",
-    "paths": {
-      "@/*": ["${configDir}/src/*"]
-    },
     "declaration": false,
-    "declarationMap": false,
-    "composite": false
+    "declarationMap": false
   },
   "include": ["${configDir}/**/*.ts", "${configDir}/**/*.tsx"],
   "exclude": ["${configDir}/node_modules"]

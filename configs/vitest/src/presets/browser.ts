@@ -1,14 +1,14 @@
 import cv8 from '@vitest/coverage-v8';
-import { configDefaults, defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig, type ViteUserConfig } from 'vitest/config';
 
-const vitestBrowserConfig = defineConfig({
+const vitestBrowserConfig: ViteUserConfig = defineConfig({
   plugins: [cv8.getProvider()],
 
   test: {
     environment: 'jsdom',
     coverage: {
       ...configDefaults.coverage,
-      exclude: [...configDefaults.coverage.exclude, '**/lint-staged.config.js'],
+      exclude: [...(configDefaults.coverage.exclude ?? []), '**/lint-staged.config.js'],
     },
     isolate: true,
   },

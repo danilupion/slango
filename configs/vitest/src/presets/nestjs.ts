@@ -1,13 +1,13 @@
 import cv8 from '@vitest/coverage-v8';
 import swc from 'unplugin-swc';
-import { configDefaults, defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig, type ViteUserConfig } from 'vitest/config';
 
-const vitestNestJsConfig = defineConfig({
+const vitestNestJsConfig: ViteUserConfig = defineConfig({
   plugins: [cv8.getProvider(), swc.vite()],
   test: {
     coverage: {
       ...configDefaults.coverage,
-      exclude: [...configDefaults.coverage.exclude, '**/lint-staged.config.js'],
+      exclude: [...(configDefaults.coverage.exclude ?? []), '**/lint-staged.config.js'],
     },
     isolate: true,
   },
