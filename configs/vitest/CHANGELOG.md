@@ -1,5 +1,12 @@
 # @slango.configs/vitest
 
+## 2.1.0
+
+### Minor Changes
+
+- 5d3eac8: Rewrite the presets in TypeScript and publish them from `dist/` with generated type declarations, so consumers can
+  use `vitest.config.ts`. Import paths are unchanged. The coverage `exclude` spread now tolerates an undefined default.
+
 ## 2.0.67
 
 ### Patch Changes
