@@ -19,7 +19,7 @@ Slango is a collection of reusable TypeScript configuration and utility packages
 2. Install `pnpm`:
 
    ```bash
-   npm install -g pnpm@11
+   npm install -g pnpm@12
    ```
 
 3. Install dependencies:
