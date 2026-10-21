@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [26.12.0]
+        node-version: [26.12.1]
         pnpm-version: [12.14.0]
 
     steps:
