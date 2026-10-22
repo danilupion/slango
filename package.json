@@ -40,7 +40,7 @@
     "@slango.configs/scripts": "workspace:*",
     "husky": "9.1.7",
     "lint-staged": "17.6.0",
-    "oxlint": "1.88.0",
+    "oxlint": "1.89.0",
     "oxlint-tsgolint": "7.0.2004",
     "prettier": "3.9.10",
     "turbo": "2.11.9"

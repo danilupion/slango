@@ -28,13 +28,13 @@
     "eslint-plugin-regexp": "3.3.1"
   },
   "peerDependencies": {
-    "oxlint": "^1.88.0",
+    "oxlint": "^1.89.0",
     "oxlint-tsgolint": "^7.0.2004"
   },
   "devDependencies": {
     "@slango.configs/typescript": "workspace:*",
     "@types/node": "26.6.5",
-    "oxlint": "1.88.0",
+    "oxlint": "1.89.0",
     "oxlint-tsgolint": "7.0.2004",
     "typescript": "7.0.2"
   }
