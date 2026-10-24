@@ -9,8 +9,8 @@ Slango is a TypeScript monorepo containing reusable configuration packages and u
 ## Setup
 
 ```bash
-nvm use              # Use Node.js version from .nvmrc (26.12.1)
-npm install -g pnpm@11  # Install pnpm
+nvm use              # Use the Node.js version from .nvmrc
+npm install -g pnpm@12  # Install pnpm (exact version: packageManager in package.json)
 pnpm install         # Install dependencies
 ```
 
@@ -70,7 +70,7 @@ pnpm release:check   # Verify changesets against main branch
   - `scripts` - Shared build and utility scripts
 
 - **`/packages/*`** - Distributable utility packages
-  - `mangusta` - Mongoose middlewares and utilities (peer dep: mongoose ^8.19.0)
+  - `mangusta` - Mongoose middlewares and utilities (peer dep: mongoose 9)
   - `ristretto` - Opinionated REST client with middleware support
   - `tessera` - TypeScript utilities (exports source .ts files directly, no build step)
 
@@ -118,8 +118,7 @@ Husky hooks will run lint-staged on commit. If hooks fail, run `npx lint-staged 
 
 ## Important Notes
 
-- **Node version**: Requires Node.js ^26.12.1 (enforced in package.json engines)
-- **pnpm version**: Requires pnpm ^12.15.0
+- **Node and pnpm versions**: `.nvmrc`, and `engines` / `packageManager` in package.json
 - **Module system**: All packages use ESM (`"type": "module"`)
-- **Peer dependencies**: `mangusta` requires mongoose ^8.19.0; ensure it's installed in consuming projects
+- **Peer dependencies**: `mangusta` requires mongoose 9; ensure it's installed in consuming projects
 - **Workspace dependencies**: Config packages use `workspace:*` protocol for internal dependencies

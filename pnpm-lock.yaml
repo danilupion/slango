@@ -203,7 +203,7 @@ importers:
   configs/lint-staged:
     dependencies:
       deepmerge:
-        specifier: 4.3.1
+        specifier: ^4.3.1
         version: 4.3.1
       lint-staged:
         specifier: ^17.6.0
@@ -219,10 +219,10 @@ importers:
   configs/oxlint:
     dependencies:
       eslint-plugin-perfectionist:
-        specifier: 5.13.0
+        specifier: ^5.13.0
         version: 5.13.0(eslint@10.13.0)(typescript@7.0.2)
       eslint-plugin-regexp:
-        specifier: 3.3.1
+        specifier: ^3.3.1
         version: 3.3.1(eslint@10.13.0)
     devDependencies:
       '@slango.configs/typescript':
@@ -275,28 +275,28 @@ importers:
   configs/vitest:
     dependencies:
       '@swc/core':
-        specifier: 1.16.18
+        specifier: ^1.16.18
         version: 1.16.18
       '@testing-library/dom':
-        specifier: 10.4.2
+        specifier: ^10.4.2
         version: 10.4.2
       '@testing-library/jest-dom':
-        specifier: 7.0.1
+        specifier: ^7.0.1
         version: 7.0.1(@testing-library/dom@10.4.2)(vitest@5.0.5)
       '@testing-library/react':
-        specifier: 16.3.3
+        specifier: ^16.3.3
         version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@vitejs/plugin-react':
-        specifier: 6.1.2
+        specifier: ^6.1.2
         version: 6.1.2(vite@8.3.5(@types/node@26.6.5)(yaml@2.9.1))
       '@vitest/ui':
         specifier: ^5.0.5
         version: 5.0.5(vitest@5.0.5)
       jsdom:
-        specifier: 30.1.3
+        specifier: ^30.1.3
         version: 30.1.3
       unplugin-swc:
-        specifier: 2.0.0
+        specifier: ^2.0.0
         version: 2.0.0(@swc/core@1.16.18)(rolldown@1.2.15)(vite@8.3.5(@types/node@26.6.5)(yaml@2.9.1))
       vite:
         specifier: ^8.3.3
@@ -330,13 +330,13 @@ importers:
   packages/mangusta:
     dependencies:
       bcrypt:
-        specifier: 6.0.0
+        specifier: ^6.0.0
         version: 6.0.0
       mongodb-memory-server:
-        specifier: 11.3.0
+        specifier: ^11.3.0
         version: 11.3.0
       nanoid:
-        specifier: 6.0.2
+        specifier: ^6.0.2
         version: 6.0.2
     devDependencies:
       '@slango.configs/oxlint':
@@ -421,7 +421,7 @@ importers:
   packages/ristretto:
     dependencies:
       '@slango/tessera':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../tessera
     devDependencies:
       '@slango.configs/oxlint':
