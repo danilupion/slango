@@ -1,5 +1,11 @@
 # @slango.configs/scripts
 
+## 1.2.9
+
+### Patch Changes
+
+- bb4bbec: Dependencies bump
+
 ## 1.2.8
 
 ### Patch Changes
