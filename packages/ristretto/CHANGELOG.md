@@ -1,5 +1,12 @@
 # @slango/ristretto
 
+## 1.0.78
+
+### Patch Changes
+
+- f44572d: Dependencies use SemVer ranges instead of exact versions, so a patch release of one of them (a CVE fix, say) reaches
+  consumers through their own lockfile, without waiting for a new release of this package.
+
 ## 1.0.77
 
 ### Patch Changes
