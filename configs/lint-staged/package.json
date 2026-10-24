@@ -20,7 +20,7 @@
     "lint:fix": "oxlint --fix --max-warnings 0 ."
   },
   "dependencies": {
-    "deepmerge": "4.3.1"
+    "deepmerge": "^4.3.1"
   },
   "peerDependencies": {
     "lint-staged": "^17.6.0"
