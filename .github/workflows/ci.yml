@@ -83,6 +83,8 @@ jobs:
         with:
           name: renovate-changeset
           path: .changeset/renovate-*.md
+          # .changeset is a hidden directory, which upload-artifact skips by default.
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 1
 
