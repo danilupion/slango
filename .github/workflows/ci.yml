@@ -1,116 +1,90 @@
 name: 🧪 CI + 🚀 CD
 
+# No pull_request_target: it ran Renovate PRs' new dependency versions (install scripts included) with a token that
+# could write to the repository and request npm's publish token. Renovate branches live in this repository, so a
+# pull_request run can get a write token for the one job that needs it (renovate-changeset), and that job runs nothing
+# from the PR.
+#
+# Publishing is split in two: release installs, builds and packs on main without any publish credential; publish runs
+# no dependency code, only uploads those tarballs, and alone can request the token npm accepts (the npm environment,
+# main only, required by every @slango package's trusted publisher).
 on:
-  workflow_dispatch:
   pull_request:
-  pull_request_target:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: write
-  id-token: write
+  contents: read
 
 concurrency:
-  group: ci-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  # Superseded PR runs are cancelled; runs on main finish, so a release is never cut short.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  ci-cd:
-    # Route events correctly:
-    # - pull_request: only for non-Renovate PRs
-    # - pull_request_target: only for Renovate PRs (needs write access to push changesets)
-    # - push/workflow_dispatch: always run
-    if: |
-      (github.event_name == 'pull_request' && github.event.pull_request.user.login != 'renovate[bot]') ||
-      (github.event_name == 'pull_request_target' && github.event.pull_request.user.login == 'renovate[bot]') ||
-      github.event_name == 'push' ||
-      github.event_name == 'workflow_dispatch'
+  checks:
+    name: Checks
+    if: github.event.pull_request.draft != true
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [26.12.1]
-        pnpm-version: [12.15.0]
-
+    timeout-minutes: 30
+    outputs:
+      renovate-changeset: ${{ steps.renovate.outputs.created }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          # For pull_request_target (Renovate), checkout the PR branch, not base
-          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.ref || '' }}
+          # Full history: the changeset checks diff against the base.
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Install pnpm
         uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        with:
-          version: ${{ matrix.pnpm-version }}
 
       - name: Set up Node.js
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: .nvmrc
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      # ─────────────────────────────────────────────────────────────────────────
-      # Changeset handling: Renovate PRs get auto-generated changesets,
-      # other PRs must have changesets or they fail
-      # ─────────────────────────────────────────────────────────────────────────
-
-      - name: Validate changesets (create for Renovate if missing)
-        id: changeset-check
-        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+      # Renovate PRs get theirs from the renovate-changeset job below.
+      - name: Require a changeset
+        if: github.event_name == 'pull_request' && github.event.pull_request.user.login != 'renovate[bot]'
         run: |
-          if pnpm release:check 2>/dev/null; then
-            echo "✅ Changeset exists"
-            exit 0
-          fi
-
-          # Changeset missing - only Renovate PRs get auto-generated changesets
-          if [[ "${{ github.event.pull_request.user.login }}" != "renovate[bot]" ]]; then
-            echo "❌ Changeset is missing!"
-            echo ""
-            echo "Run 'pnpm release:note' to create a changeset for your changes."
-            echo "If this change doesn't need a release, run 'pnpm changeset add --empty'."
+          if ! pnpm release:check; then
+            echo "::error::Missing changeset. Run 'pnpm release:note', or 'pnpm release:empty' if no package changes."
             exit 1
           fi
 
-          # Create changeset for Renovate PR
-          echo "🔄 Creating changeset for Renovate PR..."
-
-          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
-          PACKAGE_PATHS=$(echo "$CHANGED_FILES" | grep -E '^(configs|packages)/' | cut -d'/' -f1-2 | sort -u || true)
-
-          if [ -z "$PACKAGE_PATHS" ]; then
-            echo "No package changes detected, creating empty changeset"
-            pnpm changeset add --empty
-          else
-            CHANGESET_FILE=".changeset/renovate-$(date +%s).md"
-            echo "---" > "$CHANGESET_FILE"
-
-            for pkg_path in $PACKAGE_PATHS; do
-              if [ -f "$pkg_path/package.json" ]; then
-                PKG_NAME=$(node -p "require('./$pkg_path/package.json').name")
-                echo "\"$PKG_NAME\": patch" >> "$CHANGESET_FILE"
-                echo "  Adding package: $PKG_NAME"
-              fi
-            done
-
-            echo "---" >> "$CHANGESET_FILE"
-            echo "" >> "$CHANGESET_FILE"
-            echo "Dependencies bump" >> "$CHANGESET_FILE"
-
-            echo "✅ Created changeset:"
-            cat "$CHANGESET_FILE"
+      # Worked out here, where the PR's code already runs without a write token; the renovate-changeset job commits it
+      # once every check has passed.
+      - name: Work out the Renovate changeset
+        id: renovate
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.user.login == 'renovate[bot]' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          BASE: origin/${{ github.base_ref }}
+        run: |
+          scripts/renovate-changeset.sh "$BASE"
+          if [ -n "$(git ls-files --others --exclude-standard -- .changeset)" ]; then
+            echo "created=true" >> "$GITHUB_OUTPUT"
           fi
 
-          echo "created=true" >> $GITHUB_OUTPUT
+      - name: Upload the Renovate changeset
+        if: steps.renovate.outputs.created == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: renovate-changeset
+          path: .changeset/renovate-*.md
+          if-no-files-found: error
+          retention-days: 1
 
       - name: Cache Turborepo
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
@@ -129,50 +103,195 @@ jobs:
       - name: Test
         run: pnpm test
 
-      # ─────────────────────────────────────────────────────────────────────────
-      # Commit changeset for Renovate PRs (only after all checks pass)
-      # ─────────────────────────────────────────────────────────────────────────
+  # Renovate doesn't write changesets. Once the checks pass, amend the one they worked out into the PR. This job holds a
+  # write token, so it installs and runs nothing from the PR: it only checks the file's shape and pushes it. A push
+  # made with GITHUB_TOKEN doesn't trigger workflows, so the amended head has no check runs of its own; its code is what
+  # the checks above just tested.
+  renovate-changeset:
+    name: Renovate changeset
+    needs: checks
+    if: needs.checks.outputs.renovate-changeset == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          persist-credentials: false
 
-      - name: Commit and push changeset for Renovate PR
-        if: steps.changeset-check.outputs.created == 'true'
+      - name: Download the changeset
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: renovate-changeset
+          path: ${{ runner.temp }}/renovate-changeset
+
+      - name: Commit and push the changeset
+        env:
+          TESTED: ${{ github.event.pull_request.head.sha }}
+          HEAD_REF: ${{ github.head_ref }}
+          FROM: ${{ runner.temp }}/renovate-changeset
+          TOKEN: ${{ github.token }}
+          HUSKY: 0
         run: |
-          echo "📤 Committing changeset for Renovate PR..."
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .changeset/
-          git commit --amend --no-edit
-          git push --force-with-lease
-          echo "✅ Changeset committed and pushed"
-
-      # ─────────────────────────────────────────────────────────────────────────
-      # CD: Release steps (only on push to main)
-      # ─────────────────────────────────────────────────────────────────────────
-
-      - name: Bump versions and update changelogs
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: pnpm dlx @changesets/cli version
-
-      - name: Check for version changes
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        id: changes
-        run: |
-          git add -A
+          if [ "$(git rev-parse HEAD)" != "$TESTED" ]; then
+            echo "::notice::The branch has moved past $TESTED: the run for its new head adds the changeset."
+            exit 0
+          fi
+          for file in "$FROM"/*.md; do
+            # The checks job ran the PR's code, so accept only what scripts/renovate-changeset.sh writes.
+            if ! [[ "$(basename "$file")" =~ ^renovate-[0-9a-f]+\.md$ ]] ||
+              grep -v -x -E -e "(---|'@slango(\.configs)?/[a-z0-9-]+': patch|Dependencies bump)?" "$file" | grep -q .; then
+              echo "::error::Unexpected changeset $(basename "$file")"
+              exit 1
+            fi
+            cp "$file" .changeset/
+          done
+          git add .changeset
           if git diff --cached --quiet; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          # --amend keeps Renovate as the author, so Renovate still treats the branch as its own and keeps rebasing it.
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit --amend --no-edit
+          # The lease: overwrite the branch only while it is still the commit the checks tested.
+          git push --force-with-lease="refs/heads/${HEAD_REF}:${TESTED}" \
+            "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/${HEAD_REF}"
+
+  # Versions and packs on main. Runs dependency code (install, build), so it holds no publish credential, and its write
+  # token reaches only the push step.
+  release:
+    name: Release
+    needs: checks
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    outputs:
+      publish: ${{ steps.pack.outputs.publish }}
+      node-version: ${{ steps.pack.outputs.node-version }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # Changesets links each changelog entry to the commit that added it.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+
+      # No dependency cache: what this job builds is what gets published.
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      # Changesets fails when there is nothing to version (a push of docs or CI only): then there is nothing to do.
+      - name: Bump versions and update changelogs
+        run: |
+          if find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md' | grep -q .; then
+            pnpm release:bump
           else
-            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "::notice::No changesets: nothing to version."
           fi
 
       - name: Commit version changes
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && steps.changes.outputs.has_changes == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "Version Packages [skip ci]"
-          git push
+        id: commit
         env:
+          TOKEN: ${{ github.token }}
           HUSKY: 0
+        # on-main: the versions in this checkout are the ones on main, committed by this step or already there.
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "on-main=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git fetch --quiet origin main
+          if [ "$(git rev-parse origin/main)" != "$GITHUB_SHA" ]; then
+            echo "::notice::main has moved past $GITHUB_SHA: the run for the newer commit releases this one too."
+            exit 0
+          fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -m "Version Packages [skip ci]"
+          git push "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
+          echo "on-main=true" >> "$GITHUB_OUTPUT"
 
-      - name: Publish to npm
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && steps.changes.outputs.has_changes == 'true'
-        run: pnpm publish -r --access public --no-git-checks --provenance
+      # Every package whose version isn't on npm yet, so a failed publish is retried by the next run on main. pnpm lists
+      # the workspace packages dependencies first; the numbered directories keep that order for the publish job.
+      - name: Pack unpublished packages
+        id: pack
+        if: steps.commit.outputs.on-main == 'true'
+        env:
+          DEST: ${{ runner.temp }}/tarballs
+        run: |
+          mkdir -p "$DEST"
+          n=0
+          for dir in $(pnpm -r --workspace-concurrency=1 --silent exec pwd); do
+            n=$((n + 1))
+            [ "$(node -p "require('$dir/package.json').private === true")" = true ] && continue
+            name=$(node -p "require('$dir/package.json').name")
+            version=$(node -p "require('$dir/package.json').version")
+            # Outside the workspace: npm refuses to run under its devEngines (pnpm).
+            published=$(cd "$RUNNER_TEMP" && { npm view "$name@$version" version 2>/dev/null || true; })
+            if [ "$published" = "$version" ]; then
+              continue
+            fi
+            echo "Packing $name@$version"
+            (cd "$dir" && pnpm pack --pack-destination "$DEST/$(printf '%02d' "$n")")
+          done
+          echo "node-version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+          if compgen -G "$DEST/*/*.tgz" > /dev/null; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload the tarballs
+        if: steps.pack.outputs.publish == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: tarballs
+          path: ${{ runner.temp }}/tarballs/
+          if-no-files-found: error
+          retention-days: 7
+
+  # The only job that can request npm's publish token. No checkout, no install: it runs npm on the tarballs above.
+  publish:
+    name: Publish to npm
+    needs: release
+    if: needs.release.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: npm
+    permissions:
+      id-token: write
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ needs.release.outputs.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Download the tarballs
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: tarballs
+          path: ${{ runner.temp }}/tarballs
+
+      - name: Publish
+        working-directory: ${{ runner.temp }}
+        run: |
+          # ./ prefix: npm reads a bare a/b.tgz as a GitHub user/repo shorthand.
+          for tarball in ./tarballs/*/*.tgz; do
+            npm publish "$tarball" --access public --provenance
+          done
