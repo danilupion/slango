@@ -1,0 +1,64 @@
+{
+  // For a Node.js application:
+  //   extends: ['github>danilupion/slango//renovate/app.json5']
+  // A repository's own rules (a package that needs a PR of its own, a manager of its own) go in its renovate.json5:
+  // Renovate applies the preset's packageRules first and the repository's after them, so these win.
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['./base.json5'],
+  // An update replaces the version in package.json too, not just in the lockfile.
+  rangeStrategy: 'bump',
+  // One weekly window, early on Monday, and open PRs aren't updated outside it either: every Renovate PR runs CI on a
+  // GitHub-hosted runner, metered for a private repository. Security fixes ignore it: Renovate always raises
+  // vulnerability PRs at once, whatever the schedule. Lock-file maintenance (config:best-practices) keeps its own PR,
+  // before 4am the same Monday.
+  schedule: ['* 0-5 * * 1'],
+  updateNotScheduled: false,
+  // The window has one or two of the hosted app's runs: no hourly cap, so every PR due is opened in them.
+  prHourlyLimit: 0,
+  // Rebase only when a PR can no longer merge, not after every push to main.
+  rebaseWhen: 'conflicted',
+  // No automerge: CI amends a changeset into most Renovate PRs, and a commit pushed with GITHUB_TOKEN gets no check
+  // runs, so Renovate would never see the amended head pass.
+  packageRules: [
+    {
+      // Every non-major update in one PR a week. Listed after the presets' groups (monorepos and the like), so their
+      // non-major updates join it too.
+      groupName: 'Non-major updates',
+      matchUpdateTypes: ['patch', 'pin', 'minor', 'digest', 'pinDigest'],
+      automerge: false,
+      groupSlug: 'non-major-updates',
+      // Again here: Renovate's own defaults for pin updates would otherwise rebase the group on every push.
+      rebaseWhen: 'conflicted',
+      labels: ['dependencies', 'non-major'],
+    },
+    {
+      matchUpdateTypes: ['major'],
+      automerge: false,
+      labels: ['dependencies', 'major'],
+    },
+    {
+      // A new Node.js major in one PR, wherever the version is written: .nvmrc, the Dockerfiles' node images, engines,
+      // setup-node. Its non-major updates already join the weekly group.
+      matchDatasources: ['docker', 'node-version'],
+      matchPackageNames: ['/(?:^|/)node$/'],
+      matchUpdateTypes: ['major'],
+      groupName: 'Node.js',
+      groupSlug: 'node-js',
+    },
+    {
+      // slango's own packages, published only from slango's CI with provenance: no supply-chain delay and no window,
+      // one PR as soon as a release lands. The repository's pnpm-workspace.yaml must exempt them from pnpm's own
+      // minimumReleaseAge too (minimumReleaseAgeExclude), or the lockfile can't take a version that young.
+      matchPackageNames: ['@slango/*', '@slango.configs/*'],
+      groupName: 'slango',
+      groupSlug: 'slango',
+      minimumReleaseAge: null,
+      schedule: ['at any time'],
+      labels: ['dependencies', 'slango'],
+    },
+    {
+      matchManagers: ['github-actions'],
+      labels: ['github-actions'],
+    },
+  ],
+}

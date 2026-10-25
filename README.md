@@ -54,6 +54,22 @@ Slango is a collection of reusable TypeScript configuration and utility packages
 - [`@slango/ristretto`](packages/ristretto/README.md) – Opinionated REST client
 - [`@slango/tessera`](packages/tessera/README.md) – Collection of TypeScript utilities
 
+### Renovate Presets
+
+Shared [Renovate](https://docs.renovatebot.com/) configuration, read from this repository's default branch:
+
+- [`renovate/app.json5`](renovate/app.json5) – Node.js applications: exact versions, one weekly window, one PR for
+  every non-major update, `@slango/*` as soon as it's released
+- [`renovate/library.json5`](renovate/library.json5) – published libraries: the same, keeping the ranges consumers see
+- [`renovate/base.json5`](renovate/base.json5) – what both build on, for every other repository: supply-chain delay,
+  vulnerability alerts
+
+```json5
+{
+  extends: ['github>danilupion/slango//renovate/app.json5'],
+}
+```
+
 ## Testing
 
 Run the test suite across all packages:

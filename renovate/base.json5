@@ -1,0 +1,27 @@
+{
+  // What every repository's Renovate config shares. Charts and infrastructure repositories extend it directly:
+  //   extends: ['github>danilupion/slango//renovate/base.json5']
+  // Node.js repositories extend app.json5 or library.json5, which build on it. Renovate reads presets from slango's
+  // default branch on every run, so a change here reaches every repository at once.
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['config:best-practices'],
+  timezone: 'Europe/Madrid',
+  // Supply-chain delay: keep in sync with minimumReleaseAge in each repository's pnpm-workspace.yaml (4320).
+  minimumReleaseAge: '3 days',
+  internalChecksFilter: 'strict',
+  // Security fixes bypass minimumReleaseAge and are raised immediately (pnpm's own minimum in pnpm-workspace.yaml may
+  // still hold a fix younger than 3 days out of the lockfile); OSV scanning broadens vulnerability detection beyond
+  // the platform's native alerts.
+  osvVulnerabilityAlerts: true,
+  packageRules: [
+    {
+      // These registries publish no release timestamps the docker datasource can read (renovatebot/renovate#38656,
+      // renovatebot/renovate#39064), and a missing timestamp counts as "never old enough", which parks their updates
+      // in "Pending Status Checks" forever. Treat missing timestamps as stable; the 3-day delay still applies
+      // wherever timestamps exist.
+      matchDatasources: ['docker'],
+      matchPackageNames: ['ghcr.io/**', 'lscr.io/**', '8gears.container-registry.com/**'],
+      minimumReleaseAgeBehaviour: 'timestamp-optional',
+    },
+  ],
+}

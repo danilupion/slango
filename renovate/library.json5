@@ -1,0 +1,11 @@
+{
+  // For a published library, as slango itself: app.json5, keeping the ranges consumers see.
+  //   extends: ['github>danilupion/slango//renovate/library.json5']
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['./app.json5'],
+  // Renovate's default, back from app.json5's bump. Peer ranges widen only on a new major, an in-range update changes
+  // only the lockfile, and a range is replaced only when an update falls outside it. devDependencies stay pinned
+  // (config:best-practices extends :pinDevDependencies). So an update reaches a published package.json, and makes a
+  // release, only when consumers need it.
+  rangeStrategy: 'auto',
+}
