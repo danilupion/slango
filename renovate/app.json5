@@ -19,6 +19,10 @@
   rebaseWhen: 'conflicted',
   // No automerge: CI amends a changeset into most Renovate PRs, and a commit pushed with GITHUB_TOKEN gets no check
   // runs, so Renovate would never see the amended head pass.
+  // The amend keeps Renovate as the author but makes github-actions the committer, and Renovate counts any other
+  // author or committer as someone else's change: it would stop rebasing the branch and, once the update is no longer
+  // needed, mark the PR "abandoned" instead of closing it and deleting the branch. A person's commit still counts.
+  gitIgnoredAuthors: ['41898282+github-actions[bot]@users.noreply.github.com'],
   packageRules: [
     {
       // Every non-major update in one PR a week. Listed after the presets' groups (monorepos and the like), so their
