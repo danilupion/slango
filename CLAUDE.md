@@ -16,6 +16,12 @@ pnpm install         # Install dependencies
 
 ## Common Commands
 
+### Before a push
+
+```bash
+pnpm verify          # Build, lint and test: exactly what CI's checks run
+```
+
 ### Development
 
 ```bash

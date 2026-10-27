@@ -26,6 +26,7 @@
     "test:serial": "turbo test --concurrency=1",
     "format": "prettier --ignore-unknown --write .",
     "check": "turbo check",
+    "verify": "pnpm build && pnpm lint && pnpm test",
     "release:note": "changeset add",
     "release:empty": "changeset add --empty",
     "release:bump": "changeset version",

@@ -96,14 +96,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
-      - name: Build
-        run: pnpm build
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Test
-        run: pnpm test
+      # Build, lint and test: the same command runs locally before a push.
+      - name: Verify
+        run: pnpm verify
 
   # Renovate doesn't write changesets. Once the checks pass, amend the one they worked out into the PR. This job holds a
   # write token, so it installs and runs nothing from the PR: it only checks the file's shape and pushes it. A push
