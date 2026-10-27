@@ -1,5 +1,12 @@
 # @slango/mangusta
 
+## 2.1.71
+
+### Patch Changes
+
+- 4e2968c: Require mongoose ^9.11.4, the version mangusta is tested with. From now on the peer range rises with every mongoose
+  update, so updating mangusta means updating mongoose too.
+
 ## 2.1.70
 
 ### Patch Changes
