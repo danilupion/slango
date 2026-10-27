@@ -126,5 +126,5 @@ Husky hooks will run lint-staged on commit. If hooks fail, run `npx lint-staged 
 
 - **Node and pnpm versions**: `.nvmrc`, and `engines` / `packageManager` in package.json
 - **Module system**: All packages use ESM (`"type": "module"`)
-- **Peer dependencies**: `mangusta` requires mongoose 9; ensure it's installed in consuming projects
+- **Peer dependencies**: `mangusta` requires the mongoose it's tested with (its pinned devDependency): the peer range rises with every mongoose update (lockstep, `renovate.json5`), so consumers move mongoose along with mangusta
 - **Workspace dependencies**: Config packages use `workspace:*` protocol for internal dependencies

@@ -2,4 +2,15 @@
   // The presets every repository extends live in renovate/: this one is a published library.
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: ['github>danilupion/slango//renovate/library.json5'],
+  packageRules: [
+    {
+      // mangusta promises the mongoose it's tested with: its peer range rises with every update of the pinned
+      // devDependency (lockstep), in the same PR, instead of widening only on a new major. Each one releases
+      // mangusta, and consumers move mongoose with it.
+      matchFileNames: ['packages/mangusta/package.json'],
+      matchDepTypes: ['peerDependencies'],
+      matchPackageNames: ['mongoose'],
+      rangeStrategy: 'bump',
+    },
+  ],
 }
