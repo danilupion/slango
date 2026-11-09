@@ -1483,8 +1483,8 @@ packages:
     resolution: {integrity: sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==}
     engines: {node: 20 || >=22}
 
-  bson@7.3.3:
-    resolution: {integrity: sha512-oz3LwE3qGEhTCSyhzQRLY3Bj1NLOsjFMf6tcmY5J8M+3R7EVcmoBfSHWvjUK3yXCLDUsGpIuB3aQL4nDZ1EV/g==}
+  bson@7.3.4:
+    resolution: {integrity: sha512-eb33j2Ha6xgygjJ8bhI3sYaI9cLAbSaopZLRJQ5/rxk32XyBSoVVcbeHIzVGJx1SyQpyyoElkoEZgQrg+RVVoA==}
     engines: {node: '>=20.19.0'}
 
   cac@7.1.0:
@@ -3318,7 +3318,7 @@ snapshots:
     dependencies:
       balanced-match: 4.0.4
 
-  bson@7.3.3: {}
+  bson@7.3.4: {}
 
   cac@7.1.0: {}
 
@@ -3796,13 +3796,13 @@ snapshots:
   mongodb@7.5.0:
     dependencies:
       '@mongodb-js/saslprep': 1.6.1
-      bson: 7.3.3
+      bson: 7.3.4
       mongodb-connection-string-url: 7.0.2
 
   mongodb@7.8.0:
     dependencies:
       '@mongodb-js/saslprep': 1.6.1
-      bson: 7.3.3
+      bson: 7.3.4
       mongodb-connection-string-url: 7.0.2
 
   mongoose@9.12.0:
