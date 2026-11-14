@@ -43,8 +43,8 @@
     "lint-staged": "17.6.0",
     "oxlint": "1.93.0",
     "oxlint-tsgolint": "7.0.2006",
-    "prettier": "3.9.10",
-    "turbo": "2.11.10"
+    "prettier": "3.10.0",
+    "turbo": "2.11.11"
   },
   "engines": {
     "node": "^26.12.1",
