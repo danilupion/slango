@@ -1,11 +1,12 @@
+import type { MongoMemoryServer } from 'mongodb-memory-server';
 import type { TestProject } from 'vitest/node';
 
-import { MongoMemoryServer } from 'mongodb-memory-server';
+import { startMongoMemoryServer } from './startMongoMemoryServer.js';
 
-let mongoServer: MongoMemoryServer;
+let mongoServer: MongoMemoryServer | undefined;
 
 export async function setup(project: TestProject) {
-  mongoServer = await MongoMemoryServer.create();
+  mongoServer = await startMongoMemoryServer();
   const uri = mongoServer.getUri();
 
   // Type assertion needed as vitest's ProvidedContext typing is complex

@@ -1,6 +1,9 @@
-import { MongoMemoryServer } from 'mongodb-memory-server';
+import type { MongoMemoryServer } from 'mongodb-memory-server';
+
 import mongoose from 'mongoose';
 import { afterAll, afterEach, beforeAll } from 'vitest';
+
+import { startMongoMemoryServer } from './startMongoMemoryServer.js';
 
 const ConnectionStates = mongoose.ConnectionStates;
 
@@ -11,10 +14,10 @@ type SetupMongoTestEnvironmentOptions = {
 export function setupMongoTestEnvironment({
   preserveCollections = [],
 }: SetupMongoTestEnvironmentOptions = {}) {
-  let mongoServer: MongoMemoryServer;
+  let mongoServer: MongoMemoryServer | undefined;
 
   beforeAll(async () => {
-    mongoServer = await MongoMemoryServer.create();
+    mongoServer = await startMongoMemoryServer();
     const uri = mongoServer.getUri();
     process.env.MONGO_URI = uri;
     await mongoose.connect(uri, { dbName: 'test-db' });
@@ -24,7 +27,8 @@ export function setupMongoTestEnvironment({
 
   afterAll(async () => {
     await mongoose.disconnect();
-    await mongoServer.stop();
+    // undefined when beforeAll failed: its error is the one to report, not a TypeError here
+    await mongoServer?.stop();
   });
 
   afterEach(async () => {
