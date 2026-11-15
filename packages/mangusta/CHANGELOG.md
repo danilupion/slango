@@ -1,5 +1,12 @@
 # @slango/mangusta
 
+## 2.1.74
+
+### Patch Changes
+
+- f554511: Test utils: retry starting the in-memory MongoDB when its port was taken before mongod bound it (`Port "N" already
+in use`, a race between parallel test workers), and no longer mask a failed start with a TypeError on teardown
+
 ## 2.1.73
 
 ### Patch Changes
