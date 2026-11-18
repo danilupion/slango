@@ -35,7 +35,7 @@
     "@slango.configs/typescript": "workspace:*",
     "@types/node": "26.6.6",
     "oxlint": "1.93.0",
-    "oxlint-tsgolint": "7.0.2006",
+    "oxlint-tsgolint": "7.0.2007",
     "typescript": "7.0.2"
   }
 }
