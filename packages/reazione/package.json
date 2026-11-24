@@ -40,13 +40,13 @@
     "@testing-library/react": "16.3.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "@vitest/coverage-v8": "5.1.0",
-    "@vitest/ui": "5.1.0",
-    "oxlint": "1.93.0",
-    "oxlint-tsgolint": "7.0.2007",
+    "@vitest/coverage-v8": "5.1.1",
+    "@vitest/ui": "5.1.1",
+    "oxlint": "1.94.0",
+    "oxlint-tsgolint": "7.0.2008",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "typescript": "7.0.2",
-    "vitest": "5.1.0"
+    "vitest": "5.1.1"
   }
 }
