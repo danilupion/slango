@@ -40,7 +40,7 @@
     "@slango.configs/prettier": "workspace:*",
     "@slango.configs/scripts": "workspace:*",
     "husky": "9.1.7",
-    "lint-staged": "17.6.1",
+    "lint-staged": "17.6.2",
     "oxlint": "1.94.0",
     "oxlint-tsgolint": "7.0.2008",
     "prettier": "3.10.1",
@@ -53,9 +53,9 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.22.0",
+      "version": "12.23.0",
       "onFail": "download"
     }
   },
-  "packageManager": "pnpm@12.22.0"
+  "packageManager": "pnpm@12.23.0"
 }
